@@ -1,15 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class Game : SingletonMonoBehaviour<Game> {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+	public Action EventGameStarted;
+	public Action<Player> EventPlayerJoined;
 }
