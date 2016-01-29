@@ -30,8 +30,9 @@ public class Game : SingletonMonoBehaviour<Game> {
 
 	Player[] Players = new Player[4];
 
-	public Action EventGameStarted;
-	public Action<Player> EventPlayerJoined;
+	public event Action EventGameStarted;
+	public event Action EventGameOver;
+	public event Action<Player> EventPlayerJoined;
 	public Player PlayerPrefab;
 
 	[ContextMenu("AddPlayer")]
