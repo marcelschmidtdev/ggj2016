@@ -30,4 +30,16 @@ public class Player : MonoBehaviour {
 			this.PlayerView.transform.position = value;
 		}
 	}
+
+	public Quaternion Rotation
+	{
+		get
+		{
+			return this.PlayerView.transform.rotation;
+		}
+		set
+		{
+			this.PlayerView.transform.rotation = value;
+		}
+	}
 }

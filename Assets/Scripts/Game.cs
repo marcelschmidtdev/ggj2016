@@ -56,6 +56,7 @@ public class Game : SingletonMonoBehaviour<Game> {
 		newPlayer.InitPlayerIndex( index );
 		UpdateCameraViewports();
 		newPlayer.Position = Map.Instance.PlayerSpawners[index].Position;
+		newPlayer.Rotation = Map.Instance.PlayerSpawners[index].Rotation;
 	}
 
 	void UpdateCameraViewports () {

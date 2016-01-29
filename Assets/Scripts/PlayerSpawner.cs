@@ -10,4 +10,12 @@ public class PlayerSpawner : MonoBehaviour {
 			return this.transform.position;
 		}
 	}
+
+	public Quaternion Rotation
+	{
+		get
+		{
+			return this.transform.rotation;
+		}
+	}
 }
