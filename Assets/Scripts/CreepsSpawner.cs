@@ -41,7 +41,11 @@ public class CreepsSpawner : MonoBehaviour
 	void SpawnWave ()
 	{
 		for (int i = 0; i < amountOfCreeps; i++) {
-			SimplePool.Spawn(availableCreeps[playerId], this.transform.position, Quaternion.identity);
+			Vector3 spawnPos = new Vector3(
+				this.transform.position.x + Random.Range(-1.5f,1.5f),
+				this.transform.position.y,
+				this.transform.position.z + Random.Range(-1.5f,1.5f));
+			SimplePool.Spawn(availableCreeps[playerId], spawnPos, Quaternion.identity);
 		}
 	}
 
