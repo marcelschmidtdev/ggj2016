@@ -42,6 +42,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 443924}
+  - 114: {fileID: 11461764}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -60,7 +61,6 @@ GameObject:
   - 135: {fileID: 13561336}
   - 54: {fileID: 5461644}
   - 114: {fileID: 11416674}
-  - 114: {fileID: 11437090}
   m_Layer: 0
   m_Name: PlayerView
   m_TagString: Untagged
@@ -214,12 +214,12 @@ MonoBehaviour:
   maxSpeed: 4
   maxSpeedCharging: 2
   brakeSlowing: .100000001
---- !u!114 &11437090
+--- !u!114 &11461764
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 191868}
+  m_GameObject: {fileID: 170242}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4863e5986689ece449090d28691f621d, type: 3}

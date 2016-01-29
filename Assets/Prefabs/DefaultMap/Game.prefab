@@ -40,7 +40,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DefaultSplitscreenModesForPlayers: 00000000020000000300000003000000
-  PlayerPrefab: {fileID: 11457552, guid: b95e37cfdaebb8d4eaacc63a0cbfc4c8, type: 2}
+  PlayerPrefab: {fileID: 11461764, guid: b95e37cfdaebb8d4eaacc63a0cbfc4c8, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
