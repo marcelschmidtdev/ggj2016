@@ -45,6 +45,10 @@ public class Game : SingletonMonoBehaviour<Game> {
 		}
 	}
 
+	public Player GetPlayer (int index) {
+		return Players[index];
+	}
+
 	public void AddPlayer (int index) {
 		NumberOfPlayers++;
 		var newPlayer = GameObject.Instantiate<Player>( this.PlayerPrefab );
