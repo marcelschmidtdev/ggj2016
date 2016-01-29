@@ -53,6 +53,7 @@ public class Game : SingletonMonoBehaviour<Game> {
 		NumberOfPlayers++;
 		var newPlayer = GameObject.Instantiate<Player>( this.PlayerPrefab );
 		this.Players[index] = newPlayer;
+		newPlayer.InitPlayerIndex( index );
 		UpdateCameraViewports();
 	}
 
