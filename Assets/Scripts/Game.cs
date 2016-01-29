@@ -55,6 +55,7 @@ public class Game : SingletonMonoBehaviour<Game> {
 		this.Players[index] = newPlayer;
 		newPlayer.InitPlayerIndex( index );
 		UpdateCameraViewports();
+		newPlayer.Position = Map.Instance.PlayerSpawners[index].Position;
 	}
 
 	void UpdateCameraViewports () {
