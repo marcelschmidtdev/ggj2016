@@ -2,6 +2,8 @@
 using System.Collections;
 using System;
 
+// This is going to control the game (like spawns, win conditions, joins, leaves, etc.)
+
 public class Game : SingletonMonoBehaviour<Game> {
 
 	public event Action EventGameStarted;
