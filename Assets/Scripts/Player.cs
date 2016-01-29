@@ -13,8 +13,8 @@ public class Player : MonoBehaviour {
 
 	public void InitPlayerIndex(int index) {
 		this.Index = index;
-		switch (index) {
+		//switch (index) {
 			//case 
-		}
+		//}
 	}
 }
