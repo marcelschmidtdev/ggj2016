@@ -3,13 +3,19 @@ using System.Collections;
 
 public class PlayerSpawner : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
+	public Vector3 Position
+	{
+		get
+		{
+			return this.transform.position;
+		}
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+	public Quaternion Rotation
+	{
+		get
+		{
+			return this.transform.rotation;
+		}
 	}
 }

@@ -6,6 +6,9 @@ using System.Collections;
 public class Player : MonoBehaviour {
 
 	public Camera Camera;
+	public PlayerControls PlayerControls;
+	public PlayerView PlayerView;
+
 	public int Index
 	{
 		get; private set;
@@ -13,8 +16,30 @@ public class Player : MonoBehaviour {
 
 	public void InitPlayerIndex(int index) {
 		this.Index = index;
-		//switch (index) {
-			//case 
-		//}
+		this.PlayerControls.playerNumber = (XInputDotNetPure.PlayerIndex) index;
+	}
+
+	public Vector3 Position
+	{
+		get
+		{
+			return this.PlayerView.transform.position;
+		}
+		set
+		{
+			this.PlayerView.transform.position = value;
+		}
+	}
+
+	public Quaternion Rotation
+	{
+		get
+		{
+			return this.PlayerView.transform.rotation;
+		}
+		set
+		{
+			this.PlayerView.transform.rotation = value;
+		}
 	}
 }

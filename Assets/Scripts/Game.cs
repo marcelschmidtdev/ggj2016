@@ -45,11 +45,18 @@ public class Game : SingletonMonoBehaviour<Game> {
 		}
 	}
 
+	public Player GetPlayer (int index) {
+		return Players[index];
+	}
+
 	public void AddPlayer (int index) {
 		NumberOfPlayers++;
 		var newPlayer = GameObject.Instantiate<Player>( this.PlayerPrefab );
 		this.Players[index] = newPlayer;
+		newPlayer.InitPlayerIndex( index );
 		UpdateCameraViewports();
+		newPlayer.Position = Map.Instance.PlayerSpawners[index].Position;
+		newPlayer.Rotation = Map.Instance.PlayerSpawners[index].Rotation;
 	}
 
 	void UpdateCameraViewports () {
