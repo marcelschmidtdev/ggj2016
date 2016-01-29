@@ -97,6 +97,7 @@ GameObject:
   - 4: {fileID: 31466558}
   - 33: {fileID: 31466557}
   - 23: {fileID: 31466556}
+  - 114: {fileID: 31466559}
   m_Layer: 8
   m_Name: Spawner
   m_TagString: Untagged
@@ -147,6 +148,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+--- !u!114 &31466559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 31466555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f79daea91a891412da2729056ab18de0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnRateInSeconds: 5
+  amountOfCreeps: 3
+  availableCreeps:
+  - {fileID: 105532, guid: e8a19d42a89d84551bde64ebc78aa6d8, type: 2}
+  playerId: 0
 --- !u!1 &357033548
 GameObject:
   m_ObjectHideFlags: 0
@@ -365,6 +382,7 @@ GameObject:
   - 92: {fileID: 2056816157}
   - 124: {fileID: 2056816156}
   - 81: {fileID: 2056816155}
+  - 114: {fileID: 2056816160}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -439,3 +457,14 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &2056816160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2056816154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85422181e3c6d304b99539d11387600f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

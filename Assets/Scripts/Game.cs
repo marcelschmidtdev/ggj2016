@@ -4,6 +4,7 @@ using System;
 
 public class Game : SingletonMonoBehaviour<Game> {
 
-	public Action EventGameStarted;
-	public Action<Player> EventPlayerJoined;
+	public event Action EventGameStarted;
+	public event Action EventGameOver;
+	public event Action<Player> EventPlayerJoined;
 }
