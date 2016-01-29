@@ -10,6 +10,8 @@ public class CreepsSpawner : MonoBehaviour
 	[SerializeField]
 	private GameObject[] availableCreeps;
 	[SerializeField]
+	private Transform creepTarget;
+	[SerializeField]
 	private int playerId;
 
 	private bool gameStarted = false;
@@ -45,7 +47,8 @@ public class CreepsSpawner : MonoBehaviour
 				this.transform.position.x + Random.Range(-1.5f,1.5f),
 				this.transform.position.y,
 				this.transform.position.z + Random.Range(-1.5f,1.5f));
-			SimplePool.Spawn(availableCreeps[playerId], spawnPos, Quaternion.identity);
+			var instance = SimplePool.Spawn(availableCreeps[playerId], spawnPos, Quaternion.identity);
+			instance.GetComponent<CreepsAI>().targetPosition = creepTarget.position;
 		}
 	}
 
