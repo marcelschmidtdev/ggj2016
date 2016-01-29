@@ -7,6 +7,8 @@ public class Player : MonoBehaviour {
 
 	public Camera Camera;
 	public PlayerControls PlayerControls;
+	public PlayerView PlayerView;
+
 	public int Index
 	{
 		get; private set;

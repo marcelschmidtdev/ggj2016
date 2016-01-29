@@ -61,6 +61,7 @@ GameObject:
   - 135: {fileID: 13561336}
   - 54: {fileID: 5461644}
   - 114: {fileID: 11416674}
+  - 114: {fileID: 11468496}
   m_Layer: 0
   m_Name: PlayerView
   m_TagString: Untagged
@@ -227,6 +228,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Camera: {fileID: 2060012}
   PlayerControls: {fileID: 11416674}
+  PlayerView: {fileID: 11468496}
+--- !u!114 &11468496
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f088de60af72bd46a49699dcfd2ac23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &13520786
 SphereCollider:
   m_ObjectHideFlags: 1
