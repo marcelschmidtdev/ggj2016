@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using XInputDotNetPure;
 
 public class PlayerJoinLeaveHandler : MonoBehaviour {
 
@@ -11,9 +10,9 @@ public class PlayerJoinLeaveHandler : MonoBehaviour {
 			return;
 		for(int i = 0; i < 4; i++) {
 			if(Game.Instance.GetPlayer( i ) == null) {
-				var gamePadState = GamePad.GetState( (PlayerIndex)i );
-				if (gamePadState.IsConnected) {
-					if (gamePadState.Buttons.Start == ButtonState.Pressed) {
+				var input = PlayerInput.GetInput( i );
+				if (input.IsConnected()) {
+					if (input.GetStart()) {
 						Game.Instance.AddPlayer( i );
 						Game.Instance.NotifyPlayerCanNotJoin( i );
 					} else {
@@ -28,11 +27,11 @@ public class PlayerJoinLeaveHandler : MonoBehaviour {
 				}
 			}
 			else {
-				var gamePadState = GamePad.GetState( (PlayerIndex)i );
-				if (gamePadState.IsConnected && gamePadState.Buttons.A == ButtonState.Pressed) {
+				var input = PlayerInput.GetInput( i );
+				if (input.IsConnected() && input.GetConfirm()) {
 					Game.Instance.PlayerReady( i );
 				}
-				if (gamePadState.IsConnected && gamePadState.Buttons.B == ButtonState.Pressed) {
+				if (input.IsConnected() && input.GetCancel()) {
 					Game.Instance.PlayerNotReady( i );
 				}
 			}
