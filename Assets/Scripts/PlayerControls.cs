@@ -83,8 +83,7 @@ public class PlayerControls : MonoBehaviour {
 	{
 		if(collision.gameObject.layer == LayerMask.NameToLayer("Minions")){
 			SimplePool.Despawn(collision.gameObject);
-			bool isOwnMinion = collision.gameObject.GetComponent<CreepsAI>().playerId == (int)playerNumber;
-			Game.Instance.EventPlayerKilledMinion((int)playerNumber, isOwnMinion);
+			Game.Instance.EventPlayerKilledMinion((int)playerNumber, collision.gameObject.GetComponent<CreepsAI>().playerId );
 		}
 	}
 }

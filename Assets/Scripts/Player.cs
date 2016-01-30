@@ -9,6 +9,9 @@ public class Player : MonoBehaviour {
 	public PlayerControls PlayerControls;
 	public PlayerView PlayerView;
 	public bool PlayerReady = false;
+	public int Score;
+	public int OwnMinionsKilled;
+	public int EnemyMinionsKilled;
 
 	public int Index
 	{

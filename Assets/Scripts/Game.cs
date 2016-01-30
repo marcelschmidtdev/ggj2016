@@ -7,6 +7,9 @@ using System;
 public class Game : SingletonMonoBehaviour<Game> {
 
 	public float CountdownLength = 4.0f;
+	public int TargetScore = 100;
+
+	int[] TeamScores = new int[2];
 
 	public enum GameStateId
 	{
@@ -44,12 +47,33 @@ public class Game : SingletonMonoBehaviour<Game> {
 	public event Action<int, bool> EventPlayerCanJoinChanged = (index, canJoin) => { };
 	public event Action<Player> EventPlayerJoined = (player) => { };
 	public event Action<Player, bool> EventPlayerReadyChanged = (player, isReady) => { };
-	public Action<int> EventPlayerScored = (playerId) => { };
-	public Action<int, bool> EventPlayerKilledMinion = (playerId, ownMinion) => { };
+	public event Action<int> EventTeamScored = (teamId) => { };
+	public event Action<int> EventPlayerScored = (playerId) => { };
+	public Action<int, int> EventPlayerKilledMinion = (playerId, ownerId) => { };
 
-	//public void NotifyPlayerScrored(int playerId) {
-//
-	//}
+	public int GetPlayerScore(int teamIndex) {
+		return this.TeamScores[teamIndex];
+	}
+
+	public void NotifyPlayerScrored(int playerId) {
+		int teamIndex = Lobby.GameConfig.PlayerTeamNumbers[playerId];
+		this.TeamScores[teamIndex]++;
+		this.Players[playerId].Score++;
+		EventTeamScored( teamIndex );
+		EventPlayerScored( playerId );
+	}
+
+	public void NotifyPlayerKill(int playerId, int ownerId) {
+		EventPlayerKilledMinion( playerId, ownerId );
+		int playerTeam = Lobby.GameConfig.PlayerTeamNumbers[playerId];
+		int minionTeam = Lobby.GameConfig.PlayerTeamNumbers[ownerId];
+
+		if (playerTeam == minionTeam) {
+			this.Players[playerId].OwnMinionsKilled++;
+		} else {
+			this.Players[playerId].EnemyMinionsKilled++;
+		}
+	}
 
 	void Start () {
 		_GameState = GameStateId.WaitingForPlayers;
