@@ -21,7 +21,7 @@ public class CreepsAI : MonoBehaviour
 	{
 		if(navMeshAgent.remainingDistance <= minDistToTarget) { 
 			SimplePool.Despawn(this.gameObject);
-			Game.Instance.EventPlayerScored(playerId);
+			Game.Instance.NotifyPlayerScrored(playerId);
 		}
 	}
 }

@@ -90,8 +90,7 @@ public class PlayerControls : MonoBehaviour {
 	void OnTriggerEnter(Collider other)
 	{
 		if(other.gameObject.layer == LayerMask.NameToLayer("Minions")){
-			bool isOwnMinion = other.gameObject.GetComponent<CreepsAI>().playerId == (int)playerNumber;
-			Game.Instance.EventPlayerKilledMinion((int)playerNumber, isOwnMinion);
+			Game.Instance.EventPlayerKilledMinion((int)playerNumber, other.gameObject.GetComponent<CreepsAI>().playerId);
 			SimplePool.Despawn(other.gameObject);
 		}
 	}
