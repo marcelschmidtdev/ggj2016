@@ -37,12 +37,5 @@ public class InputMapperWindows : InputMapper {
 	public override bool IsConnected () {
 		return GamePad.GetState( index ).IsConnected;
 	}
-
-    public override void Update()
-    {
-        wasCharging = charging;
-        GamePadState gamepad = GamePad.GetState(index);
-        charging = gamepad.Buttons.A == ButtonState.Pressed;
-    }
 }
 #endif

@@ -28,7 +28,7 @@ public class PlayerControls : MonoBehaviour {
 
 	void Start () {
         body = GetComponent<Rigidbody>();
-        body.transform.forward = Vector3.forward;
+        forwardsVector = Vector3.forward;
         sphereCollider = GetComponent<SphereCollider>();
         direction = 0;
 #if UNITY_STANDALONE_WIN
@@ -47,14 +47,16 @@ public class PlayerControls : MonoBehaviour {
         {
             return;
         }
-        input.Update();
-        if (input.startedCharging())
+
+        bool wasCharging = isCharging;
+        isCharging = input.GetConfirm();
+        if (!wasCharging && isCharging)
         {
             chargeDirection = getForwardsVector();
-        } else if (input.isCharging())
+        } else if (isCharging)
         {
             // do nothing; they will slowly slow down as they "charge up"
-        } else if (input.finishedCharging())
+        } else if (wasCharging && isCharging)
         {
             body.AddForce(chargeDirection.normalized * maxSpeed * Time.deltaTime);
             body.AddForce(Vector3.up);
