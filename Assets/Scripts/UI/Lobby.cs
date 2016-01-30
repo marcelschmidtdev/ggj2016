@@ -10,7 +10,7 @@ public class GameConfiguration
 		PlayerTeamNumbers = new int[4];
 
 		for(int i = 0; i < 4; i++) {
-			PlayerTeamNumbers[i] = 0;
+			PlayerTeamNumbers[i] = -1;
 		}
 	}
 }
@@ -41,13 +41,13 @@ public class Lobby : MonoBehaviour {
 		var indicator = this.LobbyPlayerIndicators[playerIndex];
 		GameConfig.PlayerTeamNumbers[playerIndex] = teamNumber;
 		switch (teamNumber) {
-			case -1:
+			case 0:
 				indicator.AllowedMovement = LobbyPlayerIndicator.Direction.Right;
 				indicator.AnchorToX( 0.25f );
 				indicator.AllowConfirm = true;
 				indicator.AllowCancel = false;
 				break;
-			case 0:
+			case -1:
 				indicator.AllowedMovement = LobbyPlayerIndicator.Direction.LeftRight;
 				indicator.AnchorToX( 0.5f );
 				indicator.AllowConfirm = false;
@@ -64,25 +64,33 @@ public class Lobby : MonoBehaviour {
 	}
 
 	public void PlayerMoveLeft (int playerIndex) {
-		if(GameConfig.PlayerTeamNumbers[playerIndex] > -1 && this.LobbyPlayerIndicators[playerIndex].State == LobbyPlayerIndicator.LobbyPlayerState.Connected) {
-			PlayerJoinsTeam( playerIndex, GameConfig.PlayerTeamNumbers[playerIndex] - 1 );
+		int currentIndex = GameConfig.PlayerTeamNumbers[playerIndex];
+		if (currentIndex == 0)
+			return;
+		int targetIndex = currentIndex == 1 ? -1 : 0;
+		if(this.LobbyPlayerIndicators[playerIndex].State == LobbyPlayerIndicator.LobbyPlayerState.Connected) {
+			PlayerJoinsTeam( playerIndex, targetIndex );
 		}
 	}
 
 	public void PlayerMoveRight (int playerIndex) {
-		if (GameConfig.PlayerTeamNumbers[playerIndex] < 1 && this.LobbyPlayerIndicators[playerIndex].State == LobbyPlayerIndicator.LobbyPlayerState.Connected) {
-			PlayerJoinsTeam( playerIndex, GameConfig.PlayerTeamNumbers[playerIndex] + 1 );
+		int currentIndex = GameConfig.PlayerTeamNumbers[playerIndex];
+		if (currentIndex == 1)
+			return;
+		int targetIndex = currentIndex == 0 ? -1 : 1;
+		if (this.LobbyPlayerIndicators[playerIndex].State == LobbyPlayerIndicator.LobbyPlayerState.Connected) {
+			PlayerJoinsTeam( playerIndex, targetIndex );
 		}
 	}
 
 	public void PlayerControllerConnected(int playerIndex) {
-		PlayerJoinsTeam( playerIndex, 0 );
+		PlayerJoinsTeam( playerIndex, -1 );
 		this.LobbyPlayerIndicators[playerIndex].State = LobbyPlayerIndicator.LobbyPlayerState.Connected;
 		UpdateAllowGameStart();
 	}
 
 	public void PlayerControllerDisconnected(int playerIndex) {
-		PlayerJoinsTeam( playerIndex, 0 );
+		PlayerJoinsTeam( playerIndex, -1 );
 		this.LobbyPlayerIndicators[playerIndex].State = LobbyPlayerIndicator.LobbyPlayerState.NotConnected;
 		UpdateAllowGameStart();
 	}
@@ -92,7 +100,7 @@ public class Lobby : MonoBehaviour {
 	}
 
 	public void PlayerConfirmed(int playerIndex) {
-		if(GameConfig.PlayerTeamNumbers[playerIndex] != 0) {
+		if(GameConfig.PlayerTeamNumbers[playerIndex] != -1) {
 			this.LobbyPlayerIndicators[playerIndex].State = LobbyPlayerIndicator.LobbyPlayerState.Locked;
 			this.LobbyPlayerIndicators[playerIndex].AllowConfirm = false;
 			this.LobbyPlayerIndicators[playerIndex].AllowCancel = true;
@@ -101,7 +109,7 @@ public class Lobby : MonoBehaviour {
 	}
 
 	public void PlayerCancelled (int playerIndex) {
-		if(this.LobbyPlayerIndicators[playerIndex].State == LobbyPlayerIndicator.LobbyPlayerState.Locked && GameConfig.PlayerTeamNumbers[playerIndex] != 0) {
+		if(this.LobbyPlayerIndicators[playerIndex].State == LobbyPlayerIndicator.LobbyPlayerState.Locked && GameConfig.PlayerTeamNumbers[playerIndex] != -1) {
 			this.LobbyPlayerIndicators[playerIndex].State = LobbyPlayerIndicator.LobbyPlayerState.Connected;
 			this.LobbyPlayerIndicators[playerIndex].AllowCancel = false;
 			this.LobbyPlayerIndicators[playerIndex].AllowConfirm = true;
@@ -121,7 +129,7 @@ public class Lobby : MonoBehaviour {
 		{
 			int numberOfReadyPlayers = 0;
 			for(int i = 0; i < 4; i++) {
-				if(GameConfig.PlayerTeamNumbers[i] != 0) {
+				if(GameConfig.PlayerTeamNumbers[i] != -1) {
 					if (this.LobbyPlayerIndicators[i].State == LobbyPlayerIndicator.LobbyPlayerState.Connected)
 						return false; // unconfirmed player in team slot
 					else if (this.LobbyPlayerIndicators[i].State == LobbyPlayerIndicator.LobbyPlayerState.Locked)

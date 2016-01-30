@@ -39,8 +39,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85422181e3c6d304b99539d11387600f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DefaultSplitscreenModesForPlayers: 00000000020000000300000003000000
-  PlayerPrefab: {fileID: 11461764, guid: b95e37cfdaebb8d4eaacc63a0cbfc4c8, type: 2}
+  CountdownLength: 4
+  TargetScore: 50
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

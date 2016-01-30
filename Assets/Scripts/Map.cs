@@ -5,4 +5,5 @@ using System.Collections;
 
 public class Map : SingletonMonoBehaviour<Map> {
 	public PlayerSpawner[] PlayerSpawners;
+	public CreepsSpawner[] CreepsSpawners;
 }

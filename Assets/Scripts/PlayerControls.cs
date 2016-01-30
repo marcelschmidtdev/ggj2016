@@ -50,13 +50,19 @@ public class PlayerControls : MonoBehaviour {
             // not boosting, and haven't been boosting. just steer normally
             Vector2 movement = input.getMovement();
             direction += movement.x * Time.deltaTime * rotationMultiplier;
-            body.rotation = Quaternion.AngleAxis(direction, Vector3.up) ;
             body.AddForce(body.transform.right * movement.x * speedMultiplier);
             body.AddForce(body.transform.forward * movement.y * speedMultiplier);
+            body.rotation = Quaternion.AngleAxis(direction, Vector3.up);
+            //var angularVelocity = transform.InverseTransformVector(-body.velocity);
+            Vector3 velocity = body.velocity;
+            float x = velocity.x;
+            velocity.x = velocity.z;
+            velocity.z = -x;
+            sphereZ.Rotate(velocity, Space.World);
         }
 
-        sphereX.Rotate(Vector3.right, body.velocity.z);
-        sphereZ.Rotate(Vector3.forward, -body.velocity.x);
+        //sphereX.Rotate(Vector3.right, body.velocity.z);
+        //sphereZ.Rotate(Vector3.forward, -body.velocity.x);
 
         limitSpeed();
 	}
@@ -81,12 +87,11 @@ public class PlayerControls : MonoBehaviour {
         }
     }
 
-	void OnCollisionEnter(Collision collision)
+	void OnTriggerEnter(Collider other)
 	{
-		if(collision.gameObject.layer == LayerMask.NameToLayer("Minions")){
-			SimplePool.Despawn(collision.gameObject);
-			bool isOwnMinion = collision.gameObject.GetComponent<CreepsAI>().playerId == (int)playerNumber;
-			Game.Instance.EventPlayerKilledMinion((int)playerNumber, isOwnMinion);
+		if(other.gameObject.layer == LayerMask.NameToLayer("Minions")){
+			Game.Instance.EventPlayerKilledMinion((int)playerNumber, other.gameObject.GetComponent<CreepsAI>().playerId);
+			SimplePool.Despawn(other.gameObject);
 		}
 	}
 }
