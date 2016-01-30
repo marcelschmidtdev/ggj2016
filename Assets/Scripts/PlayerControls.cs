@@ -75,4 +75,12 @@ public class PlayerControls : MonoBehaviour {
             body.AddForce(-brakeVelocity * brakeSlowing);
         }
     }
+
+	void OnCollisionEnter(Collision collision)
+	{
+		Debug.Log(collision.gameObject.name);
+		if(collision.gameObject.layer == LayerMask.NameToLayer("Minions")){
+			SimplePool.Despawn(collision.gameObject);
+		}
+	}
 }
