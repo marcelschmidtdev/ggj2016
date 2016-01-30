@@ -8,6 +8,7 @@ public class Player : MonoBehaviour {
 	public Camera Camera;
 	public PlayerControls PlayerControls;
 	public PlayerView PlayerView;
+	public bool PlayerReady = false;
 
 	public int Index
 	{

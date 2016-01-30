@@ -19,8 +19,14 @@ public class CreepsSpawner : MonoBehaviour
 
 	void Awake()
 	{
-		Game.Instance.EventGameStarted += () => gameStarted = true;
-		Game.Instance.EventGameOver += () => gameStarted = false;
+		Game.Instance.EventGameStateChanged += HandleGameStateChange;
+	}
+
+	void HandleGameStateChange(Game.GameStateId newState) {
+		if (newState == Game.GameStateId.Playing)
+			gameStarted = true;
+		else
+			gameStarted = false;
 	}
 
 	void Update () 
@@ -53,7 +59,6 @@ public class CreepsSpawner : MonoBehaviour
 	}
 
 	void OnDestroy(){
-		Game.Instance.EventGameStarted -= () => gameStarted = true;
-		Game.Instance.EventGameOver -= () => gameStarted = false;
+		Game.Instance.EventGameStateChanged -= HandleGameStateChange;
 	}
 }

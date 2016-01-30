@@ -51,17 +51,27 @@ public class PlayerFactory : SingletonMonoBehaviour<PlayerFactory> {
 		}
 	}
 
-	Rect GetViewportRect (SplitScreenMode splitScreenMode, int playerIndex) {
+	int getPlayerNumberForIndex(int index) {
+		int result = 0;
+		for(int i = 0; i < index; i++) {
+			if (Players[i] != null)
+				result++;
+		}
+		return result;
+	}
+
+	public Rect GetViewportRect (SplitScreenMode splitScreenMode, int playerIndex) {
 		switch (splitScreenMode) {
 			case SplitScreenMode.Single:
-				switch (playerIndex) {
+				switch (getPlayerNumberForIndex( playerIndex )) {
 					case 0:
 						return new Rect( 0.0f, 0.0f, 1.0f, 1.0f );
 					default:
 						return new Rect();
 				}
 			case SplitScreenMode.Vertical:
-				switch (playerIndex) {
+				switch (getPlayerNumberForIndex(playerIndex)) {
+					
 					case 0:
 						return new Rect( 0.0f, 0.0f, 0.5f, 1.0f );
 					case 1:
@@ -70,7 +80,7 @@ public class PlayerFactory : SingletonMonoBehaviour<PlayerFactory> {
 						return new Rect();
 				}
 			case SplitScreenMode.Horizontal:
-				switch (playerIndex) {
+				switch (getPlayerNumberForIndex( playerIndex )) {
 					case 0:
 						return new Rect( 0.0f, 0.5f, 1.0f, 0.5f );
 					case 1:
