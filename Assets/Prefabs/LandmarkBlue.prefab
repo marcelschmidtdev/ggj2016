@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &109802
 GameObject:
   m_ObjectHideFlags: 1
@@ -33,7 +33,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &111064
 GameObject:
   m_ObjectHideFlags: 0
@@ -86,6 +86,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &148512
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 460718}
+  - 33: {fileID: 3358542}
+  - 23: {fileID: 2371492}
+  - 65: {fileID: 6533276}
+  m_Layer: 8
+  m_Name: towerblocker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 4294967287
+  m_IsActive: 1
 --- !u!4 &402390
 Transform:
   m_ObjectHideFlags: 1
@@ -110,6 +128,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 474968}
   m_RootOrder: 2
+--- !u!4 &460718
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 148512}
+  m_LocalRotation: {x: 0, y: 0, z: .382683456, w: .923879504}
+  m_LocalPosition: {x: 0, y: 0, z: 19.0000172}
+  m_LocalScale: {x: 8, y: 8, z: 40}
+  m_Children: []
+  m_Father: {fileID: 497840}
+  m_RootOrder: 0
 --- !u!4 &474968
 Transform:
   m_ObjectHideFlags: 1
@@ -118,13 +148,13 @@ Transform:
   m_GameObject: {fileID: 111064}
   m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106829}
   m_LocalPosition: {x: 0, y: -0, z: 43.2999992}
-  m_LocalScale: {x: 2.42340803, y: 2.42340875, z: 2.42340875}
+  m_LocalScale: {x: .89991492, y: .899915218, z: .899915218}
   m_Children:
   - {fileID: 498254}
   - {fileID: 402390}
   - {fileID: 451896}
   m_Father: {fileID: 497840}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!4 &497840
 Transform:
   m_ObjectHideFlags: 1
@@ -132,9 +162,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 135748}
   m_LocalRotation: {x: -.707106829, y: 0, z: -0, w: .707106829}
-  m_LocalPosition: {x: 73.2105408, y: 32, z: 333}
-  m_LocalScale: {x: 12.3598347, y: 12.3598347, z: 12.3598347}
+  m_LocalPosition: {x: -56.7000008, y: -0, z: .400000006}
+  m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children:
+  - {fileID: 460718}
   - {fileID: 474968}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -150,6 +181,30 @@ Transform:
   m_Children: []
   m_Father: {fileID: 474968}
   m_RootOrder: 0
+--- !u!23 &2371492
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 148512}
+  m_Enabled: 0
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_ReflectionProbeUsage: 0
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_ImportantGI: 0
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
 --- !u!23 &2385616
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -181,6 +236,25 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 135748}
   m_Mesh: {fileID: 4300000, guid: cb1079d73fbb44dd3977cc793474caa3, type: 3}
+--- !u!33 &3358542
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 148512}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &6533276
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 148512}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &9516272
 Animator:
   serializedVersion: 3
@@ -412,7 +486,7 @@ ParticleSystem:
       minMaxState: 3
     gravityModifier: 0
     inheritVelocity: 0
-    maxNumParticles: 1000
+    maxNumParticles: 20
   ShapeModule:
     serializedVersion: 2
     enabled: 1
@@ -1167,7 +1241,7 @@ ParticleSystem:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 105508}
-  lengthInSec: 50
+  lengthInSec: 5
   startDelay: 0
   speed: 1
   randomSeed: 0
@@ -1178,7 +1252,7 @@ ParticleSystem:
   InitialModule:
     enabled: 1
     startLifetime:
-      scalar: 100
+      scalar: 50
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1315,15 +1389,15 @@ ParticleSystem:
         rgba: 4294967295
       maxColor:
         serializedVersion: 2
-        rgba: 4294967295
+        rgba: 4294485401
       minMaxState: 0
     startSize:
-      scalar: 25
+      scalar: 3
       maxCurve:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: 1
+          value: .666666687
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -3183,7 +3257,7 @@ ParticleSystem:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 111064}
-  lengthInSec: 3
+  lengthInSec: 2
   startDelay: 0
   speed: 1
   randomSeed: 0
@@ -3194,7 +3268,7 @@ ParticleSystem:
   InitialModule:
     enabled: 1
     startLifetime:
-      scalar: 20
+      scalar: 5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -3209,7 +3283,7 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: .0300000012
+          value: .120000005
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -3334,12 +3408,12 @@ ParticleSystem:
         rgba: 3036640622
       minMaxState: 0
     startSize:
-      scalar: 200
+      scalar: 10
       maxCurve:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: .25
+          value: .300000012
           inSlope: 0
           outSlope: 0
           tangentMode: 0
