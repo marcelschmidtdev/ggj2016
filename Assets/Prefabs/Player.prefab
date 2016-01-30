@@ -241,7 +241,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNumber: 1
   speedMultiplier: 2000
-  rotationMultiplier: 100
+  rotationMultiplier: 200
   maxSpeed: 400000
   maxSpeedCharging: 2000
   brakeSlowing: .100000001
@@ -388,7 +388,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: rotationMultiplier
-      value: 100
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: turnMultiplier
