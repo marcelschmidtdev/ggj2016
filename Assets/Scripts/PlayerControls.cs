@@ -37,11 +37,7 @@ public class PlayerControls : MonoBehaviour {
         forwardsVector = Vector3.forward;
         sphereCollider = GetComponent<SphereCollider>();
         direction = 0;
-#if UNITY_STANDALONE_WIN
-        input = new InputMapperWindows((int)playerNumber);
-#else
-        input = new InputMapperDefault((int)playerNumber);
-#endif
+        input = new InputMapperXboxCtrlr((int)playerNumber);
     }
 	
 	void FixedUpdate () {
