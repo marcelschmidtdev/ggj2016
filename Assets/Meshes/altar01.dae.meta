@@ -1,65 +1,52 @@
 fileFormatVersion: 2
-guid: e764ff6dd0eca4848bb054d52d808306
-timeCreated: 1454108939
+guid: 4b4c502e0b08a4787911cb53d0310170
+timeCreated: 1454114997
 licenseType: Pro
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: Boot_L
-    100002: Boot_R
-    100004: Camera
-    100006: Chest
-    100008: Empty
-    100010: Empty_001
-    100012: Hand_L
-    100014: Hand_R
-    100016: Head
-    100018: Helmet
-    100020: Lamp
-    100022: //RootNode
-    100024: Axe
-    100026: Shield
-    400000: Boot_L
-    400002: Boot_R
-    400004: Camera
-    400006: Chest
-    400008: Empty
-    400010: Empty_001
-    400012: Hand_L
-    400014: Hand_R
-    400016: Head
-    400018: Helmet
-    400020: Lamp
-    400022: //RootNode
-    400024: Axe
-    400026: Shield
-    2300000: Boot_L
-    2300002: Boot_R
-    2300004: Chest
-    2300006: Hand_L
-    2300008: Hand_R
-    2300010: Head
-    2300012: Helmet
-    2300014: Axe
-    2300016: Shield
-    3300000: Boot_L
-    3300002: Boot_R
-    3300004: Chest
-    3300006: Hand_L
-    3300008: Hand_R
-    3300010: Head
-    3300012: Helmet
-    3300014: Axe
-    3300016: Shield
-    4300000: Boot_R
-    4300002: Chest
-    4300004: Head
-    4300006: Helmet
-    4300008: Boot_L
-    4300010: Hand_L
-    4300012: Hand_R
-    4300014: Shield
-    4300016: Axe
+    100000: //RootNode
+    100002: Cube
+    100004: Cube_001
+    100006: Cube_002
+    100008: Cube_003
+    100010: Cube_004
+    100012: Cube_005
+    100014: Cube_006
+    100016: Cube_007
+    400000: //RootNode
+    400002: Cube
+    400004: Cube_001
+    400006: Cube_002
+    400008: Cube_003
+    400010: Cube_004
+    400012: Cube_005
+    400014: Cube_006
+    400016: Cube_007
+    2300000: Cube
+    2300002: Cube_001
+    2300004: Cube_002
+    2300006: Cube_003
+    2300008: Cube_004
+    2300010: Cube_005
+    2300012: Cube_006
+    2300014: Cube_007
+    3300000: Cube
+    3300002: Cube_001
+    3300004: Cube_002
+    3300006: Cube_003
+    3300008: Cube_004
+    3300010: Cube_005
+    3300012: Cube_006
+    3300014: Cube_007
+    4300000: Cube
+    4300002: Cube_001
+    4300004: Cube_002
+    4300006: Cube_003
+    4300008: Cube_004
+    4300010: Cube_005
+    4300012: Cube_006
+    4300014: Cube_007
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -103,7 +90,7 @@ ModelImporter:
     normalSmoothAngle: 60
     splitTangentsAcrossUV: 1
     normalImportMode: 0
-    tangentImportMode: 0
+    tangentImportMode: 1
   importAnimation: 1
   copyAvatar: 0
   humanDescription:

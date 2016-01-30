@@ -11,7 +11,7 @@ GameObject:
   - 114: {fileID: 11407940}
   - 54: {fileID: 5443232}
   - 195: {fileID: 19515448}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Minion_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,7 +29,7 @@ GameObject:
   - 33: {fileID: 3396940}
   - 136: {fileID: 13648574}
   - 23: {fileID: 2395544}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   navMeshAgent: {fileID: 19515448}
-  minDistToTarget: .800000012
+  minDistToTarget: 1.10000002
 --- !u!136 &13648574
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -178,7 +178,19 @@ Prefab:
       objectReference: {fileID: 19515448}
     - target: {fileID: 0}
       propertyPath: minDistToTarget
-      value: .800000012
+      value: 1.10000002
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_WalkableMask
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: avoidancePriority
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

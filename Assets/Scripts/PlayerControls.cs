@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
-using XInputDotNetPure;
 
 
 public class PlayerControls : MonoBehaviour {
 
-    public PlayerIndex playerNumber;
+    public enum PlayerNumber { ONE, TWO, THREE, FOUR };
+
+    public PlayerNumber playerNumber = PlayerNumber.ONE;
     public float speedMultiplier = 1000;
+    public float rotationMultiplier = 100;
     public float maxSpeed = 4000;
     public float maxSpeedCharging = 2000;
     public float brakeSlowing = 0.1f;
@@ -16,40 +18,54 @@ public class PlayerControls : MonoBehaviour {
     private Vector3 groundFrictionVector;
     private bool isCharging;
     private Vector3 chargeDirection;
+    private float rotation;
+    private InputMapper input;
 
-	// Use this for initialization
 	void Start () {
         body = GetComponent<Rigidbody>();
+        body.transform.forward = Vector3.forward;
+        rotation = 0;
+#if UNITY_STANDALONE_WIN
+        input = new InputMapperWindows((int)playerNumber);
+#else
+        input = new InputMapperDefault((int)playerNumber);
+#endif
     }
 	
-	// Update is called once per frame
 	void FixedUpdate () {
-        GamePadState gamepad = GamePad.GetState(playerNumber);
-
-        bool wasCharging = isCharging;
-        isCharging = gamepad.Buttons.A == ButtonState.Pressed;
-
-        if (isCharging && !wasCharging)
+        input.Update();
+        if (input.startedCharging())
         {
-            // they began charging; store direction
-            chargeDirection = new Vector3(gamepad.ThumbSticks.Left.X, 0, gamepad.ThumbSticks.Left.Y);
-        } else if (isCharging)
+            chargeDirection = body.transform.forward;
+        } else if (input.isCharging())
         {
             // do nothing; they will slowly slow down as they "charge up"
-        } else if (wasCharging && !isCharging)
+        } else if (input.finishedCharging())
         {
             // they just released the charge button and will boost!
             body.AddForce(chargeDirection.normalized * maxSpeed * Time.deltaTime);
         } else
         {
             // not boosting, and haven't been boosting. just steer normally
-            Vector3 acceleration = new Vector3(gamepad.ThumbSticks.Left.X, 0, gamepad.ThumbSticks.Left.Y);
-            body.AddForce(acceleration * Time.deltaTime * speedMultiplier);
+            rotation += input.getMovement().x * rotationMultiplier * Time.deltaTime;
+            float forwardMovement = input.getMovement().y * speedMultiplier;
+            body.rotation = Quaternion.AngleAxis(rotation, Vector3.up);
+            body.AddForce(body.transform.forward * forwardMovement * Time.deltaTime);
         }
 
         limitSpeed();
 	}
 
+    public void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        if (body != null)
+        {
+            Gizmos.DrawRay(new Ray(body.position, body.transform.forward));
+        }
+    }
+
+    // is this doing anything??
     private void limitSpeed()
     {
         float speed = body.velocity.magnitude;
@@ -62,4 +78,12 @@ public class PlayerControls : MonoBehaviour {
             body.AddForce(-brakeVelocity * brakeSlowing);
         }
     }
+
+	void OnCollisionEnter(Collision collision)
+	{
+		Debug.Log(collision.gameObject.name);
+		if(collision.gameObject.layer == LayerMask.NameToLayer("Minions")){
+			SimplePool.Despawn(collision.gameObject);
+		}
+	}
 }
