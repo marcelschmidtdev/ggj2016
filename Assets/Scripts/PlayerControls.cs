@@ -10,10 +10,7 @@ public class PlayerControls : MonoBehaviour {
     public PlayerNumber playerNumber = PlayerNumber.ONE;
     public float speedMultiplier = 1000;
     public float rotationMultiplier = 100;
-    public float maxSpeed = 4000;
-    public float boostSpeed = 20000;
     public float boostBounce = 100;
-    public float brakeSlowing = 0.1f;
     public float turnMultiplier = 10;
     public Transform sphereZ;
     public Transform sphereX;
@@ -30,6 +27,7 @@ public class PlayerControls : MonoBehaviour {
     public float direction;
     private SphereCollider sphereCollider;
     private Vector3 forwardsVector;
+    private float chargingTime;
 
     private InputMapper input;
 
@@ -42,6 +40,10 @@ public class PlayerControls : MonoBehaviour {
     }
 	
 	void FixedUpdate () {
+        // people can turn at any time.
+        Vector2 movement = input.getMovement();
+        direction += movement.x * Time.deltaTime * rotationMultiplier;
+
         if (Game.Instance.GameState != Game.GameStateId.Playing)
         {
             return;
@@ -55,32 +57,31 @@ public class PlayerControls : MonoBehaviour {
         isCharging = input.GetConfirm();
         if (!wasCharging && isCharging)
         {
-            chargeDirection = getForwardsVector();
+            chargingTime = Time.deltaTime;
         } else if (isCharging)
         {
-            // do nothing; they will slowly slow down as they "charge up"
+            chargingTime += Time.deltaTime;
         } else if (wasCharging && !isCharging)
         {
-            body.AddForce(chargeDirection.normalized * boostSpeed);
-            body.AddForce(Vector3.up * boostBounce);
+            body.AddForce(Vector3.up * boostBounce * Mathf.Clamp(chargingTime, 0, 1));
         } else
         {
             // not boosting, and haven't been boosting. just steer normally
-            Vector2 movement = input.getMovement();
-            direction += movement.x * Time.deltaTime * rotationMultiplier;
             body.AddForce(body.transform.right * movement.x * body.velocity.magnitude * turnMultiplier * speedMultiplier);
             body.AddForce(body.transform.forward * movement.y * speedMultiplier);
             body.rotation = Quaternion.AngleAxis(direction, Vector3.up);
+
+            // spin
             Vector3 velocity = body.velocity;
             float x = velocity.x;
             velocity.x = velocity.z;
             velocity.z = -x;
             sphereZ.Rotate(velocity, Space.World);
+
+            forwardsVector = body.transform.forward;
+
         }
-
-        forwardsVector = body.transform.forward;
-
-		if(Vector3.Magnitude(body.velocity) <= maxVelocityToCarveNavMesh){
+        if (Vector3.Magnitude(body.velocity) <= maxVelocityToCarveNavMesh){
 			navMeshObstacle.carving = true;
 		}
 		else
