@@ -16,7 +16,7 @@ InputManager:
     gravity: 3
     dead: .00100000005
     sensitivity: 3
-    snap: 1
+    snap: 0
     invert: 0
     type: 2
     axis: 0
@@ -48,7 +48,7 @@ InputManager:
     gravity: 3
     dead: .00100000005
     sensitivity: 3
-    snap: 1
+    snap: 0
     invert: 0
     type: 2
     axis: 0
@@ -80,7 +80,7 @@ InputManager:
     gravity: 3
     dead: .00100000005
     sensitivity: 3
-    snap: 1
+    snap: 0
     invert: 0
     type: 2
     axis: 0
@@ -112,7 +112,7 @@ InputManager:
     gravity: 3
     dead: .00100000005
     sensitivity: 3
-    snap: 1
+    snap: 0
     invert: 0
     type: 2
     axis: 0
@@ -144,7 +144,7 @@ InputManager:
     gravity: 3
     dead: .00100000005
     sensitivity: 3
-    snap: 1
+    snap: 0
     invert: 0
     type: 2
     axis: 4
@@ -160,7 +160,7 @@ InputManager:
     gravity: 3
     dead: .00100000005
     sensitivity: 3
-    snap: 1
+    snap: 0
     invert: 0
     type: 2
     axis: 5
@@ -192,8 +192,8 @@ InputManager:
     gravity: 3
     dead: .00100000005
     sensitivity: 3
-    snap: 1
-    invert: 1
+    snap: 0
+    invert: 0
     type: 2
     axis: 4
     joyNum: 2
@@ -208,8 +208,8 @@ InputManager:
     gravity: 3
     dead: .00100000005
     sensitivity: 3
-    snap: 1
-    invert: 1
+    snap: 0
+    invert: 0
     type: 2
     axis: 5
     joyNum: 2
@@ -240,8 +240,8 @@ InputManager:
     gravity: 3
     dead: .00100000005
     sensitivity: 3
-    snap: 1
-    invert: 1
+    snap: 0
+    invert: 0
     type: 2
     axis: 4
     joyNum: 3
@@ -256,8 +256,8 @@ InputManager:
     gravity: 3
     dead: .00100000005
     sensitivity: 3
-    snap: 1
-    invert: 1
+    snap: 0
+    invert: 0
     type: 2
     axis: 5
     joyNum: 3
@@ -288,8 +288,8 @@ InputManager:
     gravity: 3
     dead: .00100000005
     sensitivity: 3
-    snap: 1
-    invert: 1
+    snap: 0
+    invert: 0
     type: 2
     axis: 4
     joyNum: 4
@@ -304,8 +304,8 @@ InputManager:
     gravity: 3
     dead: .00100000005
     sensitivity: 3
-    snap: 1
-    invert: 1
+    snap: 0
+    invert: 0
     type: 2
     axis: 5
     joyNum: 4
