@@ -48,8 +48,6 @@ public class PlayerControls : MonoBehaviour {
         {
             // not boosting, and haven't been boosting. just steer normally
             rotation += gamepad.ThumbSticks.Left.X * rotationMultiplier * Time.deltaTime;
-            Vector3 facingDirection = Quaternion.AngleAxis(rotation, Vector3.up) * Vector3.forward;
-
             float forwardMovement = gamepad.ThumbSticks.Left.Y * speedMultiplier;
             body.rotation = Quaternion.AngleAxis(rotation, Vector3.up);
             body.AddForce(body.transform.forward * forwardMovement * Time.deltaTime);
