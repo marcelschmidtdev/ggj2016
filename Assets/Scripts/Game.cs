@@ -47,12 +47,16 @@ public class Game : SingletonMonoBehaviour<Game> {
 	public Action<int> EventPlayerScored = (playerId) => { };
 	public Action<int, bool> EventPlayerKilledMinion = (playerId, ownMinion) => { };
 
+	//public void NotifyPlayerScrored(int playerId) {
+//
+	//}
+
 	void Start () {
 		_GameState = GameStateId.WaitingForPlayers;
 		if(Lobby.GameConfig == null)
 			return;
 		for (int i = 0; i < 4; i++) {
-			if(Lobby.GameConfig.PlayerTeamNumbers[i] != 0) {
+			if(Lobby.GameConfig.PlayerTeamNumbers[i] != -1) {
 				AddPlayer( i );
 			}
 		}
