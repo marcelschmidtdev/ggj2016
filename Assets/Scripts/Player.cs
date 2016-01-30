@@ -15,8 +15,8 @@ public class Player : MonoBehaviour {
 	}
 
 	public void InitPlayerIndex(int index) {
-		this.Index = index;
-		this.PlayerControls.playerNumber = (XInputDotNetPure.PlayerIndex) index;
+        this.Index = index;
+		this.PlayerControls.playerNumber = (PlayerControls.PlayerNumber)index;
 	}
 
 	public Vector3 Position
