@@ -13,6 +13,7 @@ public class PlayerControls : MonoBehaviour {
     public float maxSpeed = 4000;
     public float maxSpeedCharging = 2000;
     public float brakeSlowing = 0.1f;
+    public Transform sphere;
 
     private Rigidbody body;
     private Vector3 groundFrictionVector;
