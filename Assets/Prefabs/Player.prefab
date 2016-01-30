@@ -177,7 +177,6 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
-  m_TargetEye: 3
   m_HDR: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -246,6 +245,7 @@ MonoBehaviour:
   maxSpeed: 400000
   maxSpeedCharging: 2000
   brakeSlowing: .100000001
+  turnMultiplier: .100000001
   sphereZ: {fileID: 461444}
   sphereX: {fileID: 477452}
   navMeshObstacle: {fileID: 20881924}
@@ -385,6 +385,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: maxVelocityToCarveNavMesh
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: rotationMultiplier
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: turnMultiplier
+      value: .100000001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
