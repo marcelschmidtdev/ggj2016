@@ -19,7 +19,7 @@ public class InputMapperDefault : InputMapper {
 		if(Mathf.Abs(movement.x)<= 0.35f){
 			movement.x = 0;
 		}
-		Debug.Log(movement);
+		//Debug.Log(movement);
         return movement;
     }
 
@@ -40,6 +40,11 @@ public class InputMapperDefault : InputMapper {
 
 	public override bool IsConnected () {
 		return Input.GetJoystickNames().Length >= playerIndex && !string.IsNullOrEmpty(Input.GetJoystickNames()[playerIndex-1]);
+	}
+
+	public override bool IsCalibrated ()
+	{
+		return Mathf.Abs(Input.GetAxis("AccelerationPlayer" + playerIndex)) > 0 && Mathf.Abs (Input.GetAxis("BrakePlayer" + playerIndex)) > 0;
 	}
 
     private float remap(float value, float oldMin, float oldMax, float newMin, float newMax)

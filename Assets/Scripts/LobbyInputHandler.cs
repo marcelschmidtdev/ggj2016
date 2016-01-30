@@ -65,7 +65,7 @@ public class LobbyInputHandler : MonoBehaviour {
 					this.Lobby.PlayerCancelled( i );
 			}
 
-			if (this.StartPressed[i] != input.GetStart()) {
+			if (this.StartPressed[i] != input.IsCalibrated()) {
 				this.StartPressed[i] = !this.StartPressed[i];
 				if (this.StartPressed[i])
 					this.Lobby.PlayerPressedStart( i );
