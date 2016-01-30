@@ -379,9 +379,7 @@ MonoBehaviour:
   playerNumber: 1
   speedMultiplier: 2000
   rotationMultiplier: 200
-  maxSpeed: 400000
-  maxSpeedCharging: 2000
-  brakeSlowing: .100000001
+  boostBounce: 50000
   turnMultiplier: .100000001
   sphereZ: {fileID: 477642}
   sphereX: {fileID: 430532}
@@ -3476,6 +3474,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_BackGroundColor.b
       value: .0972101986
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: boostBounce
+      value: 50000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

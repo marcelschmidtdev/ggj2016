@@ -9,11 +9,8 @@ public class PlayerFollower : MonoBehaviour {
     public float followDistance = 4;
     public float lerpSpeed = 0.1f;
 
-    private Camera cam;
-
 	// Use this for initialization
 	void Start () {
-        cam = GetComponent<Camera>();
         controls = playerView.GetComponent<PlayerControls>();
         transform.position = new Vector3(64, 64, 64);
 	}
