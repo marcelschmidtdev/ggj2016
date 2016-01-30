@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+#if UNITY_STANDALONE_WIN
 using XInputDotNetPure;
 
 public class InputMapperWindows : InputMapper {
@@ -26,3 +27,4 @@ public class InputMapperWindows : InputMapper {
         charging = gamepad.Buttons.A == ButtonState.Pressed;
     }
 }
+#endif

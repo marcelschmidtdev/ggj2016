@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
-using XInputDotNetPure;
 
 
 public class PlayerControls : MonoBehaviour {
@@ -26,14 +25,11 @@ public class PlayerControls : MonoBehaviour {
         body = GetComponent<Rigidbody>();
         body.transform.forward = Vector3.forward;
         rotation = 0;
-        if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer)
-        {
-            input = new InputMapperWindows((int)playerNumber);
-        }
-        else
-        {
-            input = new InputMapperDefault((int)playerNumber);
-        }
+#if UNITY_STANDALONE_WIN
+        input = new InputMapperWindows((int)playerNumber);
+#else
+        input = new InputMapperDefault((int)playerNumber);
+#endif
     }
 	
 	void FixedUpdate () {
