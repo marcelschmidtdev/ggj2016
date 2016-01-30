@@ -53,16 +53,12 @@ public class PlayerControls : MonoBehaviour {
             body.AddForce(body.transform.right * movement.x * speedMultiplier);
             body.AddForce(body.transform.forward * movement.y * speedMultiplier);
             body.rotation = Quaternion.AngleAxis(direction, Vector3.up);
-            //var angularVelocity = transform.InverseTransformVector(-body.velocity);
             Vector3 velocity = body.velocity;
             float x = velocity.x;
             velocity.x = velocity.z;
             velocity.z = -x;
             sphereZ.Rotate(velocity, Space.World);
         }
-
-        //sphereX.Rotate(Vector3.right, body.velocity.z);
-        //sphereZ.Rotate(Vector3.forward, -body.velocity.x);
 
         limitSpeed();
 	}
