@@ -20,7 +20,7 @@ public class PlayerControls : MonoBehaviour {
     private Vector3 groundFrictionVector;
     private bool isCharging;
     private Vector3 chargeDirection;
-    private float direction;
+    public float direction;
     private InputMapper input;
 
 	void Start () {
@@ -35,6 +35,10 @@ public class PlayerControls : MonoBehaviour {
     }
 	
 	void FixedUpdate () {
+        if (Game.Instance.GameState != Game.GameStateId.Playing)
+        {
+            return;
+        }
         input.Update();
         if (input.startedCharging())
         {
@@ -63,6 +67,14 @@ public class PlayerControls : MonoBehaviour {
         limitSpeed();
 	}
 
+    public void considerSettingDirection(Vector3 cameraAngle)
+    {
+        if (input.getMovement().magnitude < 0.1)
+        {
+            direction = Vector3.Angle(cameraAngle, Vector3.forward);
+        }
+    }
+
     public void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
@@ -72,7 +84,6 @@ public class PlayerControls : MonoBehaviour {
         }
     }
 
-    // is this doing anything??
     private void limitSpeed()
     {
         float speed = body.velocity.magnitude;

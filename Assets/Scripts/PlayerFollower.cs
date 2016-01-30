@@ -3,7 +3,8 @@ using System.Collections;
 
 public class PlayerFollower : MonoBehaviour {
 
-    public PlayerView playerView;
+    public GameObject playerView;
+    public PlayerControls controls;
     public Vector3 cameraOffset = new Vector3(0, 2, 0);
     public float followDistance = 4;
     public float lerpSpeed = 0.1f;
@@ -13,14 +14,16 @@ public class PlayerFollower : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         cam = GetComponent<Camera>();
+        controls = playerView.GetComponent<PlayerControls>();
         transform.position = new Vector3(64, 64, 64);
 	}
 
 	// Update is called once per frame
 	void FixedUpdate () {
-        Vector3 behindPlayer = playerView.transform.position - playerView.getDirection() * followDistance;
-        Vector3 desiredPosition = behindPlayer + cameraOffset;
+        Vector3 towardsPlayer = playerView.transform.position - transform.position;
+        Vector3 desiredPosition = playerView.transform.position - towardsPlayer.normalized * followDistance + cameraOffset;
         transform.position = Vector3.Lerp(transform.position, desiredPosition, lerpSpeed);
         transform.LookAt(playerView.transform);
+        //controls.considerSettingDirection(transform.forward);
 	}
 }

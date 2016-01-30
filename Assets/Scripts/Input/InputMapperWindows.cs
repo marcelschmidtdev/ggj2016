@@ -14,12 +14,9 @@ public class InputMapperWindows : InputMapper {
 
     public override Vector2 getMovement()
     {
-        if (Game.Instance.GameState == Game.GameStateId.Playing)
-        {
-            GamePadState gamepad = GamePad.GetState(index);
-            movement.x = gamepad.ThumbSticks.Left.X;
-            movement.y = gamepad.ThumbSticks.Left.Y;
-        }
+        GamePadState gamepad = GamePad.GetState(index);
+        movement.x = gamepad.ThumbSticks.Left.X;
+        movement.y = gamepad.ThumbSticks.Left.Y;
         return movement;
     }
 

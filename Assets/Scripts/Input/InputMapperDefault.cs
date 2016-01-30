@@ -13,11 +13,8 @@ public class InputMapperDefault : InputMapper {
 
     public override Vector2 getMovement()
     {
-        if (Game.Instance.GameState == Game.GameStateId.Playing)
-        {
-            movement.x = Input.GetAxis("Horizontal" + playerIndex) + Input.GetAxis("Horizontal" + playerIndex + "Keyboard");
-            movement.y = Input.GetAxis("Vertical" + playerIndex) + Input.GetAxis("Vertical" + playerIndex + "Keyboard");
-        }
+        movement.x = Input.GetAxis("Horizontal" + playerIndex) + Input.GetAxis("Horizontal" + playerIndex + "Keyboard");
+        movement.y = Input.GetAxis("Vertical" + playerIndex) + Input.GetAxis("Vertical" + playerIndex + "Keyboard");
         return movement;
     }
 
