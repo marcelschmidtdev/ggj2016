@@ -20,7 +20,8 @@ public class PlayerControls : MonoBehaviour {
     private Vector3 groundFrictionVector;
     private bool isCharging;
     private Vector3 chargeDirection;
-    private float direction;
+    public float direction;
+
     private InputMapper input;
 
 	void Start () {
@@ -35,6 +36,10 @@ public class PlayerControls : MonoBehaviour {
     }
 	
 	void FixedUpdate () {
+        if (Game.Instance.GameState != Game.GameStateId.Playing)
+        {
+            return;
+        }
         input.Update();
         if (input.startedCharging())
         {
@@ -53,7 +58,6 @@ public class PlayerControls : MonoBehaviour {
             body.AddForce(body.transform.right * movement.x * speedMultiplier);
             body.AddForce(body.transform.forward * movement.y * speedMultiplier);
             body.rotation = Quaternion.AngleAxis(direction, Vector3.up);
-            //var angularVelocity = transform.InverseTransformVector(-body.velocity);
             Vector3 velocity = body.velocity;
             float x = velocity.x;
             velocity.x = velocity.z;
@@ -61,11 +65,13 @@ public class PlayerControls : MonoBehaviour {
             sphereZ.Rotate(velocity, Space.World);
         }
 
-        //sphereX.Rotate(Vector3.right, body.velocity.z);
-        //sphereZ.Rotate(Vector3.forward, -body.velocity.x);
-
         limitSpeed();
 	}
+
+    internal Vector3 getForwardsVector()
+    {
+        return body.transform.forward;
+    }
 
     public void OnDrawGizmos()
     {
@@ -76,7 +82,6 @@ public class PlayerControls : MonoBehaviour {
         }
     }
 
-    // is this doing anything??
     private void limitSpeed()
     {
         float speed = body.velocity.magnitude;
