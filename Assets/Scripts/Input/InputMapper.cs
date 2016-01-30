@@ -11,10 +11,12 @@ public abstract class InputMapper {
 
     public abstract void Update();
 
+	public abstract bool GetStart ();
 	public abstract bool GetConfirm();
 	public abstract bool GetCancel();
+	public abstract bool IsConnected ();
 
-    public bool startedCharging()
+	public bool startedCharging()
     {
         return !wasCharging && charging;
     }
