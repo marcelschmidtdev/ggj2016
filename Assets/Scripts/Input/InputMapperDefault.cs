@@ -25,12 +25,12 @@ public class InputMapperDefault : InputMapper {
 
 	public override bool GetConfirm ()
 	{
-		return Input.GetButtonDown( "Submit" );
+		return Input.GetButtonDown("Boost" + playerIndex);
 	}
 	
 	public override bool GetCancel ()
 	{
-		return Input.GetButtonDown("Cancel");
+		return Input.GetButtonDown("Cancel" + playerIndex);
 	}
 
 	public override bool IsConnected () {
