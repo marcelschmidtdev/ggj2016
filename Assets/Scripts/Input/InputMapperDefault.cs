@@ -20,7 +20,7 @@ public class InputMapperDefault : InputMapper {
 
 	public override bool GetStart ()
 	{
-		return false;
+		return Input.GetButtonDown("Start" + playerIndex);
 	}
 
 	public override bool GetConfirm ()

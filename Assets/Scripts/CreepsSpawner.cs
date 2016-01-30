@@ -31,12 +31,6 @@ public class CreepsSpawner : MonoBehaviour
 
 	void Update () 
 	{
-		// For testing only
-		if(Input.GetKeyDown(KeyCode.Space)){
-			Debug.Log("Game started.");
-			gameStarted = true;
-		}
-
 		if(gameStarted) {
 			spawnTimer -= Time.deltaTime;
 			if(spawnTimer <= 0) {
