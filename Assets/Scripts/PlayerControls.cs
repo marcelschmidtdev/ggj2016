@@ -54,6 +54,8 @@ public class PlayerControls : MonoBehaviour {
             body.AddForce(body.transform.forward * movement.y * speedMultiplier);
         }
 
+        sphere.Rotate(Vector3.right, body.velocity.magnitude);
+
         limitSpeed();
 	}
 
