@@ -77,7 +77,10 @@ public class Game : SingletonMonoBehaviour<Game> {
 
 	void Start () {
 		_GameState = GameStateId.WaitingForPlayers;
-		if(Lobby.GameConfig == null)
+		for (int i = 0; i < 4; i++) {
+			Map.Instance.CreepsSpawners[i].gameObject.SetActive( false );
+		}
+		if (Lobby.GameConfig == null)
 			return;
 		for (int i = 0; i < 4; i++) {
 			if(Lobby.GameConfig.PlayerTeamNumbers[i] != -1) {
@@ -123,6 +126,7 @@ public class Game : SingletonMonoBehaviour<Game> {
 		NumberOfPlayers++;
 		var newPlayer = PlayerFactory.Instance.CreatePlayerInstance( index, playerSpawner.Position, playerSpawner.Rotation );
 		this.Players[index] = newPlayer;
+		Map.Instance.CreepsSpawners[index].gameObject.SetActive( true );
 		EventPlayerJoined( newPlayer );
 	}
 	
