@@ -18,13 +18,13 @@ public class PlayerControls : MonoBehaviour {
     private Vector3 groundFrictionVector;
     private bool isCharging;
     private Vector3 chargeDirection;
-    private float rotation;
+    private float direction;
     private InputMapper input;
 
 	void Start () {
         body = GetComponent<Rigidbody>();
         body.transform.forward = Vector3.forward;
-        rotation = 0;
+        direction = 0;
 #if UNITY_STANDALONE_WIN
         input = new InputMapperWindows((int)playerNumber);
 #else
@@ -42,14 +42,15 @@ public class PlayerControls : MonoBehaviour {
             // do nothing; they will slowly slow down as they "charge up"
         } else if (input.finishedCharging())
         {
-            // they just released the charge button and will boost!
             body.AddForce(chargeDirection.normalized * maxSpeed * Time.deltaTime);
         } else
         {
             // not boosting, and haven't been boosting. just steer normally
             Vector2 movement = input.getMovement();
-            body.transform.Rotate(Vector3.up, movement.x);
-            body.AddForce(new Vector3(0, 0, movement.y) * speedMultiplier);
+            direction += movement.x * Time.deltaTime * rotationMultiplier;
+            body.rotation = Quaternion.AngleAxis(direction, Vector3.up) ;
+            body.AddForce(body.transform.right * movement.x * speedMultiplier);
+            body.AddForce(body.transform.forward * movement.y * speedMultiplier);
         }
 
         limitSpeed();
