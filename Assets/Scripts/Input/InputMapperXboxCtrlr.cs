@@ -30,7 +30,6 @@ public class InputMapperXboxCtrlr : InputMapper
         movement.x = Mathf.Clamp(movement.x, -1, 1);
         movement.y = XCI.GetAxis(XboxAxis.RightTrigger, controller) - XCI.GetAxis(XboxAxis.LeftTrigger, controller) + Input.GetAxis("AccelerationBrakeKeyboardPlayer" + playerIndex);
         movement.y = Mathf.Clamp(movement.y, -1, 1);
-        Debug.Log(movement + ", " + XCI.GetAxis(XboxAxis.RightTrigger, controller));
         return movement;
     }
 

@@ -11,7 +11,8 @@ public class PlayerControls : MonoBehaviour {
     public float speedMultiplier = 1000;
     public float rotationMultiplier = 100;
     public float maxSpeed = 4000;
-    public float maxSpeedCharging = 2000;
+    public float boostSpeed = 20000;
+    public float boostBounce = 100;
     public float brakeSlowing = 0.1f;
     public float turnMultiplier = 10;
     public Transform sphereZ;
@@ -37,14 +38,11 @@ public class PlayerControls : MonoBehaviour {
         forwardsVector = Vector3.forward;
         sphereCollider = GetComponent<SphereCollider>();
         direction = 0;
-#if UNITY_STANDALONE_WIN
-        input = new InputMapperWindows((int)playerNumber);
-#else
-        input = new InputMapperDefault((int)playerNumber);
-#endif
+        input = PlayerInput.GetInput((int)playerNumber);
     }
 	
 	void FixedUpdate () {
+        Debug.Log("gamestate: " + Game.Instance.GameState + ", isOnGround: " + isOnGround());
         if (Game.Instance.GameState != Game.GameStateId.Playing)
         {
             return;
@@ -64,8 +62,8 @@ public class PlayerControls : MonoBehaviour {
             // do nothing; they will slowly slow down as they "charge up"
         } else if (wasCharging && !isCharging)
         {
-            body.AddForce(chargeDirection.normalized * maxSpeedCharging);
-            body.AddForce(Vector3.up * 5);
+            body.AddForce(chargeDirection.normalized * boostSpeed);
+            body.AddForce(Vector3.up * boostBounce);
         } else
         {
             // not boosting, and haven't been boosting. just steer normally
@@ -82,7 +80,6 @@ public class PlayerControls : MonoBehaviour {
         }
 
         forwardsVector = body.transform.forward;
-        limitSpeed();
 
 		if(Vector3.Magnitude(body.velocity) <= maxVelocityToCarveNavMesh){
 			navMeshObstacle.carving = true;
@@ -118,16 +115,6 @@ public class PlayerControls : MonoBehaviour {
         if (body != null)
         {
             Gizmos.DrawRay(new Ray(body.position, body.transform.forward));
-        }
-    }
-
-    private void limitSpeed()
-    {
-        float speed = body.velocity.magnitude;
-        float max = isCharging ? maxSpeedCharging : maxSpeed;
-        if (speed > max)
-        {
-            // apply negative torque
         }
     }
 
