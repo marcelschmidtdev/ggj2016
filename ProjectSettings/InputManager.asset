@@ -147,7 +147,7 @@ InputManager:
     snap: 1
     invert: 1
     type: 2
-    axis: 1
+    axis: 8
     joyNum: 1
   - serializedVersion: 3
     m_Name: Vertical1Keyboard
@@ -179,7 +179,7 @@ InputManager:
     snap: 1
     invert: 1
     type: 2
-    axis: 1
+    axis: 8
     joyNum: 2
   - serializedVersion: 3
     m_Name: Vertical2Keyboard
@@ -211,7 +211,7 @@ InputManager:
     snap: 1
     invert: 1
     type: 2
-    axis: 1
+    axis: 8
     joyNum: 3
   - serializedVersion: 3
     m_Name: Vertical3Keyboard
@@ -243,7 +243,7 @@ InputManager:
     snap: 1
     invert: 1
     type: 2
-    axis: 1
+    axis: 8
     joyNum: 4
   - serializedVersion: 3
     m_Name: Vertical4Keyboard

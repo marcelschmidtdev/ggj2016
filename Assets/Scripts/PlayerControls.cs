@@ -13,6 +13,7 @@ public class PlayerControls : MonoBehaviour {
     public float maxSpeed = 4000;
     public float maxSpeedCharging = 2000;
     public float brakeSlowing = 0.1f;
+    public float turnMultiplier = 10;
     public Transform sphereZ;
     public Transform sphereX;
 
@@ -63,14 +64,14 @@ public class PlayerControls : MonoBehaviour {
             // do nothing; they will slowly slow down as they "charge up"
         } else if (wasCharging && !isCharging)
         {
-            body.AddForce(chargeDirection.normalized * maxSpeed * Time.deltaTime);
-            body.AddForce(Vector3.up);
+            body.AddForce(chargeDirection.normalized * maxSpeedCharging);
+            body.AddForce(Vector3.up * 5);
         } else
         {
             // not boosting, and haven't been boosting. just steer normally
             Vector2 movement = input.getMovement();
             direction += movement.x * Time.deltaTime * rotationMultiplier;
-            body.AddForce(body.transform.right * movement.x * movement.y * speedMultiplier);
+            body.AddForce(body.transform.right * movement.x * body.velocity.magnitude * turnMultiplier * speedMultiplier);
             body.AddForce(body.transform.forward * movement.y * speedMultiplier);
             body.rotation = Quaternion.AngleAxis(direction, Vector3.up);
             Vector3 velocity = body.velocity;
@@ -82,6 +83,7 @@ public class PlayerControls : MonoBehaviour {
 
         forwardsVector = body.transform.forward;
         limitSpeed();
+
 		if(Vector3.Magnitude(body.velocity) <= maxVelocityToCarveNavMesh){
 			navMeshObstacle.carving = true;
 		}
@@ -98,7 +100,7 @@ public class PlayerControls : MonoBehaviour {
         RaycastHit hitInfo;
         if (Physics.Raycast(body.position, -Vector3.up, out hitInfo))
         {
-            return hitInfo.collider.tag == "ground" && hitInfo.distance < sphereCollider.radius + 0.1;
+            return hitInfo.collider.tag == "ground" && hitInfo.distance < sphereCollider.radius + 0.5;
         } else
         {
             return false;
