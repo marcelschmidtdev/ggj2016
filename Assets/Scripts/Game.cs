@@ -51,7 +51,7 @@ public class Game : SingletonMonoBehaviour<Game> {
 	public event Action<int> EventPlayerScored = (playerId) => { };
 	public Action<int, int> EventPlayerKilledMinion = (playerId, ownerId) => { };
 
-	public int GetPlayerScore(int teamIndex) {
+	public int GetTeamScore(int teamIndex) {
 		return this.TeamScores[teamIndex];
 	}
 
@@ -61,6 +61,14 @@ public class Game : SingletonMonoBehaviour<Game> {
 		this.Players[playerId].Score++;
 		EventTeamScored( teamIndex );
 		EventPlayerScored( playerId );
+		if(this.TeamScores[teamIndex] >= this.TargetScore) {
+			this.GameState = GameStateId.Ending;
+			Invoke( "GoToMainmenu", 3.0f );
+		}
+	}
+
+	void GoToMainmenu () {
+		Application.LoadLevel( "MainMenu" );
 	}
 
 	public void NotifyPlayerKill(int playerId, int ownerId) {
