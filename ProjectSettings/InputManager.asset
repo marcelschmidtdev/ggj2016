@@ -166,7 +166,7 @@ InputManager:
     axis: 5
     joyNum: 1
   - serializedVersion: 3
-    m_Name: AccelerationBrakeKeyboardPlayer4
+    m_Name: AccelerationBrakeKeyboardPlayer1
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: down
