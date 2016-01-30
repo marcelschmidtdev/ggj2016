@@ -21,6 +21,7 @@ public class PlayerFollower : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
         Vector3 towardsPlayer = playerView.transform.position - transform.position;
+        towardsPlayer.y = 0;
         Vector3 desiredPosition = playerView.transform.position - towardsPlayer.normalized * followDistance + cameraOffset;
         transform.position = Vector3.Lerp(transform.position, desiredPosition, lerpSpeed);
         transform.LookAt(playerView.transform);
