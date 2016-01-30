@@ -28,6 +28,7 @@ GameObject:
   - 114: {fileID: 11407940}
   - 54: {fileID: 5443232}
   - 195: {fileID: 19515448}
+  - 136: {fileID: 13672846}
   m_Layer: 10
   m_Name: Minion_4
   m_TagString: Untagged
@@ -195,9 +196,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 474820}
-  - 33: {fileID: 3396940}
-  - 136: {fileID: 13648574}
-  - 23: {fileID: 2395544}
   m_Layer: 10
   m_Name: Model
   m_TagString: Untagged
@@ -576,30 +574,6 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!23 &2395544
-MeshRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 192664}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 1
-  m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
 --- !u!33 &3328480
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -663,13 +637,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 174930}
   m_Mesh: {fileID: 4300002, guid: e764ff6dd0eca4848bb054d52d808306, type: 3}
---- !u!33 &3396940
-MeshFilter:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 192664}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!54 &5443232
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -715,19 +682,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   navMeshAgent: {fileID: 19515448}
   minDistToTarget: 1.10000002
---- !u!136 &13648574
+--- !u!136 &13672846
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 192664}
+  m_GameObject: {fileID: 105532}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: .5
-  m_Height: 2
+  m_Radius: .330000013
+  m_Height: 1
   m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: .460000008, z: 0}
 --- !u!195 &19515448
 NavMeshAgent:
   m_ObjectHideFlags: 1
@@ -735,7 +702,7 @@ NavMeshAgent:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 105532}
   m_Enabled: 1
-  m_Radius: .5
+  m_Radius: .330000013
   m_Speed: 1
   m_Acceleration: 8
   avoidancePriority: 50
@@ -744,7 +711,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2
+  m_Height: 1
   m_BaseOffset: 0
   m_WalkableMask: 1
   m_ObstacleAvoidanceType: 4
@@ -801,6 +768,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
