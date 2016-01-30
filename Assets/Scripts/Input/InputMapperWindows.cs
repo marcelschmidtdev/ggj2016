@@ -37,5 +37,10 @@ public class InputMapperWindows : InputMapper {
 	public override bool IsConnected () {
 		return GamePad.GetState(index).IsConnected;
 	}
+
+	public override bool IsCalibrated ()
+	{
+		return GamePad.GetState(index).Triggers.Right > 0 && GamePad.GetState(index).Triggers.Left > 0;
+	}
 }
 #endif

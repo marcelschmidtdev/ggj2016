@@ -13,4 +13,5 @@ public abstract class InputMapper {
 	public abstract bool GetConfirm();
 	public abstract bool GetCancel();
 	public abstract bool IsConnected ();
+	public abstract bool IsCalibrated ();
 }
