@@ -21,6 +21,7 @@ public class PlayerControls : MonoBehaviour {
     private bool isCharging;
     private Vector3 chargeDirection;
     public float direction;
+
     private InputMapper input;
 
 	void Start () {
@@ -67,12 +68,9 @@ public class PlayerControls : MonoBehaviour {
         limitSpeed();
 	}
 
-    public void considerSettingDirection(Vector3 cameraAngle)
+    internal Vector3 getForwardsVector()
     {
-        if (input.getMovement().magnitude < 0.1)
-        {
-            direction = Vector3.Angle(cameraAngle, Vector3.forward);
-        }
+        return body.transform.forward;
     }
 
     public void OnDrawGizmos()
