@@ -42,7 +42,6 @@ public class PlayerControls : MonoBehaviour {
     }
 	
 	void FixedUpdate () {
-        Debug.Log("gamestate: " + Game.Instance.GameState + ", isOnGround: " + isOnGround());
         if (Game.Instance.GameState != Game.GameStateId.Playing)
         {
             return;
@@ -93,11 +92,10 @@ public class PlayerControls : MonoBehaviour {
 
     private bool isOnGround()
     {
-        Ray belowPlayer = new Ray(body.position, -Vector3.up);
         RaycastHit hitInfo;
         if (Physics.Raycast(body.position, -Vector3.up, out hitInfo))
         {
-            return hitInfo.collider.tag == "ground" && hitInfo.distance < sphereCollider.radius + 0.5;
+            return hitInfo.collider.tag == "ground" && hitInfo.distance < sphereCollider.radius * this.transform.root.localScale.y + 0.5;
         } else
         {
             return false;
