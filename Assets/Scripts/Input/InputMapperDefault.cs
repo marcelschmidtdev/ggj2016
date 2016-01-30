@@ -18,6 +18,16 @@ public class InputMapperDefault : InputMapper {
         return movement;
     }
 
+	public override bool GetConfirm ()
+	{
+		return Input.GetButtonDown("Submit");
+	}
+
+	public override bool GetCancel ()
+	{
+		return Input.GetButtonDown("Cancel");
+	}
+
     public override void Update()
     {
         wasCharging = charging;

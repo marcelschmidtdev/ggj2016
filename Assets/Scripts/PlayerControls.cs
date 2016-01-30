@@ -36,7 +36,7 @@ public class PlayerControls : MonoBehaviour {
         input.Update();
         if (input.startedCharging())
         {
-            chargeDirection = body.transform.forward;
+            chargeDirection = transform.forward;
         } else if (input.isCharging())
         {
             // do nothing; they will slowly slow down as they "charge up"
@@ -47,10 +47,9 @@ public class PlayerControls : MonoBehaviour {
         } else
         {
             // not boosting, and haven't been boosting. just steer normally
-            rotation += input.getMovement().x * rotationMultiplier * Time.deltaTime;
-            float forwardMovement = input.getMovement().y * speedMultiplier;
-            body.rotation = Quaternion.AngleAxis(rotation, Vector3.up);
-            body.AddForce(body.transform.forward * forwardMovement * Time.deltaTime);
+            Vector2 movement = input.getMovement();
+            body.transform.Rotate(Vector3.up, movement.x);
+            body.AddForce(new Vector3(0, 0, movement.y) * speedMultiplier);
         }
 
         limitSpeed();
@@ -72,18 +71,16 @@ public class PlayerControls : MonoBehaviour {
         float max = isCharging ? maxSpeedCharging : maxSpeed;
         if (speed > max)
         {
-            float brakeSpeed = speed - max;
-            Vector3 normalizedVelocity = body.velocity.normalized;
-            Vector3 brakeVelocity = normalizedVelocity * brakeSpeed;
-            body.AddForce(-brakeVelocity * brakeSlowing);
+            // apply negative torque
         }
     }
 
 	void OnCollisionEnter(Collision collision)
 	{
-		Debug.Log(collision.gameObject.name);
 		if(collision.gameObject.layer == LayerMask.NameToLayer("Minions")){
 			SimplePool.Despawn(collision.gameObject);
+			bool isOwnMinion = collision.gameObject.GetComponent<CreepsAI>().playerId == (int)playerNumber;
+			Game.Instance.EventPlayerKilledMinion((int)playerNumber, isOwnMinion);
 		}
 	}
 }

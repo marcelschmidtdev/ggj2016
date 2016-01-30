@@ -40,10 +40,12 @@ public class Game : SingletonMonoBehaviour<Game> {
 	Player[] Players = new Player[4];
 	float RemainingCountdown = 0.0f;
 
-	public Action<GameStateId> EventGameStateChanged = (newState) => { };
+	public event Action<GameStateId> EventGameStateChanged = (newState) => { };
 	public event Action<int, bool> EventPlayerCanJoinChanged = (index, canJoin) => { };
 	public event Action<Player> EventPlayerJoined = (player) => { };
 	public event Action<Player, bool> EventPlayerReadyChanged = (player, isReady) => { };
+	public Action<int> EventPlayerScored = (playerId) => { };
+	public Action<int, bool> EventPlayerKilledMinion = (playerId, ownMinion) => { };
 
 	void Start () {
 		_GameState = GameStateId.WaitingForPlayers;
