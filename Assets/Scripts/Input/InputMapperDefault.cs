@@ -13,8 +13,12 @@ public class InputMapperDefault : InputMapper {
 
     public override Vector2 getMovement()
     {
-        movement.x = Input.GetAxis("Horizontal" + playerIndex) + Input.GetAxis("Horizontal" + playerIndex + "Keyboard");
-        movement.y = Input.GetAxis("Vertical" + playerIndex) + Input.GetAxis("Vertical" + playerIndex + "Keyboard");
+        movement.y = Input.GetAxis("AccelerationPlayer" + playerIndex) - Input.GetAxis("BrakePlayer" + playerIndex) + Input.GetAxis("AccelerationBrakeKeyboardPlayer" + playerIndex);
+        movement.x = Input.GetAxis("TurnPlayer" + playerIndex) + Input.GetAxis("TurnPlayer" + playerIndex + "Keyboard");
+        movement.y = Mathf.Clamp(movement.y, -1, 1);
+        movement.y = remap(movement.y, -1, 1, 0, 1);
+        movement.x = Mathf.Clamp(movement.x, -1, 1);
+        movement.x = remap(movement.x, -1, 1, 0, 1);
         return movement;
     }
 
@@ -37,9 +41,8 @@ public class InputMapperDefault : InputMapper {
 		return Input.GetJoystickNames().Length >= playerIndex && !string.IsNullOrEmpty(Input.GetJoystickNames()[playerIndex-1]);
 	}
 
-	public override void Update()
+    private float remap(float value, float oldMin, float oldMax, float newMin, float newMax)
     {
-        wasCharging = charging;
-        charging = Input.GetButton("Boost" + playerIndex);
+        return newMin + (value - oldMin) * (newMax - newMin) / (oldMax - oldMin);
     }
 }

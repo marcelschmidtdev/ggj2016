@@ -6,7 +6,7 @@ InputManager:
   serializedVersion: 2
   m_Axes:
   - serializedVersion: 3
-    m_Name: Horizontal1
+    m_Name: TurnPlayer1
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: left
@@ -16,13 +16,13 @@ InputManager:
     gravity: 3
     dead: .00100000005
     sensitivity: 3
-    snap: 1
+    snap: 0
     invert: 0
     type: 2
     axis: 0
     joyNum: 1
   - serializedVersion: 3
-    m_Name: Horizontal1Keyboard
+    m_Name: TurnPlayer1Keyboard
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: left
@@ -38,7 +38,7 @@ InputManager:
     axis: 0
     joyNum: 1
   - serializedVersion: 3
-    m_Name: Horizontal2
+    m_Name: TurnPlayer2
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: left
@@ -48,13 +48,13 @@ InputManager:
     gravity: 3
     dead: .00100000005
     sensitivity: 3
-    snap: 1
+    snap: 0
     invert: 0
     type: 2
     axis: 0
     joyNum: 2
   - serializedVersion: 3
-    m_Name: Horizontal2Keyboard
+    m_Name: TurnPlayer2Keyboard
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: left
@@ -70,7 +70,7 @@ InputManager:
     axis: 0
     joyNum: 2
   - serializedVersion: 3
-    m_Name: Horizontal3
+    m_Name: TurnPlayer3
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: left
@@ -80,13 +80,13 @@ InputManager:
     gravity: 3
     dead: .00100000005
     sensitivity: 3
-    snap: 1
+    snap: 0
     invert: 0
     type: 2
     axis: 0
     joyNum: 3
   - serializedVersion: 3
-    m_Name: Horizontal3Keyboard
+    m_Name: TurnPlayer3Keyboard
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: left
@@ -102,7 +102,7 @@ InputManager:
     axis: 0
     joyNum: 3
   - serializedVersion: 3
-    m_Name: Horizontal4
+    m_Name: TurnPlayer4
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: left
@@ -112,13 +112,13 @@ InputManager:
     gravity: 3
     dead: .00100000005
     sensitivity: 3
-    snap: 1
+    snap: 0
     invert: 0
     type: 2
     axis: 0
     joyNum: 4
   - serializedVersion: 3
-    m_Name: Horizontal4Keyboard
+    m_Name: TurnPlayer4Keyboard
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: left
@@ -134,7 +134,39 @@ InputManager:
     axis: 0
     joyNum: 4
   - serializedVersion: 3
-    m_Name: Vertical1
+    m_Name: BrakePlayer1
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: down
+    positiveButton: up
+    altNegativeButton: s
+    altPositiveButton: w
+    gravity: 3
+    dead: .00100000005
+    sensitivity: 3
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 4
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: AccelerationPlayer1
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: down
+    positiveButton: up
+    altNegativeButton: s
+    altPositiveButton: w
+    gravity: 3
+    dead: .00100000005
+    sensitivity: 3
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 5
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: AccelerationBrakeKeyboardPlayer1
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: down
@@ -146,11 +178,43 @@ InputManager:
     sensitivity: 3
     snap: 1
     invert: 0
-    type: 2
+    type: 0
     axis: 1
     joyNum: 1
   - serializedVersion: 3
-    m_Name: Vertical1Keyboard
+    m_Name: BrakePlayer2
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: down
+    positiveButton: up
+    altNegativeButton: s
+    altPositiveButton: w
+    gravity: 3
+    dead: .00100000005
+    sensitivity: 3
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 4
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: AccelerationPlayer2
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: down
+    positiveButton: up
+    altNegativeButton: s
+    altPositiveButton: w
+    gravity: 3
+    dead: .00100000005
+    sensitivity: 3
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 5
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: AccelerationBrakeKeyboardPlayer2
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: down
@@ -163,26 +227,42 @@ InputManager:
     snap: 1
     invert: 0
     type: 0
-    axis: 1
-    joyNum: 1
-  - serializedVersion: 3
-    m_Name: Vertical2
-    descriptiveName: 
-    descriptiveNegativeName: 
-    negativeButton: down
-    positiveButton: up
-    altNegativeButton: s
-    altPositiveButton: w
-    gravity: 3
-    dead: .00100000005
-    sensitivity: 3
-    snap: 1
-    invert: 0
-    type: 2
     axis: 1
     joyNum: 2
   - serializedVersion: 3
-    m_Name: Vertical2Keyboard
+    m_Name: BrakePlayer3
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: down
+    positiveButton: up
+    altNegativeButton: s
+    altPositiveButton: w
+    gravity: 3
+    dead: .00100000005
+    sensitivity: 3
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 4
+    joyNum: 3
+  - serializedVersion: 3
+    m_Name: AccelerationPlayer3
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: down
+    positiveButton: up
+    altNegativeButton: s
+    altPositiveButton: w
+    gravity: 3
+    dead: .00100000005
+    sensitivity: 3
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 5
+    joyNum: 3
+  - serializedVersion: 3
+    m_Name: AccelerationBrakeKeyboardPlayer3
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: down
@@ -196,25 +276,9 @@ InputManager:
     invert: 0
     type: 0
     axis: 1
-    joyNum: 2
-  - serializedVersion: 3
-    m_Name: Vertical3
-    descriptiveName: 
-    descriptiveNegativeName: 
-    negativeButton: down
-    positiveButton: up
-    altNegativeButton: s
-    altPositiveButton: w
-    gravity: 3
-    dead: .00100000005
-    sensitivity: 3
-    snap: 1
-    invert: 0
-    type: 2
-    axis: 1
     joyNum: 3
   - serializedVersion: 3
-    m_Name: Vertical3Keyboard
+    m_Name: BrakePlayer4
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: down
@@ -224,29 +288,29 @@ InputManager:
     gravity: 3
     dead: .00100000005
     sensitivity: 3
-    snap: 1
-    invert: 0
-    type: 0
-    axis: 1
-    joyNum: 3
-  - serializedVersion: 3
-    m_Name: Vertical4
-    descriptiveName: 
-    descriptiveNegativeName: 
-    negativeButton: down
-    positiveButton: up
-    altNegativeButton: s
-    altPositiveButton: w
-    gravity: 3
-    dead: .00100000005
-    sensitivity: 3
-    snap: 1
+    snap: 0
     invert: 0
     type: 2
-    axis: 1
+    axis: 4
     joyNum: 4
   - serializedVersion: 3
-    m_Name: Vertical4Keyboard
+    m_Name: AccelerationPlayer4
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: down
+    positiveButton: up
+    altNegativeButton: s
+    altPositiveButton: w
+    gravity: 3
+    dead: .00100000005
+    sensitivity: 3
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 5
+    joyNum: 4
+  - serializedVersion: 3
+    m_Name: AccelerationBrakeKeyboardPlayer4
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: down

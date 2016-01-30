@@ -9,25 +9,8 @@ public abstract class InputMapper {
 
     public abstract Vector2 getMovement();
 
-    public abstract void Update();
-
 	public abstract bool GetStart ();
 	public abstract bool GetConfirm();
 	public abstract bool GetCancel();
 	public abstract bool IsConnected ();
-
-	public bool startedCharging()
-    {
-        return !wasCharging && charging;
-    }
-
-    public bool isCharging()
-    {
-        return charging && wasCharging;
-    }
-
-    public bool finishedCharging()
-    {
-        return wasCharging && !charging;
-    }
 }

@@ -13,20 +13,29 @@ public class PlayerControls : MonoBehaviour {
     public float maxSpeed = 4000;
     public float maxSpeedCharging = 2000;
     public float brakeSlowing = 0.1f;
+    public float turnMultiplier = 10;
     public Transform sphereZ;
     public Transform sphereX;
+
+	[SerializeField]
+	private NavMeshObstacle navMeshObstacle;
+	[SerializeField]
+	private float maxVelocityToCarveNavMesh;
 
     private Rigidbody body;
     private Vector3 groundFrictionVector;
     private bool isCharging;
     private Vector3 chargeDirection;
     public float direction;
+    private SphereCollider sphereCollider;
+    private Vector3 forwardsVector;
 
     private InputMapper input;
 
 	void Start () {
         body = GetComponent<Rigidbody>();
-        body.transform.forward = Vector3.forward;
+        forwardsVector = Vector3.forward;
+        sphereCollider = GetComponent<SphereCollider>();
         direction = 0;
 #if UNITY_STANDALONE_WIN
         input = new InputMapperWindows((int)playerNumber);
@@ -40,22 +49,29 @@ public class PlayerControls : MonoBehaviour {
         {
             return;
         }
-        input.Update();
-        if (input.startedCharging())
+        if (!isOnGround())
         {
-            chargeDirection = transform.forward;
-        } else if (input.isCharging())
+            return;
+        }
+
+        bool wasCharging = isCharging;
+        isCharging = input.GetConfirm();
+        if (!wasCharging && isCharging)
+        {
+            chargeDirection = getForwardsVector();
+        } else if (isCharging)
         {
             // do nothing; they will slowly slow down as they "charge up"
-        } else if (input.finishedCharging())
+        } else if (wasCharging && !isCharging)
         {
-            body.AddForce(chargeDirection.normalized * maxSpeed * Time.deltaTime);
+            body.AddForce(chargeDirection.normalized * maxSpeedCharging);
+            body.AddForce(Vector3.up * 5);
         } else
         {
             // not boosting, and haven't been boosting. just steer normally
             Vector2 movement = input.getMovement();
             direction += movement.x * Time.deltaTime * rotationMultiplier;
-            body.AddForce(body.transform.right * movement.x * speedMultiplier);
+            body.AddForce(body.transform.right * movement.x * body.velocity.magnitude * turnMultiplier * speedMultiplier);
             body.AddForce(body.transform.forward * movement.y * speedMultiplier);
             body.rotation = Quaternion.AngleAxis(direction, Vector3.up);
             Vector3 velocity = body.velocity;
@@ -65,12 +81,35 @@ public class PlayerControls : MonoBehaviour {
             sphereZ.Rotate(velocity, Space.World);
         }
 
+        forwardsVector = body.transform.forward;
         limitSpeed();
+
+		if(Vector3.Magnitude(body.velocity) <= maxVelocityToCarveNavMesh){
+			navMeshObstacle.carving = true;
+		}
+		else
+		{
+			navMeshObstacle.carving = false;
+		}
+		
 	}
+
+    private bool isOnGround()
+    {
+        Ray belowPlayer = new Ray(body.position, -Vector3.up);
+        RaycastHit hitInfo;
+        if (Physics.Raycast(body.position, -Vector3.up, out hitInfo))
+        {
+            return hitInfo.collider.tag == "ground" && hitInfo.distance < sphereCollider.radius + 0.5;
+        } else
+        {
+            return false;
+        }
+    }
 
     internal Vector3 getForwardsVector()
     {
-        return body.transform.forward;
+        return forwardsVector;
     }
 
     public void OnDrawGizmos()
@@ -96,7 +135,7 @@ public class PlayerControls : MonoBehaviour {
 	{
 		if(other.gameObject.layer == LayerMask.NameToLayer("Minions")){
 			Game.Instance.EventPlayerKilledMinion((int)playerNumber, other.gameObject.GetComponent<CreepsAI>().playerId);
-			SimplePool.Despawn(other.gameObject);
+			other.gameObject.GetComponent<CreepsAI>().Kill();
 		}
 	}
 }

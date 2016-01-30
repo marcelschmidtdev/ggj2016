@@ -16,12 +16,12 @@ public class InputMapperWindows : InputMapper {
     {
         GamePadState gamepad = GamePad.GetState(index);
         movement.x = gamepad.ThumbSticks.Left.X;
-        movement.y = gamepad.ThumbSticks.Left.Y;
+        movement.y = gamepad.Triggers.Right - gamepad.Triggers.Left;
         return movement;
     }
 
 	public override bool GetStart () {
-		return GamePad.GetState( index ).Buttons.Start == ButtonState.Pressed;
+		return GamePad.GetState(index).Buttons.Start == ButtonState.Pressed;
 	}
 
 	public override bool GetConfirm ()
@@ -35,14 +35,7 @@ public class InputMapperWindows : InputMapper {
 	}
 
 	public override bool IsConnected () {
-		return GamePad.GetState( index ).IsConnected;
+		return GamePad.GetState(index).IsConnected;
 	}
-
-    public override void Update()
-    {
-        wasCharging = charging;
-        GamePadState gamepad = GamePad.GetState(index);
-        charging = gamepad.Buttons.A == ButtonState.Pressed;
-    }
 }
 #endif
