@@ -6,6 +6,8 @@ public class CreepsAI : MonoBehaviour
 {
 	[SerializeField]
 	private NavMeshAgent navMeshAgent;
+	[SerializeField]
+	private float minDistToTarget;
 	public Vector3 targetPosition {get; set;}
 
 	//Since we are pooling these objects we have to reset all values here
@@ -16,7 +18,7 @@ public class CreepsAI : MonoBehaviour
 
 	void Update() 
 	{
-		if(navMeshAgent.remainingDistance <= 0.5f){
+		if(navMeshAgent.remainingDistance <= minDistToTarget) { 
 			SimplePool.Despawn(this.gameObject);
 		}
 	}
