@@ -680,8 +680,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06ebc440a228545fab363ebd23196a93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 9572058}
   navMeshAgent: {fileID: 19515448}
   minDistToTarget: 1.10000002
+  timeUntilDespawn: 3
 --- !u!136 &13697676
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -773,6 +775,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_ObstacleAvoidanceType
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
