@@ -20,6 +20,16 @@ public class InputMapperWindows : InputMapper {
         return movement;
     }
 
+    public override bool getCancel()
+    {
+        return GamePad.GetState(index).Buttons.B == ButtonState.Pressed;
+    }
+
+    public override bool getOK()
+    {
+        return GamePad.GetState(index).Buttons.A == ButtonState.Pressed;
+    }
+
     public override void Update()
     {
         wasCharging = charging;

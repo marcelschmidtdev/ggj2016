@@ -11,6 +11,10 @@ public abstract class InputMapper {
 
     public abstract void Update();
 
+    public abstract bool getOK();
+
+    public abstract bool getCancel();
+
     public bool startedCharging()
     {
         return !wasCharging && charging;
