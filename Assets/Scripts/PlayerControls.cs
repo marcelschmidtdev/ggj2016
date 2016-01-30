@@ -82,6 +82,8 @@ public class PlayerControls : MonoBehaviour {
 	void OnCollisionEnter(Collision collision)
 	{
 		Debug.Log(collision.gameObject.name);
-		SimplePool.Despawn(collision.gameObject);
+		if(collision.gameObject.layer == LayerMask.NameToLayer("Minions")){
+			SimplePool.Despawn(collision.gameObject);
+		}
 	}
 }
