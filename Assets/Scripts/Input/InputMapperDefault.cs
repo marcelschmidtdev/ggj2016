@@ -34,7 +34,7 @@ public class InputMapperDefault : InputMapper {
 	}
 
 	public override bool IsConnected () {
-		return true;
+		return Input.GetJoystickNames().Length >= playerIndex && !string.IsNullOrEmpty(Input.GetJoystickNames()[playerIndex-1]);
 	}
 
 	public override void Update()

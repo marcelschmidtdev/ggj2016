@@ -8,6 +8,10 @@ public class CreepsSpawner : MonoBehaviour
 	[SerializeField]
 	private int amountOfCreeps;
 	[SerializeField]
+	private float minSpawnPosVariance = -1.5f;
+	[SerializeField]
+	private float maxSpawnPosVariance = 1.5f;
+	[SerializeField]
 	private GameObject[] availableCreeps;
 	[SerializeField]
 	private Transform creepTarget;
@@ -44,9 +48,9 @@ public class CreepsSpawner : MonoBehaviour
 	{
 		for (int i = 0; i < amountOfCreeps; i++) {
 			Vector3 spawnPos = new Vector3(
-				this.transform.position.x + Random.Range(-1.5f,1.5f),
+				this.transform.position.x + Random.Range(minSpawnPosVariance, maxSpawnPosVariance),
 				this.transform.position.y,
-				this.transform.position.z + Random.Range(-1.5f,1.5f));
+				this.transform.position.z + Random.Range(minSpawnPosVariance, maxSpawnPosVariance));
 			var instance = SimplePool.Spawn(availableCreeps[playerId], spawnPos, Quaternion.identity);
 			var creepsAI = instance.GetComponent<CreepsAI>();
 			creepsAI.targetPosition = creepTarget.position;
