@@ -25,11 +25,7 @@ public class PlayerControls : MonoBehaviour {
         body = GetComponent<Rigidbody>();
         body.transform.forward = Vector3.forward;
         rotation = 0;
-#if UNITY_STANDALONE_WIN
-        input = new InputMapperWindows((int)playerNumber);
-#else
-        input = new InputMapperDefault((int)playerNumber);
-#endif
+		input = PlayerInput.GetInput( (int)playerNumber );
     }
 	
 	void FixedUpdate () {

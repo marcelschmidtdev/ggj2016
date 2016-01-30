@@ -11,6 +11,8 @@ public class LobbyPlayerIndicator : MonoBehaviour {
 	public Image ControllerSprite;
 	public Image LeftArrowSprite;
 	public Image RightArrowSprite;
+	public Image ConfirmSprite;
+	public Image CancelSprite;
 
 	public enum LobbyPlayerState
 	{
@@ -45,6 +47,34 @@ public class LobbyPlayerIndicator : MonoBehaviour {
 		set
 		{
 			this._AllowedMovement = value;
+			UpdateView();
+		}
+	}
+
+	bool _AllowConfirm;
+	public bool AllowConfirm
+	{
+		get
+		{
+			return _AllowConfirm;
+		}
+		set
+		{
+			this._AllowConfirm = value;
+			UpdateView();
+		}
+	}
+
+	bool _AllowCancel;
+	public bool AllowCancel
+	{
+		get
+		{
+			return _AllowCancel;
+		}
+		set
+		{
+			this._AllowCancel = value;
 			UpdateView();
 		}
 	}
@@ -86,6 +116,20 @@ public class LobbyPlayerIndicator : MonoBehaviour {
 				this.LeftArrowSprite.color = new Color();
 				this.RightArrowSprite.color = new Color();
 				break;
+		}
+
+		if (this.AllowConfirm) {
+			this.ConfirmSprite.color = Color.white;
+		}
+		else {
+			this.ConfirmSprite.color = new Color();
+		}
+
+		if (this.AllowCancel) {
+			this.CancelSprite.color = Color.white;
+		}
+		else {
+			this.CancelSprite.color = new Color();
 		}
 	}
 

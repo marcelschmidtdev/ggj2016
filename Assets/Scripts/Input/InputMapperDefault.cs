@@ -18,17 +18,26 @@ public class InputMapperDefault : InputMapper {
         return movement;
     }
 
-	public override bool GetConfirm ()
+	public override bool GetStart ()
 	{
-		return Input.GetButtonDown("Submit");
+		return false;
 	}
 
+	public override bool GetConfirm ()
+	{
+		return Input.GetButtonDown( "Submit" );
+	}
+	
 	public override bool GetCancel ()
 	{
 		return Input.GetButtonDown("Cancel");
 	}
 
-    public override void Update()
+	public override bool IsConnected () {
+		return true;
+	}
+
+	public override void Update()
     {
         wasCharging = charging;
         charging = Input.GetButton("Boost" + playerIndex);
