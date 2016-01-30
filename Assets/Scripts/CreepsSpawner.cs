@@ -48,7 +48,9 @@ public class CreepsSpawner : MonoBehaviour
 				this.transform.position.y,
 				this.transform.position.z + Random.Range(-1.5f,1.5f));
 			var instance = SimplePool.Spawn(availableCreeps[playerId], spawnPos, Quaternion.identity);
-			instance.GetComponent<CreepsAI>().targetPosition = creepTarget.position;
+			var creepsAI = instance.GetComponent<CreepsAI>();
+			creepsAI.targetPosition = creepTarget.position;
+			creepsAI.playerId = playerId;
 		}
 	}
 
