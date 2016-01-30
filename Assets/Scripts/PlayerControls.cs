@@ -56,7 +56,7 @@ public class PlayerControls : MonoBehaviour {
         } else if (isCharging)
         {
             // do nothing; they will slowly slow down as they "charge up"
-        } else if (wasCharging && isCharging)
+        } else if (wasCharging && !isCharging)
         {
             body.AddForce(chargeDirection.normalized * maxSpeed * Time.deltaTime);
             body.AddForce(Vector3.up);
