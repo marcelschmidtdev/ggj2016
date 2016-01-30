@@ -114,7 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 21300000, guid: 5442c3a4e45bf0047ae6b382d2898e77, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8d0c9ec85bd734158b9bb71211d66864, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -135,7 +135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 21300000, guid: 62b6daafa27a5e64f921b3eab9d6fd60, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 10b5f598c4325424f82245f1d729c154, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -154,9 +154,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78c548de8f100243b8d7ddc87a39394, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NotConnectedControllerColor: {r: .713235259, g: .713235259, b: .713235259, a: .360000014}
-  ConnectedControllerColor: {r: 1, g: 1, b: 1, a: 1}
-  LockedControllerColor: {r: .117241383, g: 1, b: 0, a: 1}
+  NotConnectedControllerColor: {r: .623529434, g: .623529434, b: .623529434, a: .623529434}
+  ConnectedControllerColor: {r: .768627465, g: .654901981, b: .388235301, a: 1}
+  LockedControllerColor: {r: .639215708, g: .243137255, b: .0627451017, a: 1}
   ControllerSprite: {fileID: 11483860}
   LeftArrowSprite: {fileID: 11442348}
   RightArrowSprite: {fileID: 11465728}
@@ -175,7 +175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 21300000, guid: 62b6daafa27a5e64f921b3eab9d6fd60, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 10b5f598c4325424f82245f1d729c154, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -196,7 +196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: .117241383, g: 1, b: 0, a: 1}
-  m_Sprite: {fileID: 21300000, guid: b9304f0efcd27054cac168bef0d1c279, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cefcb965859df407d8fedf5a3c1659b1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -217,7 +217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 21300000, guid: ee220267a36822f4fabfd43fb72877fa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0c6e5757e0492446ca489be9e889536a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -291,7 +291,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: 45.9000015}
+  m_AnchoredPosition: {x: 0, y: 67}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22447794
@@ -302,14 +302,14 @@ RectTransform:
   m_GameObject: {fileID: 168386}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 22425128}
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: .5}
   m_AnchorMax: {x: 0, y: .5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -75, y: 0}
+  m_SizeDelta: {x: 75, y: 75}
   m_Pivot: {x: 1, y: .5}
 --- !u!224 &22451080
 RectTransform:
@@ -353,14 +353,14 @@ RectTransform:
   m_GameObject: {fileID: 192282}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 22425128}
   m_RootOrder: 1
   m_AnchorMin: {x: 1, y: .5}
   m_AnchorMax: {x: 1, y: .5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 75, y: 0}
+  m_SizeDelta: {x: 75, y: 75}
   m_Pivot: {x: 1, y: .5}
 --- !u!1001 &100100000
 Prefab:

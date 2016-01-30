@@ -13,7 +13,8 @@ public class PlayerControls : MonoBehaviour {
     public float maxSpeed = 4000;
     public float maxSpeedCharging = 2000;
     public float brakeSlowing = 0.1f;
-    public Transform sphere;
+    public Transform sphereZ;
+    public Transform sphereX;
 
     private Rigidbody body;
     private Vector3 groundFrictionVector;
@@ -54,7 +55,8 @@ public class PlayerControls : MonoBehaviour {
             body.AddForce(body.transform.forward * movement.y * speedMultiplier);
         }
 
-        sphere.Rotate(Vector3.right, body.velocity.magnitude);
+        sphereX.Rotate(Vector3.right, body.velocity.z);
+        sphereZ.Rotate(Vector3.forward, -body.velocity.x);
 
         limitSpeed();
 	}
