@@ -138,8 +138,8 @@ MonoBehaviour:
   maxSpeed: 4000
   maxSpeedCharging: 2000
   brakeSlowing: .100000001
-  sphereZ: {fileID: 1538485179}
-  sphereX: {fileID: 2039654421}
+  sphereZ: {fileID: 2039654421}
+  sphereX: {fileID: 1538485179}
 --- !u!54 &1503641
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -154,7 +154,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!135 &1503642
 SphereCollider:
