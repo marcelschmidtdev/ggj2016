@@ -21,7 +21,7 @@ public class CreepsAI : MonoBehaviour
 	{
 		if(navMeshAgent.remainingDistance <= minDistToTarget) { 
 			SimplePool.Despawn(this.gameObject);
-			//TODO add message which minion died
+			Game.Instance.EventPlayerScored(playerId);
 		}
 	}
 }
