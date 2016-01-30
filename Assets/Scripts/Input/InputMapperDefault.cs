@@ -8,7 +8,7 @@ public class InputMapperDefault : InputMapper {
 
     public InputMapperDefault(int playerIndex)
     {
-        this.playerIndex = playerIndex;
+        this.playerIndex = playerIndex + 1;
     }
 
     public override Vector2 getMovement()

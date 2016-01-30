@@ -26,7 +26,14 @@ public class PlayerControls : MonoBehaviour {
         body = GetComponent<Rigidbody>();
         body.transform.forward = Vector3.forward;
         rotation = 0;
-        input = new InputMapperDefault((int)playerNumber + 1);
+        if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer)
+        {
+            input = new InputMapperWindows((int)playerNumber);
+        }
+        else
+        {
+            input = new InputMapperDefault((int)playerNumber);
+        }
     }
 	
 	void FixedUpdate () {
