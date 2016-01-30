@@ -11,7 +11,7 @@ GameObject:
   - 114: {fileID: 11407940}
   - 54: {fileID: 5443232}
   - 195: {fileID: 19515448}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Minion_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ GameObject:
   - 4: {fileID: 434476}
   - 33: {fileID: 3334670}
   - 23: {fileID: 2396708}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Hand_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - 4: {fileID: 480056}
   - 33: {fileID: 3319502}
   - 23: {fileID: 2339824}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Hand_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,7 +62,7 @@ GameObject:
   - 4: {fileID: 444848}
   - 33: {fileID: 3356706}
   - 23: {fileID: 2339734}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,7 +78,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 469906}
   - 95: {fileID: 9534992}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: viking01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - 4: {fileID: 467470}
   - 33: {fileID: 3336926}
   - 23: {fileID: 2387098}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Boot_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,7 +112,7 @@ GameObject:
   - 4: {fileID: 416878}
   - 33: {fileID: 3325658}
   - 23: {fileID: 2370296}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Helmet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,7 +130,7 @@ GameObject:
   - 33: {fileID: 3396940}
   - 136: {fileID: 13648574}
   - 23: {fileID: 2395544}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,7 +147,7 @@ GameObject:
   - 4: {fileID: 486638}
   - 33: {fileID: 3347858}
   - 23: {fileID: 2394800}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Chest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -164,7 +164,7 @@ GameObject:
   - 4: {fileID: 424994}
   - 33: {fileID: 3347714}
   - 23: {fileID: 2382250}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Boot_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -652,6 +652,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: minDistToTarget
       value: 1.10000002
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_WalkableMask
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
