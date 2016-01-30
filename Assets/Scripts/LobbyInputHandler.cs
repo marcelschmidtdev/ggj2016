@@ -37,7 +37,7 @@ public class LobbyInputHandler : MonoBehaviour {
 				}
 			}
 			else {
-				if(movement.x >= 0.0f) {
+				if(movement.x >= -0.35f) {
 					this.LeftThresholdReached[i] = false;
 				}
 			}
@@ -48,7 +48,7 @@ public class LobbyInputHandler : MonoBehaviour {
 				}
 			}
 			else {
-				if (movement.x <= 0.0f) {
+				if (movement.x <= 0.35f) {
 					this.RightThresholdReached[i] = false;
 				}
 			}

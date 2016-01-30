@@ -32,6 +32,7 @@ public class PlayerControls : MonoBehaviour {
     private Vector3 forwardsVector;
 
     private InputMapper input;
+	private Vector2 movement;
 
 	void Start () {
         body = GetComponent<Rigidbody>();
@@ -40,6 +41,10 @@ public class PlayerControls : MonoBehaviour {
         direction = 0;
         input = PlayerInput.GetInput((int)playerNumber);
     }
+
+	void Update() {
+		movement = input.getMovement();
+	}
 	
 	void FixedUpdate () {
         if (Game.Instance.GameState != Game.GameStateId.Playing)
@@ -66,7 +71,7 @@ public class PlayerControls : MonoBehaviour {
         } else
         {
             // not boosting, and haven't been boosting. just steer normally
-            Vector2 movement = input.getMovement();
+            movement = input.getMovement();
             direction += movement.x * Time.deltaTime * rotationMultiplier;
             body.AddForce(body.transform.right * movement.x * body.velocity.magnitude * turnMultiplier * speedMultiplier);
             body.AddForce(body.transform.forward * movement.y * speedMultiplier);
