@@ -20,6 +20,10 @@ public class InputMapperWindows : InputMapper {
         return movement;
     }
 
+	public override bool GetStart () {
+		return GamePad.GetState( index ).Buttons.Start == ButtonState.Pressed;
+	}
+
 	public override bool GetConfirm ()
 	{
 		return GamePad.GetState(index).Buttons.A == ButtonState.Pressed;
@@ -28,6 +32,10 @@ public class InputMapperWindows : InputMapper {
 	public override bool GetCancel ()
 	{
 		return GamePad.GetState(index).Buttons.B == ButtonState.Pressed;
+	}
+
+	public override bool IsConnected () {
+		return GamePad.GetState( index ).IsConnected;
 	}
 
     public override void Update()
