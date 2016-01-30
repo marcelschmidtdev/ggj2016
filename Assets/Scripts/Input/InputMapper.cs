@@ -11,9 +11,8 @@ public abstract class InputMapper {
 
     public abstract void Update();
 
-    public abstract bool getOK();
-
-    public abstract bool getCancel();
+	public abstract bool GetConfirm();
+	public abstract bool GetCancel();
 
     public bool startedCharging()
     {

@@ -18,15 +18,15 @@ public class InputMapperDefault : InputMapper {
         return movement;
     }
 
-    public override bool getCancel()
-    {
-        return Input.GetButton("Cancel" + playerIndex);
-    }
+	public override bool GetConfirm ()
+	{
+		return Input.GetButtonDown("Boost" + playerIndex);
+	}
 
-    public override bool getOK()
-    {
-        return Input.GetButton("Boost" + playerIndex);
-    }
+	public override bool GetCancel ()
+	{
+		return Input.GetButtonDown("Cancel" + playerIndex);
+	}
 
     public override void Update()
     {
