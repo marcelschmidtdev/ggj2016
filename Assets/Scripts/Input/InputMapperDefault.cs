@@ -13,6 +13,7 @@ public class InputMapperDefault : InputMapper {
 
     public override Vector2 getMovement()
     {
+        Debug.Log(Input.GetAxis("AccelerationPlayer" + playerIndex) + ", " + Input.GetAxis("BrakePlayer" + playerIndex) + ", " + Input.GetAxis("AccelerationBrakeKeyboardPlayer" + playerIndex));
         movement.y = remap(Input.GetAxis("AccelerationPlayer" + playerIndex), -1, 1, 0, 1) - remap(Input.GetAxis("BrakePlayer" + playerIndex), -1, 1, 0, 1) + Input.GetAxis("AccelerationBrakeKeyboardPlayer" + playerIndex);
         movement.x = Input.GetAxis("TurnPlayer" + playerIndex) + Input.GetAxis("TurnPlayer" + playerIndex + "Keyboard");
         movement.y = Mathf.Clamp(movement.y, -1, 1);
