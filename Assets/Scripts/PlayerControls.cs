@@ -13,7 +13,8 @@ public class PlayerControls : MonoBehaviour {
     public float maxSpeed = 4000;
     public float maxSpeedCharging = 2000;
     public float brakeSlowing = 0.1f;
-    public Transform sphere;
+    public Transform sphereZ;
+    public Transform sphereX;
 
     private Rigidbody body;
     private Vector3 groundFrictionVector;
@@ -49,12 +50,19 @@ public class PlayerControls : MonoBehaviour {
             // not boosting, and haven't been boosting. just steer normally
             Vector2 movement = input.getMovement();
             direction += movement.x * Time.deltaTime * rotationMultiplier;
-            body.rotation = Quaternion.AngleAxis(direction, Vector3.up) ;
             body.AddForce(body.transform.right * movement.x * speedMultiplier);
             body.AddForce(body.transform.forward * movement.y * speedMultiplier);
+            body.rotation = Quaternion.AngleAxis(direction, Vector3.up);
+            //var angularVelocity = transform.InverseTransformVector(-body.velocity);
+            Vector3 velocity = body.velocity;
+            float x = velocity.x;
+            velocity.x = velocity.z;
+            velocity.z = -x;
+            sphereZ.Rotate(velocity, Space.World);
         }
 
-        sphere.Rotate(Vector3.right, body.velocity.magnitude);
+        //sphereX.Rotate(Vector3.right, body.velocity.z);
+        //sphereZ.Rotate(Vector3.forward, -body.velocity.x);
 
         limitSpeed();
 	}
