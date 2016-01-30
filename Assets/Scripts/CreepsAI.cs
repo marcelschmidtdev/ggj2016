@@ -15,16 +15,20 @@ public class CreepsAI : MonoBehaviour
 	public Vector3 targetPosition {get; set;}
 	public int playerId {get; set;}
 
+	private bool isDead = false;
+
 	//Since we are pooling these objects we have to reset all values here
 	void OnEnable() 
 	{
+		isDead = false;
 		this.transform.localScale = Vector3.one;
-		navMeshAgent.destination = targetPosition;
+		navMeshAgent.ResetPath();
+		navMeshAgent.SetDestination(targetPosition);
 	}
 
 	void Update() 
 	{
-		if(navMeshAgent.remainingDistance <= minDistToTarget) { 
+		if(!isDead && Vector3.Distance(this.transform.position, targetPosition) <= minDistToTarget) { 
 			SimplePool.Despawn(this.gameObject);
 			Game.Instance.NotifyPlayerScrored(playerId);
 		}
@@ -37,6 +41,7 @@ public class CreepsAI : MonoBehaviour
 
 	private IEnumerator Co_Kill()
 	{
+		isDead = true;
 		animator.Play("MinionStand");
 		navMeshAgent.Stop();
 		Vector3 scale = this.transform.localScale;
