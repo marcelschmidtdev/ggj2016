@@ -248,6 +248,8 @@ MonoBehaviour:
   brakeSlowing: .100000001
   sphereZ: {fileID: 461444}
   sphereX: {fileID: 477452}
+  navMeshObstacle: {fileID: 20881924}
+  maxVelocityToCarveNavMesh: 3
   direction: 0
 --- !u!114 &11416184
 MonoBehaviour:
@@ -375,6 +377,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Extents.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: navMeshObstacle
+      value: 
+      objectReference: {fileID: 20881924}
+    - target: {fileID: 0}
+      propertyPath: maxVelocityToCarveNavMesh
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

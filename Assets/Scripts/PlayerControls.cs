@@ -16,6 +16,11 @@ public class PlayerControls : MonoBehaviour {
     public Transform sphereZ;
     public Transform sphereX;
 
+	[SerializeField]
+	private NavMeshObstacle navMeshObstacle;
+	[SerializeField]
+	private float maxVelocityToCarveNavMesh;
+
     private Rigidbody body;
     private Vector3 groundFrictionVector;
     private bool isCharging;
@@ -66,6 +71,14 @@ public class PlayerControls : MonoBehaviour {
         }
 
         limitSpeed();
+		if(Vector3.Magnitude(body.velocity) <= maxVelocityToCarveNavMesh){
+			navMeshObstacle.carving = true;
+		}
+		else
+		{
+			navMeshObstacle.carving = false;
+		}
+		
 	}
 
     internal Vector3 getForwardsVector()
