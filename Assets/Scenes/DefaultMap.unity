@@ -130,10 +130,6 @@ Prefab:
       propertyPath: creepTarget
       value: 
       objectReference: {fileID: 1024289035}
-    - target: {fileID: 111996, guid: c413b8d4ab37441e5b3105b292619664, type: 2}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c413b8d4ab37441e5b3105b292619664, type: 2}
   m_IsPrefabParent: 0
@@ -255,6 +251,10 @@ Prefab:
     - target: {fileID: 111996, guid: c413b8d4ab37441e5b3105b292619664, type: 2}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 111996, guid: c413b8d4ab37441e5b3105b292619664, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c413b8d4ab37441e5b3105b292619664, type: 2}
@@ -664,6 +664,10 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 111996, guid: c413b8d4ab37441e5b3105b292619664, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c413b8d4ab37441e5b3105b292619664, type: 2}
   m_IsPrefabParent: 0
@@ -979,6 +983,10 @@ Prefab:
     - target: {fileID: 111996, guid: c413b8d4ab37441e5b3105b292619664, type: 2}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 111996, guid: c413b8d4ab37441e5b3105b292619664, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c413b8d4ab37441e5b3105b292619664, type: 2}
