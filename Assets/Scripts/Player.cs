@@ -18,4 +18,28 @@ public class Player : MonoBehaviour {
 		this.Index = index;
 		this.PlayerControls.playerNumber = (XInputDotNetPure.PlayerIndex) index;
 	}
+
+	public Vector3 Position
+	{
+		get
+		{
+			return this.PlayerView.transform.position;
+		}
+		set
+		{
+			this.PlayerView.transform.position = value;
+		}
+	}
+
+	public Quaternion Rotation
+	{
+		get
+		{
+			return this.PlayerView.transform.rotation;
+		}
+		set
+		{
+			this.PlayerView.transform.rotation = value;
+		}
+	}
 }
