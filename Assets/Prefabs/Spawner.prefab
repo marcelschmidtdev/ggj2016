@@ -132,7 +132,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 111996}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 10.2771435, y: 0, z: -10.1000004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400248}
@@ -198,10 +198,10 @@ MonoBehaviour:
   maxSpawnPosVariance: 1.5
   availableCreeps:
   - {fileID: 105532, guid: e8a19d42a89d84551bde64ebc78aa6d8, type: 2}
-  - {fileID: 105532, guid: 98c137247bea74c35b9ecb08baef0e12, type: 2}
-  - {fileID: 105532, guid: a8bcfd8fe0b9f484eb84435c2c32eb1a, type: 2}
-  - {fileID: 105532, guid: 3f9e0155a446541b5ba2b27ff882167c, type: 2}
-  creepTarget: {fileID: 404298, guid: 547d28445058f4f659f87905648b377a, type: 2}
+  - {fileID: 105532, guid: 5beedbb2e880a4cb8bf7dab44b5ee9b9, type: 2}
+  - {fileID: 105532, guid: b9441f36924b84e5582f9231872866ce, type: 2}
+  - {fileID: 105532, guid: 79801240b4956463f9d7a8f3769c808f, type: 2}
+  creepTarget: {fileID: 0}
   playerId: 0
 --- !u!198 &19807638
 ParticleSystem:

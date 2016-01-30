@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class IngameUI : MonoBehaviour {
 
 	public Animator GameStateAnimator;
 	public Animator[] PlayerCanJoinAnimators;
+	public Text[] TeamScoreLabels;
 
 	public PlayerUI PlayerUIPrefab;
 
@@ -73,10 +75,23 @@ public class IngameUI : MonoBehaviour {
 			Game.Instance.EventPlayerReadyChanged -= Instance_EventPlayerReadyChanged;
 			Game.Instance.EventPlayerCanJoinChanged -= Instance_EventPlayerCanJoinChanged;
 		}
+
+		if (newState == Game.GameStateId.Playing) {
+			Game.Instance.EventPlayerScored += Instance_EventPlayerScored;
+		}
+		else {
+			Game.Instance.EventPlayerScored -= Instance_EventPlayerScored;
+		}
 	}
 
 	private void Instance_EventPlayerReadyChanged (Player player, bool isReady) {
 		if (this.PlayerUIs[player.Index] != null)
 			this.PlayerUIs[player.Index].GoToPlayerReadyState( isReady );
+	}
+
+	private void Instance_EventPlayerScored(int playerIndex) {
+		for(int i = 0; i < 2; i++) {
+			this.TeamScoreLabels[i].text = Game.Instance.GetTeamScore( i ).ToString();
+		}
 	}
 }

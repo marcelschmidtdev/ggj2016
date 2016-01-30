@@ -94,11 +94,11 @@ public class PlayerControls : MonoBehaviour {
         }
     }
 
-	void OnCollisionEnter(Collision collision)
+	void OnTriggerEnter(Collider other)
 	{
-		if(collision.gameObject.layer == LayerMask.NameToLayer("Minions")){
-			SimplePool.Despawn(collision.gameObject);
-			Game.Instance.EventPlayerKilledMinion((int)playerNumber, collision.gameObject.GetComponent<CreepsAI>().playerId );
+		if(other.gameObject.layer == LayerMask.NameToLayer("Minions")){
+			Game.Instance.EventPlayerKilledMinion((int)playerNumber, other.gameObject.GetComponent<CreepsAI>().playerId);
+			SimplePool.Despawn(other.gameObject);
 		}
 	}
 }
