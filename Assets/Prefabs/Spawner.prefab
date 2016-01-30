@@ -76,9 +76,9 @@ MonoBehaviour:
   amountOfCreeps: 1
   availableCreeps:
   - {fileID: 105532, guid: e8a19d42a89d84551bde64ebc78aa6d8, type: 2}
-  - {fileID: 105532, guid: 8c53306501ad0fb469e8d4006ebde99a, type: 2}
-  - {fileID: 105532, guid: 0e9007c18c88df645ae6a0f7a363159f, type: 2}
-  - {fileID: 105532, guid: 9910d63825cbd1f48ab50201f620dcbf, type: 2}
+  - {fileID: 105532, guid: ffc3da9afe3ee49589ed70954f3b7974, type: 2}
+  - {fileID: 105532, guid: 172f9341baecd4790988ff49fb7a25fb, type: 2}
+  - {fileID: 105532, guid: 1f54f185d67b74e6ba8a3880068f7aa6, type: 2}
   creepTarget: {fileID: 0}
   playerId: 0
 --- !u!1001 &100100000
@@ -95,15 +95,15 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: availableCreeps.Array.data[1]
       value: 
-      objectReference: {fileID: 105532, guid: 8c53306501ad0fb469e8d4006ebde99a, type: 2}
+      objectReference: {fileID: 105532, guid: ffc3da9afe3ee49589ed70954f3b7974, type: 2}
     - target: {fileID: 0}
       propertyPath: availableCreeps.Array.data[2]
       value: 
-      objectReference: {fileID: 105532, guid: 0e9007c18c88df645ae6a0f7a363159f, type: 2}
+      objectReference: {fileID: 105532, guid: 172f9341baecd4790988ff49fb7a25fb, type: 2}
     - target: {fileID: 0}
       propertyPath: availableCreeps.Array.data[3]
       value: 
-      objectReference: {fileID: 105532, guid: 9910d63825cbd1f48ab50201f620dcbf, type: 2}
+      objectReference: {fileID: 105532, guid: 1f54f185d67b74e6ba8a3880068f7aa6, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 111996}
