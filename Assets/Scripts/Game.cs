@@ -49,6 +49,16 @@ public class Game : SingletonMonoBehaviour<Game> {
 
 	void Start () {
 		_GameState = GameStateId.WaitingForPlayers;
+		if(Lobby.GameConfig == null)
+			return;
+		for (int i = 0; i < 4; i++) {
+			if(Lobby.GameConfig.PlayerTeamNumbers[i] != 0) {
+				AddPlayer( i );
+			}
+		}
+		this.RemainingCountdown = this.CountdownLength;
+		this.GameState = GameStateId.Countdown;
+
 	}
 
 	void Update () {

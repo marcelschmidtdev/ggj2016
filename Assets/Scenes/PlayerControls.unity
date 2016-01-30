@@ -267,6 +267,18 @@ Prefab:
       propertyPath: playerNumber
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11402890, guid: b95e37cfdaebb8d4eaacc63a0cbfc4c8, type: 2}
+      propertyPath: speedMultiplier
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11416184, guid: b95e37cfdaebb8d4eaacc63a0cbfc4c8, type: 2}
+      propertyPath: lerpSpeed
+      value: .100000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 11416184, guid: b95e37cfdaebb8d4eaacc63a0cbfc4c8, type: 2}
+      propertyPath: cameraOffset.y
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b95e37cfdaebb8d4eaacc63a0cbfc4c8, type: 2}
   m_IsPrefabParent: 0
