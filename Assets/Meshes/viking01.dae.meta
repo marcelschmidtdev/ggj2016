@@ -17,6 +17,8 @@ ModelImporter:
     100018: Helmet
     100020: Lamp
     100022: //RootNode
+    100024: Axe
+    100026: Shield
     400000: Boot_L
     400002: Boot_R
     400004: Camera
@@ -29,6 +31,8 @@ ModelImporter:
     400018: Helmet
     400020: Lamp
     400022: //RootNode
+    400024: Axe
+    400026: Shield
     2300000: Boot_L
     2300002: Boot_R
     2300004: Chest
@@ -36,6 +40,8 @@ ModelImporter:
     2300008: Hand_R
     2300010: Head
     2300012: Helmet
+    2300014: Axe
+    2300016: Shield
     3300000: Boot_L
     3300002: Boot_R
     3300004: Chest
@@ -43,6 +49,8 @@ ModelImporter:
     3300008: Hand_R
     3300010: Head
     3300012: Helmet
+    3300014: Axe
+    3300016: Shield
     4300000: Boot_R
     4300002: Chest
     4300004: Head
@@ -50,6 +58,8 @@ ModelImporter:
     4300008: Boot_L
     4300010: Hand_L
     4300012: Hand_R
+    4300014: Shield
+    4300016: Axe
     9500000: //RootNode
   materials:
     importMaterials: 1
