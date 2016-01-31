@@ -20,6 +20,27 @@ public class CreepsSpawner : MonoBehaviour
 	[SerializeField]
 	private int teamId;
 
+	[SerializeField]
+	private Material RedTowerMaterial; 
+
+	[SerializeField]
+	private Material BlueTowerMaterial; 
+
+	[SerializeField]
+	private ParticleSystem RedTowerActiveParticleSystem; 
+	[SerializeField]
+	private ParticleSystem BlueTowerActiveParticleSystem; 
+
+	[SerializeField]
+	private MeshRenderer SpawnerTower; 
+
+	[SerializeField]
+	private ParticleSystem BlueSpawnField; 
+
+	[SerializeField]
+	private ParticleSystem RedSpawnField; 
+
+
 	private bool gameStarted = false;
 	private float spawnTimer = 0;
 
@@ -28,10 +49,27 @@ public class CreepsSpawner : MonoBehaviour
 		Game.Instance.EventGameStateChanged += HandleGameStateChange;
 	}
 
+	void OnDisable(){
+		this.RedTowerActiveParticleSystem.Stop(); 
+		this.BlueTowerActiveParticleSystem.Stop();
+		this.SpawnerTower.material.color = Color.white; 
+	}
+	
 	void HandleGameStateChange(Game.GameStateId newState) {
 		if (newState == Game.GameStateId.Playing) {
 			gameStarted = true;
 			teamId = Lobby.GameConfig.PlayerTeamNumbers[playerId];
+			if ( teamId == 0 ) {
+				this.SpawnerTower.material = this.RedTowerMaterial; 
+				this.RedTowerActiveParticleSystem.Play(); 
+				this.RedSpawnField.Play(); 
+
+			} else if(teamId == 1 ) {
+				this.SpawnerTower.material = this.BlueTowerMaterial; 
+				this.BlueTowerActiveParticleSystem.Play(); 
+				this.BlueSpawnField.Play(); 
+			}
+
 		}
 		else
 			gameStarted = false;
