@@ -34636,29 +34636,13 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 22494666, guid: 52cf9634af41f8d45afbad5b704ec9c5, type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 22442910, guid: 52cf9634af41f8d45afbad5b704ec9c5, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22494666, guid: 52cf9634af41f8d45afbad5b704ec9c5, type: 2}
-      propertyPath: m_AnchorMax.x
+      propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11403900, guid: 52cf9634af41f8d45afbad5b704ec9c5, type: 2}
-      propertyPath: m_Value
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22443648, guid: 52cf9634af41f8d45afbad5b704ec9c5, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 22443648, guid: 52cf9634af41f8d45afbad5b704ec9c5, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 3.57627869e-07
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 52cf9634af41f8d45afbad5b704ec9c5, type: 2}
