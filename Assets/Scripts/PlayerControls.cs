@@ -71,6 +71,14 @@ public class PlayerControls : MonoBehaviour {
 				this.ExplosionCooldownIndicator.enableEmission = true;
 			}
 		}
+
+		if(transform.position.y < -5.0f) {
+			var player = Game.Instance.GetPlayer( (int)this.playerNumber );
+			var spawner = Map.Instance.PlayerSpawners[(int)this.playerNumber];
+			player.Position = spawner.Position;
+			player.Rotation = spawner.Rotation;
+			body.velocity = Vector3.zero;
+		}
 	}
 	
 	void FixedUpdate () {
