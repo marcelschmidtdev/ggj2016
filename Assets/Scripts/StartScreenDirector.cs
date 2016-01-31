@@ -17,6 +17,8 @@ public class StartScreenDirector : MonoBehaviour {
 	public float AudioOffset; 
 	public float AudioFadeoff; 
 	public float AudioFadeIn; 
+	public float TimeTillLogoAnimation; 
+	public Animator LogoAnimator; 
 
 	void Start () {
 		foreach( var actor in this.Actors ) {
@@ -42,6 +44,10 @@ public class StartScreenDirector : MonoBehaviour {
 				if ( this.TimeTillMinionDie <= 0) {
 					foreach( var actor in this.Actors ) {
 						actor.SetTrigger("Kill"); 
+					}
+					this.TimeTillLogoAnimation -= Time.deltaTime; 
+					if (this.TimeTillLogoAnimation <= 0){
+						this.LogoAnimator.SetTrigger("Logo"); 
 					}
 				}
 				this.TimeTillEnd -= Time.deltaTime; 
