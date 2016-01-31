@@ -410,7 +410,7 @@ MonoBehaviour:
   explosionCooldown: 6
   boomParticle: {fileID: 19829688}
   direction: 0
-  ExplosionCooldownIndicator: {fileID: 0}
+  ExplosionCooldownIndicator: {fileID: 19843428}
 --- !u!114 &11454630
 MonoBehaviour:
   m_ObjectHideFlags: 1
