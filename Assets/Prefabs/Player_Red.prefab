@@ -161,7 +161,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 126876}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 31.1671143, y: 15.2054358, z: 37.0424271}
+  m_LocalPosition: {x: 34.0852013, y: 12.3879089, z: 34.8745804}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 433544}
@@ -411,7 +411,7 @@ MonoBehaviour:
   explosionCooldown: 6
   boomParticle: {fileID: 19829688}
   direction: 0
-  ExplosionCooldownIndicator: {fileID: 0}
+  ExplosionCooldownIndicator: {fileID: 19829688}
 --- !u!114 &11454630
 MonoBehaviour:
   m_ObjectHideFlags: 1
