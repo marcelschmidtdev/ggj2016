@@ -399,6 +399,7 @@ MonoBehaviour:
   rotationMultiplier: 200
   boostBounce: 50000
   turnMultiplier: .100000001
+  minimumSpeedForScreenShake: 3
   rotatingSphere: {fileID: 477642}
   screenShaker: {fileID: 129476}
   sideFriction: .0299999993
@@ -4590,6 +4591,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: shakeMultiplier
       value: .100000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: minimumSpeedForScreenShake
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
