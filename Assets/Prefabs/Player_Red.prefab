@@ -87,7 +87,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &146454
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -150,7 +150,6 @@ Transform:
   m_Children:
   - {fileID: 433544}
   - {fileID: 402318}
-  - {fileID: 432446}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &402318
@@ -172,12 +171,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 146454}
-  m_LocalRotation: {x: -.707106829, y: 0, z: 0, w: .707106829}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 400080}
-  m_RootOrder: 2
+  m_Father: {fileID: 477642}
+  m_RootOrder: 1
 --- !u!4 &433544
 Transform:
   m_ObjectHideFlags: 1
@@ -239,6 +238,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 459770}
+  - {fileID: 432446}
   m_Father: {fileID: 402318}
   m_RootOrder: 0
 --- !u!20 &2067494
@@ -269,7 +269,6 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
-  m_TargetEye: 3
   m_HDR: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -377,11 +376,12 @@ MonoBehaviour:
   navMeshObstacle: {fileID: 20814422}
   maxVelocityToCarveNavMesh: 3
   explosionRadius: 8
-  upwardsModifier: 6
-  explosionForce: 3.5
-  explosionCooldown: 3
+  upwardsModifier: 5
+  explosionForce: 25
+  explosionCooldown: 6
   boomParticle: {fileID: 19829688}
   direction: 0
+  ExplosionCooldownIndicator: {fileID: 19843428}
 --- !u!114 &11456348
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1406,7 +1406,7 @@ ParticleSystem:
   randomSeed: 0
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   moveWithTransform: 1
   InitialModule:
     enabled: 1
@@ -4545,11 +4545,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: upwardsModifier
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: explosionForce
-      value: 3.5
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: explosionCooldown
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

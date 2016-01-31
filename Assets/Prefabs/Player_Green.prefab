@@ -240,7 +240,6 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
-  m_TargetEye: 3
   m_HDR: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -331,9 +330,9 @@ MonoBehaviour:
   navMeshObstacle: {fileID: 20881924}
   maxVelocityToCarveNavMesh: 3
   explosionRadius: 8
-  upwardsModifier: 6
-  explosionForce: 3.5
-  explosionCooldown: 3
+  upwardsModifier: 5
+  explosionForce: 25
+  explosionCooldown: 6
   boomParticle: {fileID: 0}
   direction: 0
 --- !u!114 &11416184
@@ -3558,11 +3557,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: upwardsModifier
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: explosionForce
-      value: 3.5
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: explosionCooldown
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
