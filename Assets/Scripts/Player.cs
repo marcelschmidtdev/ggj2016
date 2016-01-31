@@ -7,12 +7,10 @@ public class Player : MonoBehaviour {
 
 	public Camera Camera;
 	public PlayerControls PlayerControls;
-	public PlayerView PlayerView;
 	public bool PlayerReady = false;
 	public int Score;
 	public int OwnMinionsKilled;
-	public int EnemyMinionsKilled;
-	public ParticleSystem BoomParticle; 
+	public int EnemyMinionsKilled; 
 
 	public int Index
 	{
@@ -28,11 +26,11 @@ public class Player : MonoBehaviour {
 	{
 		get
 		{
-			return this.PlayerView.transform.position;
+			return this.PlayerControls.transform.position;
 		}
 		set
 		{
-			this.PlayerView.transform.position = value;
+			this.PlayerControls.transform.position = value;
 		}
 	}
 
@@ -40,12 +38,12 @@ public class Player : MonoBehaviour {
 	{
 		get
 		{
-			return this.PlayerView.transform.rotation;
+			return this.PlayerControls.transform.rotation;
 		}
 		set
 		{
-			this.PlayerView.transform.rotation = value;
-			this.PlayerView.GetComponent<PlayerControls>().direction = value.eulerAngles.y;
+			this.PlayerControls.transform.rotation = value;
+			this.PlayerControls.GetComponent<PlayerControls>().direction = value.eulerAngles.y;
 		}
 	}
 }
