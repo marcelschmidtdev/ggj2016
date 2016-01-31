@@ -1450,6 +1450,7 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
+  m_TargetEye: 3
   m_HDR: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -4132,7 +4133,7 @@ MonoBehaviour:
   TimeTillEnd: 15.6999998
   TimeTillMinionDie: 1
   AudioOffset: 18
-  AudioFadeoff: .25
+  AudioFadeoff: .300000012
   AudioFadeIn: .25
   TimeTillLogoAnimation: 0
   LogoAnimator: {fileID: 1103677599}

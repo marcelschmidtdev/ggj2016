@@ -22,6 +22,7 @@ public class Game : SingletonMonoBehaviour<Game> {
 	public static GameResults Results;
 	public float CountdownLength = 4.0f;
 	public int TargetScore = 100;
+	public AudioSource audioSource;
 
 	int[] TeamScores = new int[2];
 
@@ -121,6 +122,7 @@ public class Game : SingletonMonoBehaviour<Game> {
 		}
 
 		EventPlayerKilledMinion( playerId, ownerId );
+		audioSource.Play();
 	}
 
 	void Start () {
