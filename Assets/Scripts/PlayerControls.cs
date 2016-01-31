@@ -12,7 +12,6 @@ public class PlayerControls : MonoBehaviour {
     public float rotationMultiplier = 100;
     public float boostBounce = 100;
     public float turnMultiplier = 10;
-    public float secondsBetweenExplodes = 5;
     public Transform sphereZ;
     public Transform sphereX;
 
@@ -20,6 +19,9 @@ public class PlayerControls : MonoBehaviour {
     private NavMeshObstacle navMeshObstacle;
     [SerializeField]
     private float maxVelocityToCarveNavMesh;
+
+	//[SerializeField]
+	private float explosionRadius = 15f;
 
     private Rigidbody body;
     private Vector3 groundFrictionVector;
@@ -29,7 +31,6 @@ public class PlayerControls : MonoBehaviour {
     private SphereCollider sphereCollider;
     private Vector3 forwardsVector;
     private float chargingTime;
-    private float secondsSinceExplode;
 
     private InputMapper input;
 	private Vector2 movement;
@@ -39,7 +40,6 @@ public class PlayerControls : MonoBehaviour {
         forwardsVector = Vector3.forward;
         sphereCollider = GetComponent<SphereCollider>();
         direction = 0;
-        secondsSinceExplode = -secondsBetweenExplodes;
         input = PlayerInput.GetInput((int)playerNumber);
     }
 
@@ -56,14 +56,12 @@ public class PlayerControls : MonoBehaviour {
         bool wasCharging = isCharging;
         isCharging = input.GetConfirm();
 
-        secondsSinceExplode += Time.deltaTime;
-
         if (Game.Instance.GameState != Game.GameStateId.Playing || !isOnGround())
         {
             // do nothing
         } else if (input.GetCancel())
         {
-            explode();
+            Explode();
         } else if (!wasCharging && isCharging)
         {
             chargingTime = Time.deltaTime;
@@ -100,16 +98,28 @@ public class PlayerControls : MonoBehaviour {
 		
 	}
 
-    private void explode()
+    private void Explode()
     {
-        if (secondsSinceExplode < secondsBetweenExplodes)
-        {
-            return;
-        }
-        secondsSinceExplode = 0;
+		Debug.LogError("BOOOMM!");
+		for (int i = 0; i < 4; i++) {
+			if(i == (int) playerNumber)
+				continue;
 
+			var player = Game.Instance.GetPlayer(i);
+			if(player == null)
+				continue;
 
+			if(Vector3.Distance(this.transform.position, player.PlayerControls.transform.position) <= explosionRadius)
+			{
+				player.PlayerControls.AddExplosionForce(this.transform.position, explosionRadius);
+			}
+		}
     }
+
+	public void AddExplosionForce(Vector3 explosionCenter, float explosionRadius) 
+	{
+		body.AddExplosionForce(15f, explosionCenter, explosionRadius, 2f, ForceMode.VelocityChange);
+	}
 
     private bool isOnGround()
     {
