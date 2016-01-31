@@ -98,7 +98,9 @@ public class IngameUI : MonoBehaviour {
 			Game.Instance.EventPlayerScored += Instance_EventPlayerScored;
 			Game.Instance.EventPlayerKilledMinion += Instance_EventPlayerKilledMinion;
 			for(int i = 0; i < 4; i++) {
-				this.PlayerUIs[i].ShowCombo( 0 );
+				if(this.PlayerUIs[i] != null) {
+					this.PlayerUIs[i].ShowCombo( 0 );
+				}
 			}
 		}
 		else {

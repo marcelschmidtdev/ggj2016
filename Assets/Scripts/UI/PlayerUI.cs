@@ -27,8 +27,8 @@ public class PlayerUI : MonoBehaviour {
 			this.ComboResultAnimator.SetTrigger( "ShowResult" );
 		}
 		this.ComboLabel.text = comboCount > 1 ? comboCount.ToString()+"x" : string.Empty;
-		this.ComboResultAnimator.SetInteger( "ComboCount", comboCount );
-		this.ComboResultAnimator.SetTrigger( "UpdateComboCount" );
+		this.ComboAnimator.SetInteger( "ComboCount", comboCount );
+		this.ComboAnimator.SetTrigger( "UpdateComboCount" );
 		this.lastComboCount = comboCount;
 	}
 }
