@@ -39,10 +39,13 @@ public class CreepsSpawner : MonoBehaviour
 
 	[SerializeField]
 	private ParticleSystem RedSpawnField; 
-
-
+	
 	private bool gameStarted = false;
 	private float spawnTimer = 0;
+
+	[SerializeField]
+	private float speedIncreasePerWave = 0.005f;
+	private float lastSpeed = 1f;
 
 	void Awake()
 	{
@@ -59,7 +62,7 @@ public class CreepsSpawner : MonoBehaviour
 	}
 	
 	void HandleGameStateChange(Game.GameStateId newState) {
-		if (newState == Game.GameStateId.Playing) {
+		if (newState == Game.GameStateId.Countdown || newState == Game.GameStateId.Playing) {
 			gameStarted = true;
 			teamId = Lobby.GameConfig.PlayerTeamNumbers[playerId];
 			if ( teamId == 0 ) {
@@ -104,7 +107,10 @@ public class CreepsSpawner : MonoBehaviour
 			var creepsAI = instance.GetComponent<CreepsAI>();
 			creepsAI.targetPosition = creepTarget.position;
 			creepsAI.playerId = playerId;
+
+			creepsAI.speed = lastSpeed + speedIncreasePerWave;
 		}
+		lastSpeed += speedIncreasePerWave;
 	}
 
 	void OnDestroy(){

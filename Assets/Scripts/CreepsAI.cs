@@ -12,15 +12,21 @@ public class CreepsAI : MonoBehaviour
 	private float minDistToTarget;
 	[SerializeField]
 	private float timeUntilDespawn = 3f;
+
+	public float ascendingModifier = 4; 
 	public Vector3 targetPosition {get; set;}
 	public int playerId {get; set;}
 	public ParticleSystem HolyDespawn; 
-	public bool isDead
-	{
-		get; private set;
+	public bool isDead {get; private set;}
+	public float speed {
+		get { return navMeshAgent.speed; } 
+		set {
+			navMeshAgent.speed = value;
+			animator.speed = value;
+		}
 	}
-	private bool reachedTarget = false; 
-	public float ascendingModifier = 4;
+
+	private bool reachedTarget = false;
 
 	//Since we are pooling these objects we have to reset all values here
 	void OnEnable() 
@@ -39,8 +45,6 @@ public class CreepsAI : MonoBehaviour
 		this.HolyDespawn.Stop(); 
 		this.HolyDespawn.Clear(); 
 		this.HolyDespawn.time = 0; 
-
-
 	}
 
 	void OnDisable(){

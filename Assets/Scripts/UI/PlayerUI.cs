@@ -22,7 +22,7 @@ public class PlayerUI : MonoBehaviour {
 
 	public void ShowCombo(int comboCount) {
 		if(comboCount == 0 && this.lastComboCount > 0) {
-			this.ComboResultLabel.text = lastComboCount.ToString() + "x";
+			this.ComboResultLabel.text = lastComboCount > 1 ? "COMBO "+lastComboCount.ToString()+"x" : string.Empty;
 			this.ComboResultAnimator.SetInteger( "ComboCount", lastComboCount );
 			this.ComboResultAnimator.SetTrigger( "ShowResult" );
 		}
