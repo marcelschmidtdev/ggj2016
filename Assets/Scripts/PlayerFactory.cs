@@ -27,13 +27,13 @@ public class PlayerFactory : SingletonMonoBehaviour<PlayerFactory> {
 	}
 
 
-	public Player PlayerPrefab;
+	public Player[] PlayerPrefab;
 
 	Player[] Players = new Player[4];
 
 	public Player CreatePlayerInstance(int index, Vector3 position, Quaternion rotation) {
 		NumberOfPlayers++;
-		var newPlayer = GameObject.Instantiate<Player>( this.PlayerPrefab );
+		var newPlayer = GameObject.Instantiate<Player>( this.PlayerPrefab[index] );
 		this.Players[index] = newPlayer;
 		newPlayer.InitPlayerIndex( index );
 		UpdateCameraViewports();

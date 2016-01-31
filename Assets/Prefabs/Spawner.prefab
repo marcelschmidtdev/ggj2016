@@ -199,10 +199,9 @@ MonoBehaviour:
   availableCreeps:
   - {fileID: 105532, guid: e8a19d42a89d84551bde64ebc78aa6d8, type: 2}
   - {fileID: 105532, guid: 5beedbb2e880a4cb8bf7dab44b5ee9b9, type: 2}
-  - {fileID: 105532, guid: b9441f36924b84e5582f9231872866ce, type: 2}
-  - {fileID: 105532, guid: 79801240b4956463f9d7a8f3769c808f, type: 2}
   creepTarget: {fileID: 0}
   playerId: 0
+  teamId: 0
 --- !u!198 &19807638
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -4363,7 +4362,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: availableCreeps.Array.size
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: availableCreeps.Array.data[1]
@@ -4372,11 +4371,11 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: availableCreeps.Array.data[2]
       value: 
-      objectReference: {fileID: 105532, guid: a8bcfd8fe0b9f484eb84435c2c32eb1a, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: availableCreeps.Array.data[3]
       value: 
-      objectReference: {fileID: 105532, guid: 3f9e0155a446541b5ba2b27ff882167c, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: creepTarget
       value: 
