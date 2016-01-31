@@ -114,7 +114,6 @@ GameObject:
   - 54: {fileID: 5409152}
   - 114: {fileID: 11435112}
   - 208: {fileID: 20814422}
-  - 114: {fileID: 11430570}
   m_Layer: 0
   m_Name: PlayerView
   m_TagString: Untagged
@@ -270,6 +269,7 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
+  m_TargetEye: 3
   m_HDR: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -338,17 +338,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11430570
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 148216}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f088de60af72bd46a49699dcfd2ac23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11432794
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -362,12 +351,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Camera: {fileID: 2067494}
   PlayerControls: {fileID: 11435112}
-  PlayerView: {fileID: 11430570}
   PlayerReady: 0
   Score: 0
   OwnMinionsKilled: 0
   EnemyMinionsKilled: 0
-  BoomParticle: {fileID: 19829688}
 --- !u!114 &11435112
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -392,6 +379,8 @@ MonoBehaviour:
   explosionRadius: 8
   upwardsModifier: 6
   explosionForce: 3.5
+  explosionCooldown: 3
+  boomParticle: {fileID: 19829688}
   direction: 0
 --- !u!114 &11456348
 MonoBehaviour:

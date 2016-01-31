@@ -13,6 +13,10 @@ public class IngameUI : MonoBehaviour {
 
 	PlayerUI[] PlayerUIs = new PlayerUI[4];
 
+	int[] comboCountPerPlayer = new int[4];
+	float[] comboDelayPerPlayer = new float[4];
+	public float comboBreakerTime = 0.2f;
+
 	void Start () {
 		Game.Instance.EventPlayerJoined += Instance_EventPlayerJoined;
 		Game.Instance.EventGameStateChanged += HandleGameStateChange;
@@ -57,6 +61,19 @@ public class IngameUI : MonoBehaviour {
 		}
 	}
 
+	void Update () {
+		for(int i = 0; i < 4; i++) {
+			if(this.comboCountPerPlayer[i] > 0) {
+				this.comboDelayPerPlayer[i] += Time.deltaTime;
+				if(this.comboDelayPerPlayer[i] > this.comboBreakerTime) {
+					this.comboCountPerPlayer[i] = 0;
+					this.comboDelayPerPlayer[i] = 0.0f;
+					this.PlayerUIs[i].ShowCombo( 0 );
+				}
+			}
+		}
+	}
+
 	private void HandleGameStateChange(Game.GameStateId newState) {
 		this.GameStateAnimator.SetTrigger( newState.ToString() );
 		foreach(var playerUI in this.PlayerUIs) {
@@ -79,9 +96,25 @@ public class IngameUI : MonoBehaviour {
 
 		if (newState == Game.GameStateId.Playing) {
 			Game.Instance.EventPlayerScored += Instance_EventPlayerScored;
+			Game.Instance.EventPlayerKilledMinion += Instance_EventPlayerKilledMinion;
+			for(int i = 0; i < 4; i++) {
+				if(this.PlayerUIs[i] != null) {
+					this.PlayerUIs[i].ShowCombo( 0 );
+				}
+			}
 		}
 		else {
 			Game.Instance.EventPlayerScored -= Instance_EventPlayerScored;
+			Game.Instance.EventPlayerKilledMinion -= Instance_EventPlayerKilledMinion;
+		}
+	}
+
+	private void Instance_EventPlayerKilledMinion (int playerId, int minionPlayerId) {
+		bool enemyMinion = Lobby.GameConfig.PlayerTeamNumbers[playerId] != Lobby.GameConfig.PlayerTeamNumbers[minionPlayerId];
+		if (enemyMinion) {
+			this.comboCountPerPlayer[playerId]++;
+			this.comboDelayPerPlayer[playerId] = 0.0f;
+			this.PlayerUIs[playerId].ShowCombo( this.comboCountPerPlayer[playerId] );
 		}
 	}
 

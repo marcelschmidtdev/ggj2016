@@ -15,7 +15,10 @@ public class CreepsAI : MonoBehaviour
 	public Vector3 targetPosition {get; set;}
 	public int playerId {get; set;}
 	public ParticleSystem HolyDespawn; 
-	private bool isDead = false;
+	public bool isDead
+	{
+		get; private set;
+	}
 	private bool reachedTarget = false; 
 	public float ascendingModifier = 4; 
 
