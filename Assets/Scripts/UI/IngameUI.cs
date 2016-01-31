@@ -20,7 +20,7 @@ public class IngameUI : MonoBehaviour {
 	}
 
 	void OnDestroy () {
-		if (Game.Instance == null)
+		if (!Game.DoesInstanceExist())
 			return;
 		Game.Instance.EventPlayerJoined -= Instance_EventPlayerJoined;
 		Game.Instance.EventGameStateChanged -= HandleGameStateChange;

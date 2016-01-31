@@ -6,6 +6,20 @@ using System;
 
 public class Game : SingletonMonoBehaviour<Game> {
 
+	public class GameResults
+	{
+		public class TeamResults
+		{
+			public bool Winner;
+			public int KilledMinions;
+			public int KilledOwnMinions;
+			public int SavedMinions;
+		}
+
+		public TeamResults[] Results;
+	}
+
+	public static GameResults Results;
 	public float CountdownLength = 4.0f;
 	public int TargetScore = 100;
 
@@ -49,7 +63,7 @@ public class Game : SingletonMonoBehaviour<Game> {
 	public event Action<Player, bool> EventPlayerReadyChanged = (player, isReady) => { };
 	public event Action<int> EventTeamScored = (teamId) => { };
 	public event Action<int> EventPlayerScored = (playerId) => { };
-	public Action<int, int> EventPlayerKilledMinion = (playerId, ownerId) => { };
+	public event Action<int, int> EventPlayerKilledMinion = (playerId, ownerId) => { };
 
 	public int GetTeamScore(int teamIndex) {
 		return this.TeamScores[teamIndex];
@@ -62,17 +76,41 @@ public class Game : SingletonMonoBehaviour<Game> {
 		EventTeamScored( teamIndex );
 		EventPlayerScored( playerId );
 		if(this.TeamScores[teamIndex] >= this.TargetScore) {
+			SaveGameResults();
 			this.GameState = GameStateId.Ending;
 			Invoke( "GoToMainmenu", 3.0f );
 		}
 	}
 
+	void SaveGameResults () {
+		Results = new GameResults();
+		Results.Results = new GameResults.TeamResults[2];
+		int maxScore = 0;
+		for(int i = 0; i < 2; i++) {
+			maxScore = Mathf.Max( maxScore, TeamScores[i] );
+		}
+		for(int i = 0; i < 2; i++) {
+			var teamResult = new GameResults.TeamResults();
+			for(int j = 0; j < 4; j++) {
+				if(this.Players[j] != null) {
+					var team = Lobby.GameConfig.PlayerTeamNumbers[j];
+					if(team == i) {
+						teamResult.KilledMinions += this.Players[j].EnemyMinionsKilled;
+						teamResult.KilledOwnMinions += this.Players[j].OwnMinionsKilled;
+					}
+				}
+			}
+			teamResult.SavedMinions = TeamScores[i];
+			teamResult.Winner = teamResult.SavedMinions == maxScore;
+			Results.Results[i] = teamResult;
+		}
+	}
+
 	void GoToMainmenu () {
-		Application.LoadLevel( "MainMenu" );
+		Application.LoadLevel( "ResultScreen" );
 	}
 
 	public void NotifyPlayerKill(int playerId, int ownerId) {
-		EventPlayerKilledMinion( playerId, ownerId );
 		int playerTeam = Lobby.GameConfig.PlayerTeamNumbers[playerId];
 		int minionTeam = Lobby.GameConfig.PlayerTeamNumbers[ownerId];
 
@@ -81,6 +119,8 @@ public class Game : SingletonMonoBehaviour<Game> {
 		} else {
 			this.Players[playerId].EnemyMinionsKilled++;
 		}
+
+		EventPlayerKilledMinion( playerId, ownerId );
 	}
 
 	void Start () {
