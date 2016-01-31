@@ -12,13 +12,14 @@ public class PlayerControls : MonoBehaviour {
     public float rotationMultiplier = 100;
     public float boostBounce = 100;
     public float turnMultiplier = 10;
+    public float secondsBetweenExplodes = 5;
     public Transform sphereZ;
     public Transform sphereX;
 
-	[SerializeField]
-	private NavMeshObstacle navMeshObstacle;
-	[SerializeField]
-	private float maxVelocityToCarveNavMesh;
+    [SerializeField]
+    private NavMeshObstacle navMeshObstacle;
+    [SerializeField]
+    private float maxVelocityToCarveNavMesh;
 
     private Rigidbody body;
     private Vector3 groundFrictionVector;
@@ -28,6 +29,7 @@ public class PlayerControls : MonoBehaviour {
     private SphereCollider sphereCollider;
     private Vector3 forwardsVector;
     private float chargingTime;
+    private float secondsSinceExplode;
 
     private InputMapper input;
 	private Vector2 movement;
@@ -37,6 +39,7 @@ public class PlayerControls : MonoBehaviour {
         forwardsVector = Vector3.forward;
         sphereCollider = GetComponent<SphereCollider>();
         direction = 0;
+        secondsSinceExplode = -secondsBetweenExplodes;
         input = PlayerInput.GetInput((int)playerNumber);
     }
 
@@ -53,9 +56,14 @@ public class PlayerControls : MonoBehaviour {
         bool wasCharging = isCharging;
         isCharging = input.GetConfirm();
 
+        secondsSinceExplode += Time.deltaTime;
+
         if (Game.Instance.GameState != Game.GameStateId.Playing || !isOnGround())
         {
             // do nothing
+        } else if (input.GetCancel())
+        {
+            explode();
         } else if (!wasCharging && isCharging)
         {
             chargingTime = Time.deltaTime;
@@ -91,6 +99,17 @@ public class PlayerControls : MonoBehaviour {
 		}
 		
 	}
+
+    private void explode()
+    {
+        if (secondsSinceExplode < secondsBetweenExplodes)
+        {
+            return;
+        }
+        secondsSinceExplode = 0;
+
+
+    }
 
     private bool isOnGround()
     {
