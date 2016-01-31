@@ -85,6 +85,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &141578
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 496452}
+  - 114: {fileID: 11426332}
+  m_Layer: 0
+  m_Name: ScreenShaker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &148216
 GameObject:
   m_ObjectHideFlags: 0
@@ -129,7 +145,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 126876}
   m_LocalRotation: {x: 0, y: -.999890566, z: 0, w: .014794318}
-  m_LocalPosition: {x: -10.6395035, y: 25.2728615, z: 63.9514046}
+  m_LocalPosition: {x: 35.9803238, y: 13.7802544, z: 37.6889687}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 433544}
@@ -147,6 +163,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 477642}
+  - {fileID: 496452}
   m_Father: {fileID: 400080}
   m_RootOrder: 1
 --- !u!4 &433544
@@ -212,6 +229,18 @@ Transform:
   - {fileID: 459770}
   m_Father: {fileID: 402318}
   m_RootOrder: 0
+--- !u!4 &496452
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 141578}
+  m_LocalRotation: {x: -6.52258336e-07, y: .999890566, z: -.000153211702, w: .014794318}
+  m_LocalPosition: {x: -2.49681473, y: -1.11217213, z: 1.50831127}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 402318}
+  m_RootOrder: 1
 --- !u!20 &2067494
 Camera:
   m_ObjectHideFlags: 1
@@ -308,6 +337,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11426332
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 141578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d43a34277e10fd24bbb5b7f54bf47191, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damping: .899999976
+  speed: 10
 --- !u!114 &11430570
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -353,8 +395,8 @@ MonoBehaviour:
   rotationMultiplier: 200
   boostBounce: 50000
   turnMultiplier: .100000001
-  sphereZ: {fileID: 477642}
-  sphereX: {fileID: 0}
+  rotatingSphere: {fileID: 477642}
+  screenShaker: {fileID: 141578}
   sideFriction: .0299999993
   navMeshObstacle: {fileID: 20814422}
   maxVelocityToCarveNavMesh: 3
@@ -379,6 +421,7 @@ MonoBehaviour:
   lookAtOffset: {x: 0, y: 5, z: 0}
   followDistance: 5
   lerpSpeed: .100000001
+  shakeMultiplier: 10
 --- !u!135 &13545088
 SphereCollider:
   m_ObjectHideFlags: 1
