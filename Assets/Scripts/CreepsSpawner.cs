@@ -109,7 +109,6 @@ public class CreepsSpawner : MonoBehaviour
 			creepsAI.playerId = playerId;
 
 			creepsAI.speed = lastSpeed + speedIncreasePerWave;
-			Debug.Log("Speed: " + creepsAI.speed);
 		}
 		lastSpeed += speedIncreasePerWave;
 	}
