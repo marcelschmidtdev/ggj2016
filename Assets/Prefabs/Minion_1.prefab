@@ -727,6 +727,7 @@ MonoBehaviour:
   minDistToTarget: 1.10000002
   timeUntilDespawn: 3
   HolyDespawn: {fileID: 19872792}
+  ascendingModifier: 10
 --- !u!136 &13697676
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -1881,6 +1882,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_ObstacleAvoidanceType
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: ascendingModifier
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
