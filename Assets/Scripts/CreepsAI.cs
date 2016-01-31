@@ -17,10 +17,12 @@ public class CreepsAI : MonoBehaviour
 	public ParticleSystem HolyDespawn; 
 	private bool isDead = false;
 	private bool reachedTarget = false; 
+	public float ascendingModifier = 4; 
 
 	//Since we are pooling these objects we have to reset all values here
 	void OnEnable() 
 	{
+		StopAllCoroutines(); 
 		isDead = false;
 		this.transform.localScale = Vector3.one;
 		this.reachedTarget = false; 
@@ -46,14 +48,16 @@ public class CreepsAI : MonoBehaviour
 		if(!isDead && Vector3.Distance(this.transform.position, targetPosition) <= minDistToTarget) { 
 			this.isDead = true; 
 			Game.Instance.NotifyPlayerScrored(playerId);
+			StopAllCoroutines(); 
 			StartCoroutine(Co_Despawn()); 
 
 		}
 
-		if ( this.reachedTarget ) {
+		/*if ( this.reachedTarget ) {
 			var pos = this.transform.position; 
-			pos.y += 1*Time.deltaTime ; 
-		}
+			pos.y += this.ascendingModifier*Time.deltaTime ; 
+			this.transform.position = pos; 
+		}*/
 
 	}
 
@@ -68,7 +72,6 @@ public class CreepsAI : MonoBehaviour
 		this.HolyDespawn.time = 0; 
 		this.HolyDespawn.Play(); 
 		this.reachedTarget = true; 
-		this.navMeshAgent.enabled = false; 
 		yield return new WaitForSeconds( 2) ; 
 		SimplePool.Despawn(this.gameObject);
 	}
