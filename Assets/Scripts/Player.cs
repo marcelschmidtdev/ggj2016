@@ -44,6 +44,7 @@ public class Player : MonoBehaviour {
 		set
 		{
 			this.PlayerView.transform.rotation = value;
+			this.PlayerView.GetComponent<PlayerControls>().direction = value.eulerAngles.y;
 		}
 	}
 }
