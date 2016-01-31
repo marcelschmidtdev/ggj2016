@@ -53,11 +53,11 @@ public class CreepsAI : MonoBehaviour
 
 		}
 
-		/*if ( this.reachedTarget ) {
+		if ( this.reachedTarget ) {
 			var pos = this.transform.position; 
 			pos.y += this.ascendingModifier*Time.deltaTime ; 
 			this.transform.position = pos; 
-		}*/
+		}
 
 	}
 
@@ -71,7 +71,8 @@ public class CreepsAI : MonoBehaviour
 		this.HolyDespawn.Clear(); 
 		this.HolyDespawn.time = 0; 
 		this.HolyDespawn.Play(); 
-		this.reachedTarget = true; 
+		this.reachedTarget = true;
+		this.navMeshAgent.enabled = false; 
 		yield return new WaitForSeconds( 2) ; 
 		SimplePool.Despawn(this.gameObject);
 	}
