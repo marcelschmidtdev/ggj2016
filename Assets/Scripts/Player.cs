@@ -12,6 +12,7 @@ public class Player : MonoBehaviour {
 	public int Score;
 	public int OwnMinionsKilled;
 	public int EnemyMinionsKilled;
+	public ParticleSystem BoomParticle; 
 
 	public int Index
 	{
