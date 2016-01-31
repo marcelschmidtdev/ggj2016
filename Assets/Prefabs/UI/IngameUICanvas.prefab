@@ -736,6 +736,7 @@ MonoBehaviour:
   - {fileID: 11488818}
   - {fileID: 11403900}
   PlayerUIPrefab: {fileID: 11457700, guid: 3822697a26dd3b841aba11280b7e6fc6, type: 2}
+  comboBreakerTime: .200000003
 --- !u!114 &11486714
 MonoBehaviour:
   m_ObjectHideFlags: 1
