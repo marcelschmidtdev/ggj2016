@@ -12,8 +12,8 @@ public class PlayerControls : MonoBehaviour {
     public float rotationMultiplier = 100;
     public float boostBounce = 100;
     public float turnMultiplier = 10;
-    public Transform sphereZ;
-    public Transform sphereX;
+    public Transform rotatingSphere; // for visual rotation effect we spin this
+    public GameObject screenShaker;
 
 	public float sideFriction;
 
@@ -36,6 +36,7 @@ public class PlayerControls : MonoBehaviour {
     private Rigidbody body;
     private Vector3 groundFrictionVector;
     private bool isCharging;
+    private bool isOnGround;
     private Vector3 chargeDirection;
     public float direction;
     private SphereCollider sphereCollider;
@@ -45,6 +46,7 @@ public class PlayerControls : MonoBehaviour {
     private InputMapper input;
 	private Vector2 movement;
 
+    private float previousSpeed = 0;
 	public ParticleSystem ExplosionCooldownIndicator;
 
 	private float explosionCooldownTimer = 0;
@@ -72,18 +74,14 @@ public class PlayerControls : MonoBehaviour {
         // people can turn at any time.
         movement = input.getMovement();
         direction += movement.x * Time.deltaTime * rotationMultiplier;
-
-		//var forwardWeight = Vector3.Dot( body.velocity, body.transform.forward.normalized );
-		//body.AddForce( -forwardWeight * body.transform.forward.normalized * testVarA );
-
 		body.rotation = Quaternion.AngleAxis(direction, Vector3.up);
 
-		//body.AddForce( forwardWeight * body.transform.forward.normalized * testVarA );
+        shakeScreen();
 
 		bool wasCharging = isCharging;
         isCharging = input.GetConfirm();
 
-        if (Game.Instance.GameState != Game.GameStateId.Playing || !isOnGround())
+        if (Game.Instance.GameState != Game.GameStateId.Playing || !getOnGround())
         {
             // do nothing
         } else if (input.GetCancel() && explosionCooldownTimer <= 0)
@@ -105,7 +103,7 @@ public class PlayerControls : MonoBehaviour {
             body.AddForce(body.transform.right * movement.x * body.velocity.magnitude * turnMultiplier * speedMultiplier);
             body.AddForce(body.transform.forward * movement.y * speedMultiplier);
         }
-		if (isOnGround()) {
+		if (getOnGround()) {
 			// remove all sidewards velocity
 			var rightWeight = Vector3.Dot( body.velocity, body.transform.right.normalized );
 			body.velocity -= sideFriction * rightWeight * body.transform.right.normalized;
@@ -116,7 +114,7 @@ public class PlayerControls : MonoBehaviour {
         float x = velocity.x;
         velocity.x = velocity.z;
         velocity.z = -x;
-        sphereZ.Rotate(velocity, Space.World);
+        rotatingSphere.Rotate(velocity, Space.World);
 
         forwardsVector = body.transform.forward;
 
@@ -130,6 +128,17 @@ public class PlayerControls : MonoBehaviour {
 		}
 		
 	}
+
+    /// <summary>
+    /// Screen shake is generated based on the difference between this frame's speed and the last.
+    /// </summary>
+    private void shakeScreen()
+    {
+        float speed = body.velocity.magnitude;
+        float shakeAmount = Math.Abs(previousSpeed - speed);
+        screenShaker.GetComponent<ScreenShake>().addShake(shakeAmount * shakeAmount);
+        previousSpeed = speed;
+    }
 
     private void Explode()
     {
@@ -156,7 +165,7 @@ public class PlayerControls : MonoBehaviour {
 		body.AddExplosionForce(explosionForce, explosionCenter, explosionRadius, upwardsModifier, ForceMode.VelocityChange);
 	}
 
-    private bool isOnGround()
+    private bool getOnGround()
     {
         RaycastHit hitInfo;
         if (Physics.Raycast(body.position, -Vector3.up, out hitInfo))
