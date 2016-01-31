@@ -30,6 +30,7 @@ public class PlayerControls : MonoBehaviour {
     private Vector3 forwardsVector;
     private float chargingTime;
     private float secondsSinceExplode;
+	public float sideFriction = 0.01f;
 
     private InputMapper input;
 	private Vector2 movement;
@@ -38,7 +39,7 @@ public class PlayerControls : MonoBehaviour {
         body = GetComponent<Rigidbody>();
         forwardsVector = Vector3.forward;
         sphereCollider = GetComponent<SphereCollider>();
-        direction = 0;
+        //direction = 0;
         secondsSinceExplode = -secondsBetweenExplodes;
         input = PlayerInput.GetInput((int)playerNumber);
     }
@@ -46,14 +47,22 @@ public class PlayerControls : MonoBehaviour {
 	void Update() {
 		movement = input.getMovement();
 	}
-	
+
+	public float testVarA = 1.0f;
+
 	void FixedUpdate () {
         // people can turn at any time.
         movement = input.getMovement();
         direction += movement.x * Time.deltaTime * rotationMultiplier;
-        body.rotation = Quaternion.AngleAxis(direction, Vector3.up);
 
-        bool wasCharging = isCharging;
+		//var forwardWeight = Vector3.Dot( body.velocity, body.transform.forward.normalized );
+		//body.AddForce( -forwardWeight * body.transform.forward.normalized * testVarA );
+
+		body.rotation = Quaternion.AngleAxis(direction, Vector3.up);
+
+		//body.AddForce( forwardWeight * body.transform.forward.normalized * testVarA );
+
+		bool wasCharging = isCharging;
         isCharging = input.GetConfirm();
 
         secondsSinceExplode += Time.deltaTime;
@@ -79,6 +88,12 @@ public class PlayerControls : MonoBehaviour {
             body.AddForce(body.transform.right * movement.x * body.velocity.magnitude * turnMultiplier * speedMultiplier);
             body.AddForce(body.transform.forward * movement.y * speedMultiplier);
         }
+		if (isOnGround()) {
+			// remove all sidewards velocity
+			Vector3 vel = body.velocity;
+			var rightWeight = Vector3.Dot( body.velocity, body.transform.right.normalized );
+			body.velocity -= sideFriction * rightWeight * body.transform.right.normalized;
+		}
 
         // spin
         Vector3 velocity = body.velocity;
