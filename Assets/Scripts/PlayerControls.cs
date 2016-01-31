@@ -28,6 +28,10 @@ public class PlayerControls : MonoBehaviour {
 	private float upwardsModifier = 2f;
 	[SerializeField]
 	private float explosionForce = 15f;
+	[SerializeField]
+	private float explosionCooldown = 3f;
+	[SerializeField]
+	private ParticleSystem boomParticle;
 
     private Rigidbody body;
     private Vector3 groundFrictionVector;
@@ -42,7 +46,8 @@ public class PlayerControls : MonoBehaviour {
     private InputMapper input;
 	private Vector2 movement;
 
-    private float previousSpeed;
+    private float previousSpeed = 0;
+	private float explosionCooldownTimer = 0;
 
 	void Start () {
         body = GetComponent<Rigidbody>();
@@ -54,6 +59,10 @@ public class PlayerControls : MonoBehaviour {
 
 	void Update() {
 		movement = input.getMovement();
+		if(explosionCooldownTimer > 0)
+		{
+			explosionCooldownTimer -= Time.deltaTime;
+		}
 	}
 	
 	void FixedUpdate () {
@@ -70,8 +79,9 @@ public class PlayerControls : MonoBehaviour {
         if (Game.Instance.GameState != Game.GameStateId.Playing || !getOnGround())
         {
             // do nothing
-        } else if (input.GetCancel())
+        } else if (input.GetCancel() && explosionCooldownTimer <= 0)
         {
+			explosionCooldownTimer = explosionCooldown;
             Explode();
         } else if (!wasCharging && isCharging)
         {
@@ -90,7 +100,6 @@ public class PlayerControls : MonoBehaviour {
         }
 		if (getOnGround()) {
 			// remove all sidewards velocity
-			Vector3 vel = body.velocity;
 			var rightWeight = Vector3.Dot( body.velocity, body.transform.right.normalized );
 			body.velocity -= sideFriction * rightWeight * body.transform.right.normalized;
 		}
@@ -128,7 +137,8 @@ public class PlayerControls : MonoBehaviour {
 
     private void Explode()
     {
-		Debug.LogError("BOOOMM!");
+		boomParticle.Clear();
+		boomParticle.Play();
 		for (int i = 0; i < 4; i++) {
 			if(i == (int) playerNumber)
 				continue;
@@ -178,7 +188,10 @@ public class PlayerControls : MonoBehaviour {
 	void OnTriggerEnter(Collider other)
 	{
 		if(other.gameObject.layer == LayerMask.NameToLayer("Minions")){
-			Game.Instance.NotifyPlayerKill( (int)playerNumber, other.gameObject.GetComponent<CreepsAI>().playerId);
+			var creepsAi = other.gameObject.GetComponent<CreepsAI>();
+			if (creepsAi.isDead)
+				return;
+			Game.Instance.NotifyPlayerKill( (int)playerNumber, creepsAi.playerId);
 			other.gameObject.GetComponent<CreepsAI>().Kill();
 		}
 	}
