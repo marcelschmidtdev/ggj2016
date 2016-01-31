@@ -192,7 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f79daea91a891412da2729056ab18de0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRateInSeconds: .5
+  spawnRateInSeconds: 1
   amountOfCreeps: 1
   minSpawnPosVariance: -1.5
   maxSpawnPosVariance: 1.5
@@ -202,6 +202,14 @@ MonoBehaviour:
   creepTarget: {fileID: 0}
   playerId: 0
   teamId: 0
+  RedTowerMaterial: {fileID: 0}
+  BlueTowerMaterial: {fileID: 0}
+  RedTowerActiveParticleSystem: {fileID: 0}
+  BlueTowerActiveParticleSystem: {fileID: 0}
+  SpawnerTower: {fileID: 0}
+  BlueSpawnField: {fileID: 0}
+  RedSpawnField: {fileID: 0}
+  speedIncreasePerWave: .00499999989
 --- !u!198 &19807638
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -4382,7 +4390,11 @@ Prefab:
       objectReference: {fileID: 404298, guid: 547d28445058f4f659f87905648b377a, type: 2}
     - target: {fileID: 0}
       propertyPath: spawnRateInSeconds
-      value: .5
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: speedIncreasePerWave
+      value: .00499999989
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
