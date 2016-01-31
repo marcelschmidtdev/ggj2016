@@ -1804,7 +1804,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 3
 --- !u!1 &1245935878 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 164914, guid: 547d28445058f4f659f87905648b377a, type: 2}
@@ -3512,7 +3512,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22494666, guid: 52cf9634af41f8d45afbad5b704ec9c5, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22442910, guid: 52cf9634af41f8d45afbad5b704ec9c5, type: 2}
       propertyPath: m_AnchorMax.y
@@ -3520,7 +3520,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22494666, guid: 52cf9634af41f8d45afbad5b704ec9c5, type: 2}
       propertyPath: m_AnchorMax.x
-      value: .104999997
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11403900, guid: 52cf9634af41f8d45afbad5b704ec9c5, type: 2}
       propertyPath: m_Value
