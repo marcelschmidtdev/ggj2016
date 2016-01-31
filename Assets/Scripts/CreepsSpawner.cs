@@ -17,6 +17,8 @@ public class CreepsSpawner : MonoBehaviour
 	private Transform creepTarget;
 	[SerializeField]
 	private int playerId;
+	[SerializeField]
+	private int teamId;
 
 	private bool gameStarted = false;
 	private float spawnTimer = 0;
@@ -27,8 +29,10 @@ public class CreepsSpawner : MonoBehaviour
 	}
 
 	void HandleGameStateChange(Game.GameStateId newState) {
-		if (newState == Game.GameStateId.Playing)
+		if (newState == Game.GameStateId.Playing) {
 			gameStarted = true;
+			teamId = Lobby.GameConfig.PlayerTeamNumbers[playerId];
+		}
 		else
 			gameStarted = false;
 	}
@@ -51,7 +55,11 @@ public class CreepsSpawner : MonoBehaviour
 				this.transform.position.x + Random.Range(minSpawnPosVariance, maxSpawnPosVariance),
 				this.transform.position.y,
 				this.transform.position.z + Random.Range(minSpawnPosVariance, maxSpawnPosVariance));
-			var instance = SimplePool.Spawn(availableCreeps[playerId], spawnPos, Quaternion.identity);
+			// availableCreeps[playerId] is for "nations" and the team ID determines the color of that "nation"
+			// As we currently only have one "nation", we're going to use the team ID to spawn different colored prefabs for this nation
+			// This could be some kind of a nested array -> availableCreeps[playerId][teamId]
+//			var instance = SimplePool.Spawn(availableCreeps[playerId], spawnPos, Quaternion.identity);
+			var instance = SimplePool.Spawn(availableCreeps[teamId], spawnPos, Quaternion.identity);
 			var creepsAI = instance.GetComponent<CreepsAI>();
 			creepsAI.targetPosition = creepTarget.position;
 			creepsAI.playerId = playerId;

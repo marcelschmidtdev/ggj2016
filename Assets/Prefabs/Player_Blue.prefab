@@ -12,7 +12,7 @@ GameObject:
   - 23: {fileID: 2385428}
   - 95: {fileID: 9517528}
   m_Layer: 0
-  m_Name: red_player
+  m_Name: model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,7 +62,7 @@ GameObject:
   - 4: {fileID: 400080}
   - 114: {fileID: 11432794}
   m_Layer: 0
-  m_Name: PlayerRed
+  m_Name: Player_Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -122,29 +122,14 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &193936
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 430532}
-  m_Layer: 0
-  m_Name: Model Holder
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!4 &400080
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 126876}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -390.429993, y: 2, z: 15.8400002}
+  m_LocalRotation: {x: 0, y: -.999890566, z: 0, w: .014794318}
+  m_LocalPosition: {x: -10.6395035, y: 25.2728615, z: 63.9514046}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 433544}
@@ -161,22 +146,9 @@ Transform:
   m_LocalPosition: {x: .0144805908, y: .100000024, z: .00194358826}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 430532}
   - {fileID: 477642}
   m_Father: {fileID: 400080}
   m_RootOrder: 1
---- !u!4 &430532
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 193936}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 402318}
-  m_RootOrder: 0
 --- !u!4 &433544
 Transform:
   m_ObjectHideFlags: 1
@@ -239,7 +211,7 @@ Transform:
   m_Children:
   - {fileID: 459770}
   m_Father: {fileID: 402318}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!20 &2067494
 Camera:
   m_ObjectHideFlags: 1
@@ -249,7 +221,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: .227941155, g: .105324537, b: .0972101986, a: .0196078438}
+  m_BackGroundColor: {r: .0787197277, g: .128171861, b: .20588237, a: .0196078438}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -268,6 +240,7 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
+  m_TargetEye: 3
   m_HDR: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -283,7 +256,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: a18fb29834f1d4562b7d3581d696e89a, type: 2}
+  - {fileID: 2100000, guid: 7a99df354d3a6476594d48d9f126bab0, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -381,8 +354,9 @@ MonoBehaviour:
   rotationMultiplier: 200
   boostBounce: 50000
   turnMultiplier: .100000001
+  secondsBetweenExplodes: 5
   sphereZ: {fileID: 477642}
-  sphereX: {fileID: 430532}
+  sphereX: {fileID: 0}
   navMeshObstacle: {fileID: 20814422}
   maxVelocityToCarveNavMesh: 3
   direction: 0
@@ -3463,18 +3437,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 0}
-      propertyPath: m_BackGroundColor.r
-      value: .227941155
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_BackGroundColor.g
-      value: .105324537
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_BackGroundColor.b
-      value: .0972101986
-      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: boostBounce
       value: 50000
