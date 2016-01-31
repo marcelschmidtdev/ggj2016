@@ -47,6 +47,8 @@ public class PlayerControls : MonoBehaviour {
 	private Vector2 movement;
 
     private float previousSpeed = 0;
+	public ParticleSystem ExplosionCooldownIndicator;
+
 	private float explosionCooldownTimer = 0;
 
 	void Start () {
@@ -62,6 +64,9 @@ public class PlayerControls : MonoBehaviour {
 		if(explosionCooldownTimer > 0)
 		{
 			explosionCooldownTimer -= Time.deltaTime;
+			if(this.explosionCooldownTimer <= 0.0f) {
+				this.ExplosionCooldownIndicator.enableEmission = true;
+			}
 		}
 	}
 	
@@ -139,6 +144,7 @@ public class PlayerControls : MonoBehaviour {
     {
 		boomParticle.Clear();
 		boomParticle.Play();
+		this.ExplosionCooldownIndicator.enableEmission = false;
 		for (int i = 0; i < 4; i++) {
 			if(i == (int) playerNumber)
 				continue;
@@ -149,12 +155,12 @@ public class PlayerControls : MonoBehaviour {
 
 			if(Vector3.Distance(this.transform.position, player.PlayerControls.transform.position) <= explosionRadius)
 			{
-				player.PlayerControls.AddExplosionForce(this.transform.position, explosionRadius);
+				player.PlayerControls.AddExplosionForce(this.transform.position, explosionRadius, explosionForce, upwardsModifier);
 			}
 		}
     }
 
-	public void AddExplosionForce(Vector3 explosionCenter, float explosionRadius) 
+	public void AddExplosionForce(Vector3 explosionCenter, float explosionRadius, float explosionForce, float upwardsModifier) 
 	{
 		body.AddExplosionForce(explosionForce, explosionCenter, explosionRadius, upwardsModifier, ForceMode.VelocityChange);
 	}
