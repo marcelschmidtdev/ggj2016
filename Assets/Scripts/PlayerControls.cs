@@ -15,13 +15,19 @@ public class PlayerControls : MonoBehaviour {
     public Transform sphereZ;
     public Transform sphereX;
 
+	public float sideFriction;
+
     [SerializeField]
     private NavMeshObstacle navMeshObstacle;
     [SerializeField]
     private float maxVelocityToCarveNavMesh;
 
-	//[SerializeField]
+	[SerializeField]
 	private float explosionRadius = 15f;
+	[SerializeField]
+	private float upwardsModifier = 2f;
+	[SerializeField]
+	private float explosionForce = 15f;
 
     private Rigidbody body;
     private Vector3 groundFrictionVector;
@@ -130,7 +136,7 @@ public class PlayerControls : MonoBehaviour {
 
 	public void AddExplosionForce(Vector3 explosionCenter, float explosionRadius) 
 	{
-		body.AddExplosionForce(15f, explosionCenter, explosionRadius, 2f, ForceMode.VelocityChange);
+		body.AddExplosionForce(explosionForce, explosionCenter, explosionRadius, upwardsModifier, ForceMode.VelocityChange);
 	}
 
     private bool isOnGround()
