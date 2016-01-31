@@ -33,7 +33,8 @@ public class PlayerFactory : SingletonMonoBehaviour<PlayerFactory> {
 
 	public Player CreatePlayerInstance(int index, Vector3 position, Quaternion rotation) {
 		NumberOfPlayers++;
-		var newPlayer = GameObject.Instantiate<Player>( this.PlayerPrefab[index] );
+		int teamId = Lobby.GameConfig.PlayerTeamNumbers[index];
+		var newPlayer = GameObject.Instantiate<Player>( this.PlayerPrefab[teamId] );
 		this.Players[index] = newPlayer;
 		newPlayer.InitPlayerIndex( index );
 		UpdateCameraViewports();

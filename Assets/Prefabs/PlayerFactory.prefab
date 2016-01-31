@@ -41,10 +41,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DefaultSplitscreenModesForPlayers: 00000000020000000300000003000000
   PlayerPrefab:
-  - {fileID: 11432794, guid: 5d953e0a761844708a3800634104aca7, type: 2}
-  - {fileID: 11461764, guid: 65f759952895b41ec862835794a28e65, type: 2}
   - {fileID: 11432794, guid: 356a06267551c457e8de009162e8d37f, type: 2}
-  - {fileID: 11461764, guid: b95e37cfdaebb8d4eaacc63a0cbfc4c8, type: 2}
+  - {fileID: 11432794, guid: 5d953e0a761844708a3800634104aca7, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -54,7 +52,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: PlayerPrefab.Array.size
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: PlayerPrefab
@@ -64,23 +62,21 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: PlayerPrefab.Array.data[0]
       value: 
-      objectReference: {fileID: 11432794, guid: 5d953e0a761844708a3800634104aca7,
+      objectReference: {fileID: 11432794, guid: 356a06267551c457e8de009162e8d37f,
         type: 2}
     - target: {fileID: 0}
       propertyPath: PlayerPrefab.Array.data[1]
       value: 
-      objectReference: {fileID: 11461764, guid: 65f759952895b41ec862835794a28e65,
+      objectReference: {fileID: 11432794, guid: 5d953e0a761844708a3800634104aca7,
         type: 2}
     - target: {fileID: 0}
       propertyPath: PlayerPrefab.Array.data[2]
       value: 
-      objectReference: {fileID: 11432794, guid: 356a06267551c457e8de009162e8d37f,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: PlayerPrefab.Array.data[3]
       value: 
-      objectReference: {fileID: 11461764, guid: b95e37cfdaebb8d4eaacc63a0cbfc4c8,
-        type: 2}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 174510}
