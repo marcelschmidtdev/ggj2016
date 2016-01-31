@@ -12,6 +12,7 @@ public class PlayerControls : MonoBehaviour {
     public float rotationMultiplier = 100;
     public float boostBounce = 100;
     public float turnMultiplier = 10;
+    public float minimumSpeedForScreenShake = 1;
     public Transform rotatingSphere; // for visual rotation effect we spin this
     public GameObject screenShaker;
 
@@ -136,7 +137,9 @@ public class PlayerControls : MonoBehaviour {
     {
         float speed = body.velocity.magnitude;
         float shakeAmount = Math.Abs(previousSpeed - speed);
-        screenShaker.GetComponent<ScreenShake>().addShake(shakeAmount * shakeAmount);
+        if (shakeAmount > minimumSpeedForScreenShake) {
+            screenShaker.GetComponent<ScreenShake>().addShake(shakeAmount * shakeAmount);
+        }
         previousSpeed = speed;
     }
 
