@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class GameConfiguration
 {
@@ -22,10 +23,13 @@ public class Lobby : MonoBehaviour {
 	void Start () {
 		GameConfig = new GameConfiguration();
 		InitPlayerIndicators();
+		calibratedPlayer.Clear();
 	}
 
 	public LobbyPlayerIndicator[] LobbyPlayerIndicators;
 	public Image AllowGameStartIndicator;
+
+	private List<int> calibratedPlayer = new List<int>();
 
 	void InitPlayerIndicators () {
 		for(int i = 0; i < 4; i++) {
@@ -115,12 +119,27 @@ public class Lobby : MonoBehaviour {
 			this.LobbyPlayerIndicators[playerIndex].AllowConfirm = true;
 		}
 		UpdateAllowGameStart();
+		calibratedPlayer.Clear();
 	}
 
 	public void PlayerPressedStart (int playerIndex) {
-		if (this.AllowGameStart) {
+		if(!calibratedPlayer.Contains(playerIndex)) {
+			calibratedPlayer.Add(playerIndex);
+		}
+		if (this.AllowGameStart && calibratedPlayer.Count == GetReadyPlayerAmount()) {
 			Application.LoadLevel( "DefaultMap" );
 		}
+	}
+
+	int GetReadyPlayerAmount(){
+		int count = 0;
+		for (int i = 0; i < LobbyPlayerIndicators.Length; i++) {
+			if(LobbyPlayerIndicators[i].State == LobbyPlayerIndicator.LobbyPlayerState.Locked)
+			{
+				count++;
+			}
+		}
+		return count;
 	}
 
 	bool AllowGameStart

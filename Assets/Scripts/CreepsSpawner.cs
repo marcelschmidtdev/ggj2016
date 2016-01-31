@@ -50,9 +50,12 @@ public class CreepsSpawner : MonoBehaviour
 	}
 
 	void OnDisable(){
-		this.RedTowerActiveParticleSystem.Stop(); 
-		this.BlueTowerActiveParticleSystem.Stop();
-		this.SpawnerTower.material.color = Color.white; 
+		if(this.RedTowerActiveParticleSystem != null)
+			this.RedTowerActiveParticleSystem.Stop();
+		if(this.BlueTowerActiveParticleSystem != null)
+			this.BlueTowerActiveParticleSystem.Stop();
+		if(this.SpawnerTower != null)
+			this.SpawnerTower.material.color = Color.white; 
 	}
 	
 	void HandleGameStateChange(Game.GameStateId newState) {
