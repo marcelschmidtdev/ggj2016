@@ -39,7 +39,7 @@ public class PlayerControls : MonoBehaviour {
         body = GetComponent<Rigidbody>();
         forwardsVector = Vector3.forward;
         sphereCollider = GetComponent<SphereCollider>();
-        direction = 0;
+
         input = PlayerInput.GetInput((int)playerNumber);
     }
 
@@ -51,9 +51,15 @@ public class PlayerControls : MonoBehaviour {
         // people can turn at any time.
         movement = input.getMovement();
         direction += movement.x * Time.deltaTime * rotationMultiplier;
-        body.rotation = Quaternion.AngleAxis(direction, Vector3.up);
 
-        bool wasCharging = isCharging;
+		//var forwardWeight = Vector3.Dot( body.velocity, body.transform.forward.normalized );
+		//body.AddForce( -forwardWeight * body.transform.forward.normalized * testVarA );
+
+		body.rotation = Quaternion.AngleAxis(direction, Vector3.up);
+
+		//body.AddForce( forwardWeight * body.transform.forward.normalized * testVarA );
+
+		bool wasCharging = isCharging;
         isCharging = input.GetConfirm();
 
         if (Game.Instance.GameState != Game.GameStateId.Playing || !isOnGround())
@@ -77,6 +83,12 @@ public class PlayerControls : MonoBehaviour {
             body.AddForce(body.transform.right * movement.x * body.velocity.magnitude * turnMultiplier * speedMultiplier);
             body.AddForce(body.transform.forward * movement.y * speedMultiplier);
         }
+		if (isOnGround()) {
+			// remove all sidewards velocity
+			Vector3 vel = body.velocity;
+			var rightWeight = Vector3.Dot( body.velocity, body.transform.right.normalized );
+			body.velocity -= sideFriction * rightWeight * body.transform.right.normalized;
+		}
 
         // spin
         Vector3 velocity = body.velocity;
@@ -150,7 +162,7 @@ public class PlayerControls : MonoBehaviour {
 	void OnTriggerEnter(Collider other)
 	{
 		if(other.gameObject.layer == LayerMask.NameToLayer("Minions")){
-			Game.Instance.EventPlayerKilledMinion((int)playerNumber, other.gameObject.GetComponent<CreepsAI>().playerId);
+			Game.Instance.NotifyPlayerKill( (int)playerNumber, other.gameObject.GetComponent<CreepsAI>().playerId);
 			other.gameObject.GetComponent<CreepsAI>().Kill();
 		}
 	}
