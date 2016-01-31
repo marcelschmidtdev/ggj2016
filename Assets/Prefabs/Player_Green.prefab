@@ -115,7 +115,6 @@ GameObject:
   - 54: {fileID: 5461644}
   - 114: {fileID: 11402890}
   - 208: {fileID: 20881924}
-  - 114: {fileID: 11483338}
   m_Layer: 0
   m_Name: PlayerView
   m_TagString: Untagged
@@ -241,6 +240,7 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
+  m_TargetEye: 3
   m_HDR: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -333,6 +333,8 @@ MonoBehaviour:
   explosionRadius: 8
   upwardsModifier: 6
   explosionForce: 3.5
+  explosionCooldown: 3
+  boomParticle: {fileID: 0}
   direction: 0
 --- !u!114 &11416184
 MonoBehaviour:
@@ -364,22 +366,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Camera: {fileID: 2060012}
   PlayerControls: {fileID: 11402890}
-  PlayerView: {fileID: 11483338}
   PlayerReady: 0
   Score: 0
   OwnMinionsKilled: 0
   EnemyMinionsKilled: 0
---- !u!114 &11483338
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 191868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f088de60af72bd46a49699dcfd2ac23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!135 &13531108
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -3469,7 +3459,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: PlayerView
       value: 
-      objectReference: {fileID: 11483338}
+      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Carve
       value: 1
