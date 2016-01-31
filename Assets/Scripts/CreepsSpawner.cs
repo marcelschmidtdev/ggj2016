@@ -67,7 +67,7 @@ public class CreepsSpawner : MonoBehaviour
 	}
 
 	void OnDestroy(){
-		if(Game.Instance!=null)
+		if(Game.DoesInstanceExist())
 			Game.Instance.EventGameStateChanged -= HandleGameStateChange;
 	}
 }

@@ -140,7 +140,7 @@ public class PlayerControls : MonoBehaviour {
 	void OnTriggerEnter(Collider other)
 	{
 		if(other.gameObject.layer == LayerMask.NameToLayer("Minions")){
-			Game.Instance.EventPlayerKilledMinion((int)playerNumber, other.gameObject.GetComponent<CreepsAI>().playerId);
+			Game.Instance.NotifyPlayerKill( (int)playerNumber, other.gameObject.GetComponent<CreepsAI>().playerId);
 			other.gameObject.GetComponent<CreepsAI>().Kill();
 		}
 	}
