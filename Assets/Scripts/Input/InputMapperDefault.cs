@@ -30,7 +30,7 @@ public class InputMapperDefault : InputMapper {
 
 	public override bool GetConfirm ()
 	{
-		return Input.GetButtonDown("Boost" + playerIndex);
+		return Input.GetButton("Boost" + playerIndex);
 	}
 	
 	public override bool GetCancel ()
