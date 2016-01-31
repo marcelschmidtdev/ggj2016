@@ -1270,6 +1270,10 @@ Prefab:
       propertyPath: RedSpawnField
       value: 
       objectReference: {fileID: 77679558}
+    - target: {fileID: 11431280, guid: c413b8d4ab37441e5b3105b292619664, type: 2}
+      propertyPath: playerId
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c413b8d4ab37441e5b3105b292619664, type: 2}
   m_IsPrefabParent: 0
@@ -18129,7 +18133,7 @@ Prefab:
       objectReference: {fileID: 1799156578}
     - target: {fileID: 11431280, guid: c413b8d4ab37441e5b3105b292619664, type: 2}
       propertyPath: playerId
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 111996, guid: c413b8d4ab37441e5b3105b292619664, type: 2}
       propertyPath: m_StaticEditorFlags
@@ -22569,19 +22573,19 @@ Prefab:
     - target: {fileID: 11404800, guid: 479a7d8ed846efb46bd6949b3d1ec333, type: 2}
       propertyPath: CreepsSpawners.Array.data[0]
       value: 
-      objectReference: {fileID: 77679557}
+      objectReference: {fileID: 1448208404}
     - target: {fileID: 11404800, guid: 479a7d8ed846efb46bd6949b3d1ec333, type: 2}
       propertyPath: CreepsSpawners.Array.data[1]
       value: 
-      objectReference: {fileID: 1448208404}
+      objectReference: {fileID: 799251711}
     - target: {fileID: 11404800, guid: 479a7d8ed846efb46bd6949b3d1ec333, type: 2}
       propertyPath: CreepsSpawners.Array.data[2]
       value: 
-      objectReference: {fileID: 799251711}
+      objectReference: {fileID: 2118032877}
     - target: {fileID: 11404800, guid: 479a7d8ed846efb46bd6949b3d1ec333, type: 2}
       propertyPath: CreepsSpawners.Array.data[3]
       value: 
-      objectReference: {fileID: 2118032877}
+      objectReference: {fileID: 77679557}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 479a7d8ed846efb46bd6949b3d1ec333, type: 2}
   m_IsPrefabParent: 0
@@ -28205,7 +28209,7 @@ Prefab:
       objectReference: {fileID: 1799156578}
     - target: {fileID: 11431280, guid: c413b8d4ab37441e5b3105b292619664, type: 2}
       propertyPath: playerId
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 111996, guid: c413b8d4ab37441e5b3105b292619664, type: 2}
       propertyPath: m_StaticEditorFlags
@@ -37179,7 +37183,7 @@ Prefab:
       objectReference: {fileID: 1799156578}
     - target: {fileID: 11431280, guid: c413b8d4ab37441e5b3105b292619664, type: 2}
       propertyPath: playerId
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 111996, guid: c413b8d4ab37441e5b3105b292619664, type: 2}
       propertyPath: m_StaticEditorFlags
