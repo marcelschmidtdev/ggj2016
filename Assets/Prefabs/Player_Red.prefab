@@ -132,7 +132,7 @@ GameObject:
   - 208: {fileID: 20814422}
   m_Layer: 0
   m_Name: PlayerView
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -412,6 +412,8 @@ MonoBehaviour:
   boomParticle: {fileID: 19829688}
   direction: 0
   ExplosionCooldownIndicator: {fileID: 19843428}
+  collisionMultiplier: 8000
+  HeightOffset: -4
 --- !u!114 &11454630
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4607,6 +4609,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: minimumSpeedForScreenShake
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: collisionMultiplier
+      value: 8000
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: HeightOffset
+      value: -4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
