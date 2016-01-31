@@ -353,14 +353,15 @@ MonoBehaviour:
   rotationMultiplier: 200
   boostBounce: 50000
   turnMultiplier: .100000001
-  secondsBetweenExplodes: 5
   sphereZ: {fileID: 477642}
   sphereX: {fileID: 0}
+  sideFriction: .0299999993
   navMeshObstacle: {fileID: 20814422}
   maxVelocityToCarveNavMesh: 3
+  explosionRadius: 8
+  upwardsModifier: 6
+  explosionForce: 3.5
   direction: 0
-  sideFriction: .0299999993
-  testVarA: 1
 --- !u!114 &11456348
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -544,7 +545,7 @@ ParticleSystem:
         rgba: 4294967295
       maxColor:
         serializedVersion: 2
-        rgba: 4290117631
+        rgba: 4294950069
       minMaxState: 0
     startSize:
       scalar: 1
@@ -1527,7 +1528,7 @@ ParticleSystem:
         rgba: 4294967295
       maxColor:
         serializedVersion: 2
-        rgba: 3362698495
+        rgba: 3372186478
       minMaxState: 0
     startSize:
       scalar: 8
@@ -3466,6 +3467,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Drag
       value: .300000012
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: explosionRadius
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: upwardsModifier
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: explosionForce
+      value: 3.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

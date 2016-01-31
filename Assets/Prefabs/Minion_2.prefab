@@ -922,7 +922,7 @@ ParticleSystem:
         m_NumAlphaKeys: 2
       minColor:
         serializedVersion: 2
-        rgba: 1677787011
+        rgba: 1694441728
       maxColor:
         serializedVersion: 2
         rgba: 1694498711
