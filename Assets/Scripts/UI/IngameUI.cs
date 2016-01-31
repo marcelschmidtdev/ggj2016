@@ -126,7 +126,7 @@ public class IngameUI : MonoBehaviour {
 	private void Instance_EventPlayerScored(int playerIndex) {
 		for(int i = 0; i < 2; i++) {
 			this.TeamScoreLabels[i].text = Game.Instance.GetTeamScore( i ).ToString();
-			this.TeamScoreBars[i].value = Game.Instance.GetTeamScore( i ) / Game.Instance.TargetScore;
+			this.TeamScoreBars[i].value = (float) Game.Instance.GetTeamScore( i ) / (float) Game.Instance.TargetScore;
 		}
 	}
 }

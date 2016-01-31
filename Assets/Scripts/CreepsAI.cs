@@ -35,9 +35,13 @@ public class CreepsAI : MonoBehaviour
 		isDead = false;
 		this.transform.localScale = Vector3.one;
 		this.reachedTarget = false; 
-		this.navMeshAgent.enabled = true; 
+		this.navMeshAgent.enabled = true;
+		this.navMeshAgent.avoidancePriority = Random.RandomRange( 0, 99 );
 		navMeshAgent.ResetPath();
-		navMeshAgent.SetDestination(targetPosition);
+		if (!navMeshAgent.SetDestination( targetPosition )) {
+			navMeshAgent.Stop();
+			SimplePool.Despawn( this.gameObject );
+		}
 		this.HolyDespawn.Stop(); 
 		this.HolyDespawn.Clear(); 
 		this.HolyDespawn.time = 0; 
@@ -52,19 +56,31 @@ public class CreepsAI : MonoBehaviour
 	}
 	void Update() 
 	{
+
 		if(!isDead && Vector3.Distance(this.transform.position, targetPosition) <= minDistToTarget) { 
 			this.isDead = true; 
 			Game.Instance.NotifyPlayerScrored(playerId);
 			StopAllCoroutines(); 
-			StartCoroutine(Co_Despawn()); 
+			StartCoroutine(Co_Despawn());
+			return;
 
 		}
 
 		if ( this.reachedTarget ) {
 			var pos = this.transform.position; 
 			pos.y += this.ascendingModifier*Time.deltaTime ; 
-			this.transform.position = pos; 
+			this.transform.position = pos;
+			return;
 		}
+
+		if(this.navMeshAgent.pathStatus == NavMeshPathStatus.PathInvalid && !this.navMeshAgent.pathPending) {
+			navMeshAgent.ResetPath();
+			if (!navMeshAgent.SetDestination( targetPosition )) {
+				navMeshAgent.Stop();
+				SimplePool.Despawn( this.gameObject );
+			}
+		}
+
 
 	}
 
