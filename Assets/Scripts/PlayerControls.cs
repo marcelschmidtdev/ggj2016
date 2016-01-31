@@ -102,7 +102,6 @@ public class PlayerControls : MonoBehaviour {
         }
 		if (isOnGround()) {
 			// remove all sidewards velocity
-			Vector3 vel = body.velocity;
 			var rightWeight = Vector3.Dot( body.velocity, body.transform.right.normalized );
 			body.velocity -= sideFriction * rightWeight * body.transform.right.normalized;
 		}
