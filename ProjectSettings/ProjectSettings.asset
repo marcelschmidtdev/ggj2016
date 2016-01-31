@@ -92,6 +92,9 @@ PlayerSettings:
   APKExpansionFiles: 0
   preloadShaders: 0
   StripUnusedMeshComponents: 0
+  VertexChannelCompressionMask:
+    serializedVersion: 2
+    m_Bits: 238
   iPhoneSdkVersion: 988
   iPhoneTargetOSVersion: 22
   uIPrerenderedIcon: 0
@@ -132,7 +135,27 @@ PlayerSettings:
     banner: {fileID: 0}
   androidGamepadSupportLevel: 0
   resolutionDialogBanner: {fileID: 0}
-  m_BuildTargetIcons: []
+  m_BuildTargetIcons:
+  - m_BuildTarget: 
+    m_Icons:
+    - m_Icon: {fileID: 2800000, guid: d9f173c282a796542a4f0b9a707e2bba, type: 3}
+      m_Size: 128
+  - m_BuildTarget: Standalone
+    m_Icons:
+    - m_Icon: {fileID: 2800000, guid: d9f173c282a796542a4f0b9a707e2bba, type: 3}
+      m_Size: 1024
+    - m_Icon: {fileID: 2800000, guid: d9f173c282a796542a4f0b9a707e2bba, type: 3}
+      m_Size: 512
+    - m_Icon: {fileID: 2800000, guid: d9f173c282a796542a4f0b9a707e2bba, type: 3}
+      m_Size: 256
+    - m_Icon: {fileID: 2800000, guid: d9f173c282a796542a4f0b9a707e2bba, type: 3}
+      m_Size: 128
+    - m_Icon: {fileID: 2800000, guid: d9f173c282a796542a4f0b9a707e2bba, type: 3}
+      m_Size: 48
+    - m_Icon: {fileID: 2800000, guid: d9f173c282a796542a4f0b9a707e2bba, type: 3}
+      m_Size: 32
+    - m_Icon: {fileID: 2800000, guid: d9f173c282a796542a4f0b9a707e2bba, type: 3}
+      m_Size: 16
   m_BuildTargetBatching: []
   m_BuildTargetGraphicsAPIs: []
   webPlayerTemplate: APPLICATION:Default
@@ -189,6 +212,8 @@ PlayerSettings:
   ps4SaveDataImagePath: 
   ps4BGMPath: 
   ps4ShareFilePath: 
+  ps4ShareOverlayImagePath: 
+  ps4PrivacyGuardImagePath: 
   ps4NPtitleDatPath: 
   ps4RemotePlayKeyAssignment: -1
   ps4EnterButtonAssignment: 1
