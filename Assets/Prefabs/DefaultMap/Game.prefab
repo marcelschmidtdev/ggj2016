@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CountdownLength: 3
-  TargetScore: 50
+  TargetScore: 20
   audioSource: {fileID: 8245500}
 --- !u!1001 &100100000
 Prefab:
