@@ -52,6 +52,8 @@ public class PlayerControls : MonoBehaviour {
 
 	private float explosionCooldownTimer = 0;
 
+	public float collisionMultiplier = 3.0f;
+
 	void Start () {
         body = GetComponent<Rigidbody>();
         forwardsVector = Vector3.forward;
@@ -203,5 +205,23 @@ public class PlayerControls : MonoBehaviour {
 			Game.Instance.NotifyPlayerKill( (int)playerNumber, creepsAi.playerId);
 			other.gameObject.GetComponent<CreepsAI>().Kill();
 		}
+	}
+
+	public float HeightOffset = -3.0f;
+	
+	void OnCollisionEnter (Collision collision) {
+		if (collision.collider.gameObject.tag == "Player") {
+			// velocity in player direction;
+			Vector3 playerDirection = (collision.collider.transform.position - transform.position).normalized;
+			Vector3 offsetPlayerDirection = (collision.collider.transform.position - (transform.position + new Vector3(0.0f, this.HeightOffset, 0.0f))).normalized;
+			float playerImpact = Vector3.Dot( this.body.velocity, playerDirection );
+			if(playerImpact > 0.0f)
+				StartCoroutine( Co_ApplyCollisionForce( collision.collider.GetComponent<Rigidbody>(), playerImpact * this.collisionMultiplier * offsetPlayerDirection ) );
+		}
+	}
+
+	IEnumerator Co_ApplyCollisionForce (Rigidbody body, Vector3 force) {
+		yield return new WaitForFixedUpdate();
+		body.AddForce( force );
 	}
 }
