@@ -85,6 +85,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &144374
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 435324}
+  - 114: {fileID: 11454630}
+  m_Layer: 0
+  m_Name: ScreenShaker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &146454
 GameObject:
   m_ObjectHideFlags: 1
@@ -145,7 +161,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 126876}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -390.429993, y: 2, z: 15.8400002}
+  m_LocalPosition: {x: 31.1671143, y: 15.2054358, z: 37.0424271}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 433544}
@@ -163,6 +179,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 477642}
+  - {fileID: 435324}
   m_Father: {fileID: 400080}
   m_RootOrder: 1
 --- !u!4 &432446
@@ -189,6 +206,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 400080}
   m_RootOrder: 0
+--- !u!4 &435324
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 144374}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 402318}
+  m_RootOrder: 1
 --- !u!4 &439098
 Transform:
   m_ObjectHideFlags: 1
@@ -370,8 +399,8 @@ MonoBehaviour:
   rotationMultiplier: 200
   boostBounce: 50000
   turnMultiplier: .100000001
-  sphereZ: {fileID: 477642}
-  sphereX: {fileID: 0}
+  rotatingSphere: {fileID: 477642}
+  screenShaker: {fileID: 144374}
   sideFriction: .0299999993
   navMeshObstacle: {fileID: 20814422}
   maxVelocityToCarveNavMesh: 3
@@ -381,7 +410,21 @@ MonoBehaviour:
   explosionCooldown: 6
   boomParticle: {fileID: 19829688}
   direction: 0
-  ExplosionCooldownIndicator: {fileID: 19843428}
+  ExplosionCooldownIndicator: {fileID: 0}
+--- !u!114 &11454630
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 144374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d43a34277e10fd24bbb5b7f54bf47191, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damping: .5
+  speed: 50
+  maxShake: 10
 --- !u!114 &11456348
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -399,6 +442,7 @@ MonoBehaviour:
   lookAtOffset: {x: 0, y: 5, z: 0}
   followDistance: 5
   lerpSpeed: .100000001
+  shakeMultiplier: .100000001
 --- !u!135 &13545088
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -4554,6 +4598,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: explosionCooldown
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: shakeMultiplier
+      value: .100000001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

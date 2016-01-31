@@ -370,8 +370,8 @@ MonoBehaviour:
   rotationMultiplier: 200
   boostBounce: 50000
   turnMultiplier: .100000001
-  sphereZ: {fileID: 477642}
-  sphereX: {fileID: 0}
+  rotatingSphere: {fileID: 0}
+  screenShaker: {fileID: 0}
   sideFriction: .0299999993
   navMeshObstacle: {fileID: 20814422}
   maxVelocityToCarveNavMesh: 3
@@ -399,6 +399,7 @@ MonoBehaviour:
   lookAtOffset: {x: 0, y: 5, z: 0}
   followDistance: 5
   lerpSpeed: .100000001
+  shakeMultiplier: .100000001
 --- !u!135 &13545088
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -4542,6 +4543,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: explosionCooldown
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: shakeMultiplier
+      value: .100000001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
