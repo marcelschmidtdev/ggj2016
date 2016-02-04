@@ -90,7 +90,13 @@ public class Lobby : MonoBehaviour {
 	public void PlayerControllerConnected(int playerIndex) {
 		PlayerJoinsTeam( playerIndex, -1 );
 		this.LobbyPlayerIndicators[playerIndex].State = LobbyPlayerIndicator.LobbyPlayerState.Connected;
+
 		UpdateAllowGameStart();
+	}
+
+	public void PlayerControllerConnectedKeyboard(int playerIndex){
+		PlayerControllerConnected(playerIndex) ; 
+		this.LobbyPlayerIndicators[playerIndex].SetToKeyBoard(); 
 	}
 
 	public void PlayerControllerDisconnected(int playerIndex) {

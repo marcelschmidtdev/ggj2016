@@ -6,6 +6,7 @@ public abstract class InputMapper {
     protected bool wasCharging = false;
     protected bool charging = false;
     protected Vector2 movement = Vector2.zero;
+	public abstract bool keyboardConnected{get;protected set;}
 
     public abstract Vector2 getMovement();
 

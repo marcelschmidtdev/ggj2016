@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class LobbyPlayerIndicator : MonoBehaviour {
 
+
 	public Color NotConnectedControllerColor;
 	public Color ConnectedControllerColor;
 	public Color LockedControllerColor;
@@ -13,6 +14,7 @@ public class LobbyPlayerIndicator : MonoBehaviour {
 	public Image RightArrowSprite;
 	public Image ConfirmSprite;
 	public Image CancelSprite;
+	public Image Keyboard; 
 
 	public enum LobbyPlayerState
 	{
@@ -79,6 +81,10 @@ public class LobbyPlayerIndicator : MonoBehaviour {
 		}
 	}
 
+	public void SetToKeyBoard ()
+	{
+		this.ControllerSprite.sprite = this.Keyboard.sprite; 
+	}
 	void OnEnable () {
 		UpdateView();
 	}

@@ -21,8 +21,14 @@ public class LobbyInputHandler : MonoBehaviour {
 
 			bool isConnected = input.IsConnected();
 			if(Lobby.IsPlayerControllerConnected( i ) != isConnected){
-				if (isConnected)
-					Lobby.PlayerControllerConnected( i );
+				if (isConnected){
+					if ( input.keyboardConnected ) {
+						Lobby.PlayerControllerConnectedKeyboard(i); 
+					} else {
+						Lobby.PlayerControllerConnected( i );
+					}
+
+				}
 				else
 					Lobby.PlayerControllerDisconnected( i );
 			}
