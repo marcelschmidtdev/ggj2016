@@ -7,6 +7,20 @@
 ### Game Description:
 *Game Description: You are a god, represented by an elemental fire sphere. Your little vikings warriors warship you in a big ritual - but be careful - your opponent can roll over your minions. Battle for supremacy of the heavens! League of Rock is a local multiplayer with 2 teams and up to 4 players.*
 
+### Controls
+Gamepad 
+- left analog stick 
+- a = chargable jump 
+- left shoulder = brake 
+- right shoulder = accelerate 
+- b = special attack 
+
+Keyboard on player 1 enabled: 
+- wasd
+- left-shift = B
+- alt = a
+- space = start / connect 
+
 ### Credits:
 - Friedrich Wessel @FriedrichWessel
 - Marc Zaku @marczaku
